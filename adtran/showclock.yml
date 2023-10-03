@@ -1,9 +1,14 @@
 ---
 - name: Show Clock on IOS device
   hosts: ta5k
-  gather_facts: no  # To disable gathering facts
+  gather_facts: no
 
   tasks:
     - name: Execute show clock command
       ios_command:
         commands: "show clock"
+      register: show_clock_output
+
+    - name: Display show clock output
+      debug:
+        var: show_clock_output.stdout_lines
