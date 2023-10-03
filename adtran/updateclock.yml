@@ -1,0 +1,25 @@
+---
+- name: Configure clock on Cisco IOS device
+  hosts: all
+  gather_facts: no
+  become: yes
+
+  tasks:
+    - name: Set the clock
+      ios_config:
+        lines:
+          - clock set 17:00:30
+      register: config_result
+
+    - name: Display configuration result
+      debug:
+        var: config_result
+
+    - name: Execute show clock command
+      ios_command:
+        commands: "show clock"
+      register: show_clock_output
+
+    - name: Display show clock output
+      debug:
+        var: show_clock_output.stdout_lines
