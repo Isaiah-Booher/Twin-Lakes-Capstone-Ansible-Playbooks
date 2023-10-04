@@ -1,6 +1,6 @@
 ---
 - name: Configure clock on Cisco IOS device
-  hosts: all
+  hosts: ta5k
   gather_facts: no
   become: yes
 
