@@ -2,7 +2,7 @@
 - name: Show Current Configuration
   hosts: ta5k
   gather_facts: no
-  become: yes  # Escalate privilege
+  become: yes
 
   tasks:
     - name: Execute show run command
