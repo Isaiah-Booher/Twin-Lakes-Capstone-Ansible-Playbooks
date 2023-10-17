@@ -1,7 +1,8 @@
 ---
 - name: Configure MOTD on Cisco IOS XR Router
   hosts: routers
-  gather_facts: no
+  gather_facts: yes
+  connection: network_cli
 
   tasks:
     - name: Set the MOTD banner
