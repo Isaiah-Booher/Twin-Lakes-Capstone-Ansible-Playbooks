@@ -1,0 +1,15 @@
+--- # "---" indicates this to be a YAML file
+- name: Show Current Configuration # name of Playbook. This can be anything.
+  hosts: ta5k # target host or group of host
+  gather_facts: no # gathers system info about target host
+  become: yes  # Become Module (To esclate privilege). Certain commands require elevated privileges.
+
+  tasks: # define tasks below. (**Indentation Matters!**) Use https://www.yamllint.com/ to check Yaml syntax if needed.
+    - name: Execute show run command # name of task 1
+      ios_command: # Command Module
+        commands: "show run" # actual command
+      register: show_running_configuration_output # these registers the return information to a variable
+
+    - name: Display show run output # name of task 2
+      debug:
+        var: show_running_configuration_output.stdout_lines # this displays the content of the variable
