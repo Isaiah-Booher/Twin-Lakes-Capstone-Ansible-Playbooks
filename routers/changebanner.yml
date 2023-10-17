@@ -6,9 +6,8 @@
 
   tasks:
     - name: Configure Clock
-      ios_command:
-        commands:
-          - "conf t"
+      ios_config:
+        lines:
           - "clock timezone CST US/Central"
           - "commit best-effort"
       register: result
