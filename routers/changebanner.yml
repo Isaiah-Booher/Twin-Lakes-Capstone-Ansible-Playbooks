@@ -26,12 +26,12 @@
       consent to monitoring for these purposes.
       -----------------------------------------------------------
       ^C
-      
+
   tasks:
     - name: Update Banner
       ios_config:
         lines: 
-          - {{motd_message}}
+          - {"motd_message"}
 
       register: show_running_configuration_output
 
