@@ -9,8 +9,8 @@
       ios_command:
         commands:
           - "conf t"
-          - "clock timezone CDT"
-          - "commit confirmed"
+          - "clock timezone CST US/Central"
+          - "commit best-effort"
       register: result
 
     - name: Display the result
