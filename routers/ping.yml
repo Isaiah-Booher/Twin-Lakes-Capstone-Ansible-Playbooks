@@ -1,6 +1,6 @@
 ---
  - name: "Get ping response"
-   hosts: all
+   hosts: routers
    tasks:
    - action: ping
      register: hello

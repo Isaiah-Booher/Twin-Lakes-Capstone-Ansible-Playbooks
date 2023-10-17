@@ -1,6 +1,6 @@
 ---
  - name: "Get ping response"
-   hosts: all
+   hosts: switches
    tasks:
    - action: ping
      register: hello
