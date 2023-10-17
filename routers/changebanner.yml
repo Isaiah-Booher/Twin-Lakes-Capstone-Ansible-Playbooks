@@ -2,7 +2,7 @@
 - name: Change Banner
   hosts: routers
   gather_facts: no
-  become: yes
+  become: no
 
   vars:
     motd_message: |
