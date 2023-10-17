@@ -6,7 +6,7 @@
 
   tasks:
     - name: Update Banner
-      ios_banner:
+      cisco.ios.ios_banner:
         banner: motd
         text: |
           '    _____   _       _____    ____
