@@ -6,7 +6,7 @@
 
   tasks:
     - name: Set the MOTD banner
-      iosxr_config:
+      ios_config:
         lines:
           - banner motd ^
           - |-
