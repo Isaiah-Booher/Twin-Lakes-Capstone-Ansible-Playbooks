@@ -4,37 +4,28 @@
   gather_facts: no
   become: no
 
-  vars:
-    motd_message:
-
   tasks:
     - name: Update Banner
-      ios_config:
-        lines: 
-          - banner motd ^C
-                 _____   _       _____    ____
-                |_   _| | |     |_   _|  / ___|
-                  | |   | |       | |   | |
-                  | |   | |___    | |   | |___
-                  |_|   |_____|   |_|    \____|
-            -----------------------------------------------------------
-            This is a test
-            -------------
-            W A R N I N G
-            -------------
-            Unauthorized access prohibited
-            Disconnect IMMEDIATELY if you are not an authorized user!
-            -----------------------------------------------------------
-            Unauthorized use may subject you to criminal prosecution.
-            Evidence of any such unauthorized use collected during
-            monitoring may be used for administrative, criminal or
-            other adverse action. Use of this system constitutes
-            consent to monitoring for these purposes.
-            -----------------------------------------------------------
-            ^
-
-    #   register: show_banner_output
-
-    # - name: Display show  output
-    #   debug:
-    #     var: show_banner_output.stdout_lines
+      ios_banner:
+        banner: motd
+        text: |
+               _____   _       _____    ____
+              |_   _| | |     |_   _|  / ___|
+                | |   | |       | |   | |
+                | |   | |___    | |   | |___
+                |_|   |_____|   |_|    \____|
+          -----------------------------------------------------------
+          This is a test
+          -------------
+          W A R N I N G
+          -------------
+          Unauthorized access prohibited
+          Disconnect IMMEDIATELY if you are not an authorized user!
+          -----------------------------------------------------------
+          Unauthorized use may subject you to criminal prosecution.
+          Evidence of any such unauthorized use collected during
+          monitoring may be used for administrative, criminal or
+          other adverse action. Use of this system constitutes
+          consent to monitoring for these purposes.
+          -----------------------------------------------------------
+        state: present
