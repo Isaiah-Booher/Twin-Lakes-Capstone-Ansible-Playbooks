@@ -1,41 +1,30 @@
 ---
-- name: Configure MOTD on Cisco IOS XR Router
+- name: Configure clock
   hosts: routers
   gather_facts: yes
   connection: network_cli
 
   tasks:
-    - name: Set the MOTD banner
-      ios_config:
-        lines:
-          - banner motd ^ Lets go ^
-          # - |-
-          #   '    _____   _       _____    ____
-          #       |_   _| | |     |_   _|  / ___|
-          #         | |   | |       | |   | |
-          #         | |   | |___    | |   | |___
-          #         |_|   |_____|   |_|    \____|
-          #   -----------------------------------------------------------
-          #   This is a test
-          #   -------------
-          #   W A R N I N G
-          #   -------------
-          #   Unauthorized access prohibited
-          #   Disconnect IMMEDIATELY if you are not an authorized user!
-          #   -----------------------------------------------------------
-          #   Unauthorized use may subject you to criminal prosecution.
-          #   Evidence of any such unauthorized use collected during
-          #   monitoring may be used for administrative, criminal or
-          #   other adverse action. Use of this system constitutes
-          #   consent to monitoring for these purposes.
-          #   -----------------------------------------------------------
-          #   Welcome to our Cisco IOS XR Router.
-          #   Please keep your credentials secure.
-          #   ^
+    - name: Configure Clock
+      ios_command:
+        commands:
+          - "conf t"
+          - "clock timezone CDT"
+          - "commit confirmed"
       register: result
 
     - name: Display the result
       debug:
         var: result
+
+    - name: Execute show clock command
+      ios_command:
+        commands: "show clock"
+      register: show_clock_output
+
+    - name: Display show clock output
+      debug:
+        var: show_clock_output.stdout_lines
+
 
 
