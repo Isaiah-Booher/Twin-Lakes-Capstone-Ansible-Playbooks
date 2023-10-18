@@ -1,0 +1,29 @@
+---
+- name: Configure clock
+  hosts: routers
+  gather_facts: yes
+  connection: network_cli
+
+  tasks:
+    - name: Configure Clock
+      ios_config:
+        lines:
+          - "clock timezone CST US/Central"
+          - "commit best-effort"
+      register: result
+
+    - name: Display the result
+      debug:
+        var: result
+
+    - name: Execute show clock command
+      ios_command:
+        commands: "show clock"
+      register: show_clock_output
+
+    - name: Display show clock output
+      debug:
+        var: show_clock_output.stdout_lines
+
+
+

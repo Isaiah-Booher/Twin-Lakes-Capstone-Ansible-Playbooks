@@ -5,11 +5,29 @@
   connection: network_cli
 
   tasks:
-    - name: Configure Clock
+    - name: Configure Banner
       ios_config:
         lines:
-          - "clock timezone CST US/Central"
-          - "commit best-effort"
+          - "banner motd ^"
+          - |-
+            '    _____   _       _____    ____
+                |_   _| | |     |_   _|  / ___|
+                  | |   | |       | |   | |
+                  | |   | |___    | |   | |___
+                  |_|   |_____|   |_|    \____|
+            -----------------------------------------------------------
+            -------------
+            W A R N I N G
+            -------------
+            Unauthorized access prohibited
+            Disconnect IMMEDIATELY if you are not an authorized user!
+            -----------------------------------------------------------
+            Unauthorized use may subject you to criminal prosecution.
+            Evidence of any such unauthorized use collected during
+            monitoring may be used for administrative, criminal or
+            other adverse action. Use of this system constitutes
+            consent to monitoring for these purposes.
+            -----------------------------------------------------------^
       register: result
 
     - name: Display the result
