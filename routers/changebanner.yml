@@ -8,9 +8,9 @@
     - name: Configure Banner
       ios_config:
         lines:
-          - "banner motd ^"
+          - banner motd ^
           - |-
-            '    _____   _       _____    ____
+            C    _____   _       _____    ____
                 |_   _| | |     |_   _|  / ___|
                   | |   | |       | |   | |
                   | |   | |___    | |   | |___
@@ -27,7 +27,7 @@
             monitoring may be used for administrative, criminal or
             other adverse action. Use of this system constitutes
             consent to monitoring for these purposes.
-            -----------------------------------------------------------^
+            -----------------------------------------------------------
       register: result
 
     - name: Display the result
