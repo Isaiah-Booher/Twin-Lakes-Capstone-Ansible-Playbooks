@@ -27,7 +27,7 @@
             monitoring may be used for administrative, criminal or
             other adverse action. Use of this system constitutes
             consent to monitoring for these purposes.
-            -----------------------------------------------------------
+            -----------------------------------------------------------^ /n
       register: result
 
     - name: Display the result
