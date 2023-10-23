@@ -5,7 +5,7 @@
   tasks:
     - name: Execute Show Run SNMP-Server
       ios_command:
-        commands: "show run | include snmp-server"
+        commands: "show run snmp-server"
       register: command_output
 
     - name: Display Show Run SNMP-Server

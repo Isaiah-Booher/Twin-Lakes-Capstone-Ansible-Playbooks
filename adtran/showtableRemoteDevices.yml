@@ -5,7 +5,7 @@
   tasks:
     - name:  Execute Show Table Remote Devices
       ios_command:
-        commands: "show table remote devices"
+        commands: "show table remote-devices"
       register: show_table_remote_devices_output
 
     - name: Display Show Table Remote Devices

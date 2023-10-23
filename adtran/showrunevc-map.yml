@@ -2,6 +2,8 @@
 - name: Execute "show run evc-map" Command
   hosts: ta5k
   gather_facts: no
+  become: yes
+  
   tasks:
     - name: Execute Show Run EVC-Map
       ios_command:

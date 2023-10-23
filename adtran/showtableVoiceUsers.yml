@@ -10,6 +10,6 @@
 
     - name: Display Show Table Voice User SIP
       debug:
-        var: show_table_voice_user_sip.stdout_lines
+        var: show_table_voice_user_sip_output.stdout_lines
 
 # Add additional tasks or handlers as needed
