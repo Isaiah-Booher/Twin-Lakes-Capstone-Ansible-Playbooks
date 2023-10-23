@@ -1,0 +1,15 @@
+---
+- name: Execute "show run snmp-server" Command
+  hosts: ta5k
+  gather_facts: no
+  tasks:
+    - name: Execute Show Run SNMP-Server
+      ios_command:
+        commands: "show run | include snmp-server"
+      register: command_output
+
+    - name: Display Show Run SNMP-Server
+      debug:
+        var: command_output.stdout_lines
+
+# Add additional tasks or handlers as needed

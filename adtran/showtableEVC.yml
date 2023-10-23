@@ -1,0 +1,15 @@
+---
+- name: Execute "show table evc" Command
+  hosts: ta5k
+  gather_facts: no
+  tasks:
+    - name: Execute Show Table EVC
+      ios_command:
+        commands: "show table evc"
+      register: show_table_evc_output
+
+    - name: Display Command Output
+      debug:
+        var: show_table_evc_output.stdout_lines
+
+# Add additional tasks or handlers as needed
