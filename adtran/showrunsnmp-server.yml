@@ -2,6 +2,8 @@
 - name: Execute "show run snmp-server" Command
   hosts: ta5k
   gather_facts: no
+  become: yes
+  
   tasks:
     - name: Execute Show Run SNMP-Server
       ios_command:
