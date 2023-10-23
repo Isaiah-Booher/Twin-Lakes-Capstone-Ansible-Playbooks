@@ -1,0 +1,40 @@
+---
+- name: Configure L2VPN on Router 1 and Router 2
+  hosts: routers
+  gather_facts: no
+  tasks:
+    - name: Configure L2VPN on Router 1
+      ios_config:
+        lines:
+          - interface Bundle-Ether400.2139
+          - encapsulation dot1q 2139
+          - rewrite ingress tag pop 1 symmetric
+          - mtu 1518
+          - exit
+          - l2vpn
+          - xconnect group MetroE
+          - p2p TDOT_PICKETT_2139
+          - interface Bundle-Ether400.2139
+          - neighbor ipv4 10.0.0.1 pw-id 2139
+          - exit
+          - exit
+        parents: interface Bundle-Ether400.2139
+      when: "'Router1' in inventory_hostname"
+
+    - name: Configure L2VPN on Router 2
+      ios_config:
+        lines:
+          - interface GigabitEthernet0/2/0/1.2139
+          - encapsulation dot1q 32
+          - rewrite ingress tag pop 1 symmetric
+          - mtu 1518
+          - exit
+          - l2vpn
+          - xconnect group Metroe
+          - p2p TDOT_PICKETT_BYTW_2139
+          - interface GigabitEthernet0/1/0/2.2139
+          - neighbor ipv4 10.0.0.10 pw-id 2139
+          - exit
+          - exit
+        parents: interface GigabitEthernet0/2/0/1.2139
+      when: "'Router2' in inventory_hostname"
