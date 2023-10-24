@@ -16,4 +16,4 @@
         content: "{{ running_config.stdout_lines[0] }}"
         dest: "/etc/ansible/router_backup_configurations/routers_running_config.txt"
       when: running_config is defined
-      become: no
+      become: yes
