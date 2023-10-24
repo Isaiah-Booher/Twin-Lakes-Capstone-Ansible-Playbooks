@@ -14,5 +14,5 @@
     - name: Save running configuration to a file
       copy:
         content: "{{ running_config.stdout_lines[0] }}"
-        dest: "/etc/ansible/router_backup_configurations/{{ routers }}_running_config.txt"
+        dest: "/etc/ansible/router_backup_configurations/routers_running_config.txt"
       when: running_config is defined
