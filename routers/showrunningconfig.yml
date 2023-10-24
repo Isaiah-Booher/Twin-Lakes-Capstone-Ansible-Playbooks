@@ -1,0 +1,15 @@
+---
+- name: Show Current Configuration
+  hosts: routers
+  gather_facts: no
+  become: no
+
+  tasks:
+    - name: Execute show run command
+      ios_command:
+        commands: "show running-config"
+      register: show_running_configuration_output
+
+    - name: Display show run output
+      debug:
+        var: show_running_configuration_output.stdout_lines
