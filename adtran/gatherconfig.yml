@@ -10,7 +10,7 @@
         commands:
           - show running-config
       register: running_config
-      become: no  # Use 'yes' if you need elevated privileges
+      become: yes  # Use 'yes' if you need elevated privileges
 
     - name: Save running configuration to a file
       copy:
