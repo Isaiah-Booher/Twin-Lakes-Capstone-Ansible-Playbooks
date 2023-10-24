@@ -1,0 +1,19 @@
+---
+- name: Backup Adtran OLT Running Configuration
+  hosts: ta5k  # Replace with the hostname or group name for your router(s)
+  gather_facts: no
+  become: yes
+
+  tasks:
+    - name: Gather running configuration
+      ios_command:
+        commands:
+          - show running-config
+      register: running_config
+      become: no  # Use 'yes' if you need elevated privileges
+
+    - name: Save running configuration to a file
+      copy:
+        content: "{{ running_config.stdout_lines }}"
+        dest: "/etc/ansible/adtran_backup_configurations/adtran_running_config.cfg"
+      when: running_config is defined
