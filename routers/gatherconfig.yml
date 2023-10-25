@@ -11,9 +11,14 @@
       register: running_config
       become: no  # Use 'yes' if you need elevated privileges
 
+    - name: Display config
+      debug:
+        var: running_config.stdout_lines
+      register: structured_config
+
     - name: Save running configuration to a file
       copy:
-        content: "{{ running_config.stdout_lines }}"
+        content: "{{ structured_config }}"
         dest: "/etc/ansible/router_backup_configurations/routers_running_config.cfg"
       when: running_config is defined
       become: no
