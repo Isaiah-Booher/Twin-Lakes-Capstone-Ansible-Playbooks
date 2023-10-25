@@ -24,4 +24,3 @@
           - exit
           - commit best-effort          
         parents: interface Bundle-Ether400.2139
-      # when: "'Router1' in inventory_hostname"
