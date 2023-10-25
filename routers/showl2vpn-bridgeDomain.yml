@@ -12,5 +12,5 @@
       register: l2vpn_bridge_domain_output
 
     - name: Display the output
-      # debug:
+      debug:
         var: l2vpn_bridge_domain_output.stdout_lines

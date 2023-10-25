@@ -12,8 +12,6 @@
       become: no  # Use 'yes' if you need elevated privileges
 
     - name: Save running configuration to a file
-      debug:
-        var: running_config.stdout_lines
       copy:
         content: "{{ running_config.stdout_lines }}"
         dest: "/etc/ansible/router_backup_configurations/routers_running_config.cfg"
