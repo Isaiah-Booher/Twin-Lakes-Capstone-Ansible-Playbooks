@@ -3,7 +3,7 @@
   hosts: routers
   gather_facts: yes
   connection: network_cli
-  
+
   tasks:
     - name: Execute the "show l2vpn bridge-domain" command
       ios_command:
@@ -12,5 +12,5 @@
       register: l2vpn_bridge_domain_output
 
     - name: Display the output
-      debug:
+      # debug:
         var: l2vpn_bridge_domain_output.stdout_lines
