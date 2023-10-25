@@ -1,0 +1,99 @@
+---
+- name: Add BGP Configuration
+  hosts: routers
+  become: yes
+
+  tasks:
+    - name: Add BGP Configuration
+      ios_config:
+        lines:
+          - router bgp 65001 
+          - nsr
+          - bgp router-id 10.0.0.10
+          - address-family ipv4 unicast
+          - exit
+          - address-family ipv4 unicast
+          - exit
+          - address-family vpnv4 unicast
+          - exit
+          - address-family vpnv6 unicast
+          - exit
+          - address-family l2vpn evpn
+          - neighbor 10.0.0.1
+          - remote-as 65001
+          - update-source Loopback0
+          - address-family vpnv4 unicast
+          - exit
+          - address-family vpnv6 unicast
+          - exit 
+          - address-family l2vpn evpn
+          - exit
+          - exit
+          - neighbor 10.0.0.2
+          - remote-as 65001
+          - update-source Loopback0
+          - address-family vpnv4 unicast
+          - exit 
+          - address-family vpnv6 unicast
+          - exit
+          - address-family l2vpn evpn
+          - exit
+          - exit 
+          - neighbor 10.0.0.6
+          - remote-as 65001
+          - update-source Loopback0
+          - address-family vpnv4 unicast
+          - exit
+          - address-family vpnv6 unicast
+          - exit
+          - address-family l2vpn evpn
+          - exit 
+          - exit 
+          - neighbor 10.0.0.6
+          - remote-as 65001
+          - update-source Loopback0
+          - address-family vpnv4 unicast
+          - exit 
+          - address-family vpnv6 unicast
+          - exit 
+          - address-family l2vpn evpn
+          - exit 
+          - exit 
+          - neighbor 10.0.0.12
+          - remote-as 65001
+          - update-source Loopback0
+          - address-family ipv4 unicast
+          - next-hop-self
+          - exit 
+          - address-family vpnv4 unicast
+          - exit 
+          - exit 
+          - vrf voice
+          - rd 65001:1
+          - address-family ipv4 unicast
+          - label mode per-vrf
+          - redistribute connected
+          - exit 
+          - exit 
+          - vrf netmgt
+          - rd 65001:2
+          - address-family ipv4 unicast
+          - label mode per-vrf
+          - redistribute connected
+          - exit 
+          - exit
+          - vrf INTERNET
+          - rd 65001:3
+          - address-family ipv4 unicast
+          - label mode per-vrf
+          - redistribute connected
+          - redistribute static
+          - exit 
+          - address-family ipv6 unicast
+          - label mode per-vrf
+          - redistribute connected
+          - redistribute static
+          - exit
+          - exit
+          - exit 
+          
