@@ -1,0 +1,15 @@
+---
+- name: Show bgp summary
+  hosts: routers
+  gather_facts: no
+  become: no
+
+  tasks:
+    - name: Execute show bgp summary
+      ios_command:
+        commands: "show bgp summary"
+      register: show_running_configuration_output
+
+    - name: Display show run output
+      debug:
+        var: show_running_configuration_output.stdout_lines
