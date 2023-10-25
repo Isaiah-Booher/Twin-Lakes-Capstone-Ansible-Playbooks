@@ -1,11 +1,11 @@
 ---
-- name: Show Current Configuration
+- name: Show Route
   hosts: routers
   gather_facts: no
   become: no
 
   tasks:
-    - name: Execute show run command
+    - name: Execute show route
       ios_command:
         commands: "show route"
       register: show_running_configuration_output

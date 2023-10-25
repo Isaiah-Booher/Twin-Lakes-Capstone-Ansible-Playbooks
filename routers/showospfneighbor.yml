@@ -1,13 +1,13 @@
 ---
-- name: Show Current Configuration
+- name: Show OSPF Neighbor
   hosts: routers
   gather_facts: no
   become: no
 
   tasks:
-    - name: Execute show run command
+    - name: Execute show ospf neighbor
       ios_command:
-        commands: "show osfp neighbor"
+        commands: "show ospf neighbor"
       register: show_running_configuration_output
 
     - name: Display show run output
