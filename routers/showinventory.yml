@@ -1,0 +1,15 @@
+---
+- name: Show inventory
+  hosts: routers
+  gather_facts: no
+  become: no
+
+  tasks:
+    - name: Execute show inventory
+      ios_command:
+        commands: "show inventory"
+      register: show_running_configuration_output
+
+    - name: Display show run output
+      debug:
+        var: show_running_configuration_output.stdout_lines
