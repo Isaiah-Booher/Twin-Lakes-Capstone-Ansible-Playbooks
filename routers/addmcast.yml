@@ -8,8 +8,8 @@
         lines:
           - multicast-routing
           - address-family ipv4
-      tags:
-        - multicast_routing
+      # tags:
+      #   - multicast_routing
 
     - name: Configure Bundle-Ether interfaces
       ios_config:
@@ -47,9 +47,9 @@
           - interface Bundle-Ether400.409
           - enable
           - !
-        parent: multicast-routing
-      tags:
-        - bundle_ether_interfaces
+      #   parent: multicast-routing
+      # tags:
+      #   - bundle_ether_interfaces
 
     - name: Configure SSMv2
       ios_config:
@@ -57,5 +57,5 @@
           - ssm range SSMv2
           - rate-per-route
           - accounting per-prefix
-      tags:
-        - ssm_config
+      # tags:
+      #   - ssm_config
