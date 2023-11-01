@@ -9,7 +9,7 @@
       ios_command:
         commands:
           - conf t
-          - router bgp 65005
+          - router bgp 65001
           - nsr
           - bgp router-id 10.0.0.10
           - address-family ipv4 unicast
@@ -70,8 +70,7 @@
           - label mode per-vrf
           - redistribute connected
           - redistribute static
-          - exit
-          - exit
-          - commit best-effort
+          - commit 
+
       register: bgp_config_result
 
