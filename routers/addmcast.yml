@@ -2,60 +2,50 @@
 - name: Configure Cisco Router
   hosts: routers
   gather_facts: no
+  become: no
+
   tasks:
     - name: Configure multicast-routing
       ios_config:
         lines:
           - multicast-routing
           - address-family ipv4
-      # tags:
-      #   - multicast_routing
-
-    - name: Configure Bundle-Ether interfaces
-      ios_config:
-        lines:
           - interface Bundle-Ether402
           - enable
-          - !
+          - exit
           - interface Bundle-Ether403
           - enable
-          - !
+          - exit
           - interface Bundle-Ether400.400
           - enable
-          - !
+          - exit
           - interface Bundle-Ether400.401
           - enable
-          - !
+          - exit
           - interface Bundle-Ether400.402
           - enable
-          - !
+          - exit
           - interface Bundle-Ether400.403
           - enable
-          - !
+          - exit
           - interface Bundle-Ether400.404
           - enable
-          - !
+          - exit
           - interface Bundle-Ether400.405
           - enable
-          - !
+          - exit
           - interface Bundle-Ether400.406
           - enable
-          - !
+          - exit
           - interface Bundle-Ether400.408
           - enable
-          - !
+          - exit
           - interface Bundle-Ether400.409
           - enable
-          - !
-      #   parent: multicast-routing
-      # tags:
-      #   - bundle_ether_interfaces
-
-    - name: Configure SSMv2
-      ios_config:
-        lines:
+          - exit
           - ssm range SSMv2
           - rate-per-route
           - accounting per-prefix
-      # tags:
-      #   - ssm_config
+          - exit
+          - exit
+          - commit best-effort
