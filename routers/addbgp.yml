@@ -6,9 +6,9 @@
 
   tasks:
     - name: Configure BGP
-      ios_command:
-        commands:
-          - conf t
+      ios_config:
+        lines:
+          # - conf t
           - router bgp 65005
           - nsr
           - bgp router-id 10.0.0.10
@@ -60,6 +60,8 @@
           - label mode per-vrf
           - redistribute connected
           - redistribute static
-          - commit best-effort
+          - exit
+          - exit
+          - commit
       register: bgp_config_result
 
