@@ -15,6 +15,7 @@
       ios_command:
         commands:
           - show running-config | include hostname
+      register: hostname
       become: no  # Use 'yes' if you need elevated privilege
 
     - name: Display Hostname
@@ -34,6 +35,6 @@
     # - name: Save running configuration to a file
     #   copy:
     #     content: "{{ running_config.stdout_lines }}"
-    #     dest: "/etc/ansible/router_backup_configurations/{{ hostname }}_running_config.cfg"
+    #     dest: "/etc/ansible/router_backup_configurations/router1_running_config.cfg"
     #   when: running_config is defined
     #   become: no
