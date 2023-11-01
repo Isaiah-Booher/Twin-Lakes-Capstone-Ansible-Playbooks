@@ -24,7 +24,7 @@
 
     - name: Parse hostname
       set_fact:
-        extracted_hostname: "{{ hostname_lines[0].split()[-1] }}"
+        extracted_hostname: "{{ hostname_lines[2].split()[-1] }}"
       vars:
         hostname_lines: "{{ hostname.stdout_lines[0] }}"
 
