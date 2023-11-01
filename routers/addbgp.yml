@@ -15,6 +15,10 @@
           - address-family vpnv4 unicast
           - address-family vpnv6 unicast
           - address-family l2vpn evpn
+
+    - name: Display config
+      debug:
+        var: running_config.stdout_lines
           # - neighbor 10.0.0.1
           #   - remote-as 65001
           #   - update-source Loopback0
@@ -61,3 +65,4 @@
           #     - redistribute static
           # - commit best-effort
       register: bgp_config_result
+
