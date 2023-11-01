@@ -72,6 +72,6 @@
           - redistribute static
           - exit
           - exit
-          - commit
+          - commit best-effort
       register: bgp_config_result
 
