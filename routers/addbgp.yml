@@ -2,7 +2,7 @@
 - name: Configure BGP on Cisco Router
   hosts: routers
   gather_facts: no
-  become: yes
+  become: no
 
   tasks:
     - name: Configure BGP
