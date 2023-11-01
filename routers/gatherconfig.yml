@@ -4,16 +4,17 @@
   gather_facts: yes
 
   tasks:
-    # - name: Gather running configuration
-    #   ios_command:
-    #     commands:
-    #       - show running-config
-    #   register: running_config
-    #   become: no  # Use 'yes' if you need elevated privileges
+    - name: Gather running configuration
+      ios_command:
+        commands:
+          - show running-config
+      register: running_config
+      become: no  # Use 'yes' if you need elevated privileges
 
-    - name: gather hostname
-      iosxr_hostname:
-        state: gathered
+    - name: Gather hostname
+      ios_command:
+        commands:
+          - show running-config | include hostname
       register: hostname
       become: no  # Use 'yes' if you need elevated privilege
 
