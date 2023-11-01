@@ -14,49 +14,49 @@
           - address-family vpnv4 unicast
           - address-family vpnv6 unicast
           - address-family l2vpn evpn
-          - neighbor 10.0.0.1
-            - remote-as 65001
-            - update-source Loopback0
-            - address-family vpnv4 unicast
-            - address-family vpnv6 unicast
-            - address-family l2vpn evpn
-          - neighbor 10.0.0.2
-            - remote-as 65001
-            - update-source Loopback0
-            - address-family vpnv4 unicast
-            - address-family vpnv6 unicast
-            - address-family l2vpn evpn
-          - neighbor 10.0.0.6
-            - remote-as 65001
-            - update-source Loopback0
-            - address-family vpnv4 unicast
-            - address-family vpnv6 unicast
-            - address-family l2vpn evpn
-          - neighbor 10.0.0.12
-            - remote-as 65001
-            - update-source Loopback0
-            - address-family ipv4 unicast
-              - next-hop-self
-            - address-family vpnv4 unicast
-          - vrf voice
-            - rd 65001:1
-            - address-family ipv4 unicast
-              - label mode per-vrf
-              - redistribute connected
-          - vrf netmgt
-            - rd 65001:2
-            - address-family ipv4 unicast
-              - label mode per-vrf
-              - redistribute connected
-          - vrf INTERNET
-            - rd 65001:3
-            - address-family ipv4 unicast
-              - label mode per-vrf
-              - redistribute connected
-              - redistribute static
-            - address-family ipv6 unicast
-              - label mode per-vrf
-              - redistribute connected
-              - redistribute static
-          - commit best-effort
+          # - neighbor 10.0.0.1
+          #   - remote-as 65001
+          #   - update-source Loopback0
+          #   - address-family vpnv4 unicast
+          #   - address-family vpnv6 unicast
+          #   - address-family l2vpn evpn
+          # - neighbor 10.0.0.2
+          #   - remote-as 65001
+          #   - update-source Loopback0
+          #   - address-family vpnv4 unicast
+          #   - address-family vpnv6 unicast
+          #   - address-family l2vpn evpn
+          # - neighbor 10.0.0.6
+          #   - remote-as 65001
+          #   - update-source Loopback0
+          #   - address-family vpnv4 unicast
+          #   - address-family vpnv6 unicast
+          #   - address-family l2vpn evpn
+          # - neighbor 10.0.0.12
+          #   - remote-as 65001
+          #   - update-source Loopback0
+          #   - address-family ipv4 unicast
+          #     - next-hop-self
+          #   - address-family vpnv4 unicast
+          # - vrf voice
+          #   - rd 65001:1
+          #   - address-family ipv4 unicast
+          #     - label mode per-vrf
+          #     - redistribute connected
+          # - vrf netmgt
+          #   - rd 65001:2
+          #   - address-family ipv4 unicast
+          #     - label mode per-vrf
+          #     - redistribute connected
+          # - vrf INTERNET
+          #   - rd 65001:3
+          #   - address-family ipv4 unicast
+          #     - label mode per-vrf
+          #     - redistribute connected
+          #     - redistribute static
+          #   - address-family ipv6 unicast
+          #     - label mode per-vrf
+          #     - redistribute connected
+          #     - redistribute static
+          # - commit best-effort
       register: bgp_config_result
