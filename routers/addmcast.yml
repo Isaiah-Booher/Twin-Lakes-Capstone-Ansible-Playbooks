@@ -1,6 +1,6 @@
 ---
 - name: Configure Cisco Router
-  hosts: cisco_router
+  hosts: routers
   gather_facts: no
   tasks:
     - name: Configure multicast-routing
