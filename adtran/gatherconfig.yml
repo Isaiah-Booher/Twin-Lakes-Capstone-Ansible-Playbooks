@@ -33,8 +33,9 @@
       debug:
         var: extracted_hostname
 
-    # - name: Save running configuration to a file
-    #   copy:
-    #     content: "{{ running_config.stdout_lines }}"
-    #     dest: "/etc/ansible/adtran_backup_configurations/adtran_running_config.cfg"
-    #   when: running_config is defined
+    - name: Save running configuration to a file using it's Hostname
+      copy:
+        content: "{{ running_config.stdout_lines }}"
+        dest: "/etc/ansible/adtran_backup_configurations/{{ extracted_hostname }}_running_config.cfg"
+      when: running_config is defined
+      become: no
