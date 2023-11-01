@@ -1,0 +1,35 @@
+---
+- name: Configure Login Banner
+  hosts: ta5k
+  gather_facts: no
+  tasks:
+    - name: Set Login Banner
+      ios_banner:
+        banner: login
+        text: |
+          -----------------------------------------------------------
+          -                                                           -
+          -   W A R N I N G  This is a test                           -
+          -                                                           -
+          -   Unauthorized access prohibited                          -
+          -   Disconnect IMMEDIATELY if you are not an authorized user! -
+          -                                                           -
+          -   Unauthorized use may subject you to criminal prosecution. -
+          -   Evidence of any such unauthorized use collected during   -
+          -   monitoring may be used for administrative, criminal or   -
+          -   other adverse action. Use of this system constitutes     -
+          -   consent to monitoring for these purposes.                -
+          -                                                           -
+          -----------------------------------------------------------
+        state: present
+      register: banner_result
+
+    - name: Show Banner Configuration
+      ios_command:
+        commands:
+          - show running-config | include banner login
+      register: show_result
+
+    - name: Display Configuration
+      debug:
+        var: show_result.stdout_lines
