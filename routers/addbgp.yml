@@ -9,7 +9,7 @@
       ios_command:
         commands:
           - conf t
-          - router bgp 65001
+          - router bgp 65005
           - nsr
           - bgp router-id 10.0.0.10
           - address-family ipv4 unicast
