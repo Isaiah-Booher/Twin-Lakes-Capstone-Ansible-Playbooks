@@ -12,16 +12,10 @@
       become: no  # Use 'yes' if you need elevated privileges
 
     - name: Gather hostname
-      ios_command:
-        commands:
-          - show running-config | include hostname
+      ios_hostname:
+        state: gathered
       register: hostname
-      become: no  # Use 'yes' if you need elevated privileges
-
-    - name: Set hostname variable
-      set_fact:
-        router_hostname: "{{ hostname.stdout_lines[0][-1] | regex_replace('hostname ', '') }}"
-      when: hostname.stdout_lines[0] | search('hostname ')
+      become: no  # Use 'yes' if you need elevated privilege
 
     - name: Display Hostname
       debug:
