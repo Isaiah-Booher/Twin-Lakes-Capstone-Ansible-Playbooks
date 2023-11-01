@@ -6,8 +6,9 @@
 
   tasks:
     - name: Configure BGP
-      ios_config:
-        lines:
+      ios_command:
+        commands:
+          - conf t
           - router bgp 65001
           - nsr
           - bgp router-id 10.0.0.10
