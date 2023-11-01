@@ -20,7 +20,7 @@
 
     - name: Display Hostname
       debug:
-        var: hostname.stdout_lines
+        var: hostname.stdout_lines[2]
 
     # - name: Save running configuration to a file
     #   copy:
