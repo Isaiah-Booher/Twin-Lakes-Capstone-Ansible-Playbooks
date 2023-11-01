@@ -42,6 +42,8 @@
           - exit
           - interface Bundle-Ether400.409
           - exit
+          - interface Bundle-Ether400.410
+          - exit
           - interface Bundle-Ether402
           - bfd minimum-interval 15
           - bfd fast-detect
