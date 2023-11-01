@@ -2,6 +2,8 @@
 - name: Configure Login Banner
   hosts: ta5k
   gather_facts: no
+  become: yes
+
   tasks:
     - name: Set Login Banner
       ios_banner:
@@ -23,6 +25,7 @@
           -----------------------------------------------------------
         state: present
       register: banner_result
+      
 
     - name: Show Banner Configuration
       ios_command:
