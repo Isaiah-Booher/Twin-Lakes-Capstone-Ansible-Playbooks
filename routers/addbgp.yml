@@ -86,19 +86,6 @@
           - redistribute static
           - exit
           - exit
-          - vrf TEST
-          - rd 65001:4
-          - address-family ipv4 unicast
-          - label mode per-vrf
-          - redistribute connected
-          - redistribute static
-          - exit
-          - address-family ipv6 unicast
-          - label mode per-vrf
-          - redistribute connected
-          - redistribute static
-          - exit
-          - exit
           - commit best-effort
 
       register: bgp_config_result
