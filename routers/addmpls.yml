@@ -1,0 +1,34 @@
+---
+- name: Configure Cisco Router
+  hosts: routers
+  gather_facts: no
+  become: no
+
+  tasks:
+    - name: Configure MPLS
+      ios_command:
+        commands:
+          - configure terminal
+          - mpls ldp
+          - log
+          - neighbor
+          - nsr
+          - graceful-restart
+          - session-protection
+          - exit
+          - router-id 10.0.0.10
+          - session protection
+          - address-family ipv4
+          - discovery targeted-hello accept
+          - label
+          - local
+          - allocate for host-routes
+          - exit
+          - exit
+          - exit
+          - interface Bundle-Ether402
+          - exit
+          - interface Bundle-Ether403
+          - exit
+          - commit best-effort
+
