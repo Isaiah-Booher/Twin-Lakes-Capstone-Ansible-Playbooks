@@ -18,6 +18,11 @@
       register: hostname
       become: no  # Use 'yes' if you need elevated privileges
 
+    - name: Set hostname variable
+      set_fact:
+        router_hostname: "{{ hostname.stdout_lines[0][-1] | regex_replace('hostname ', '') }}"
+      when: hostname.stdout_lines[0] | search('hostname ')
+
     - name: Display Hostname
       debug:
         var: hostname.stdout_lines
