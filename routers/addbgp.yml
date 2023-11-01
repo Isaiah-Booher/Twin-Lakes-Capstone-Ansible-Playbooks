@@ -1,60 +1,62 @@
-bgp_configuration:
-  as_number: 65001
-  nsr: true
-  router_id: 10.0.0.10
-  address_families:
-    - ipv4 unicast
-    - vpnv4 unicast
-    - vpnv6 unicast
-    - l2vpn evpn
-  neighbors:
-    - neighbor_ip: 10.0.0.1
-      remote_as: 65001
-      update_source: Loopback0
-      address_families:
-        - vpnv4 unicast
-        - vpnv6 unicast
-        - l2vpn evpn
-    - neighbor_ip: 10.0.0.2
-      remote_as: 65001
-      update_source: Loopback0
-      address_families:
-        - vpnv4 unicast
-        - vpnv6 unicast
-        - l2vpn evpn
-    - neighbor_ip: 10.0.0.6
-      remote_as: 65001
-      update_source: Loopback0
-      address_families:
-        - vpnv4 unicast
-        - vpnv6 unicast
-        - l2vpn evpn
-    - neighbor_ip: 10.0.0.12
-      remote_as: 65001
-      update_source: Loopback0
-      address_families:
-        - ipv4 unicast
-          next_hop_self: true
-        - vpnv4 unicast
-  vrfs:
-    - name: voice
-      rd: 65001:1
-      address_family: ipv4 unicast
-        label_mode: per-vrf
-        redistribute: connected
-    - name: netmgt
-      rd: 65001:2
-      address_family: ipv4 unicast
-        label_mode: per-vrf
-        redistribute: connected
-    - name: INTERNET
-      rd: 65001:3
-      address_families:
-        - ipv4 unicast
-          label_mode: per-vrf
-          redistribute: connected
-          redistribute_static: true
-        - ipv6 unicast
-          label_mode: per-vrf
-          redistribute: connected
-          redistribute_static: true
+---
+- name: Configure BGP on Cisco Router
+  hosts: routers
+  gather_facts: no
+
+  tasks:
+    - name: Configure BGP
+      ios_config:
+        lines:
+          - router bgp 65001
+          - nsr
+          - bgp router-id 10.0.0.10
+          - address-family ipv4 unicast
+          - address-family vpnv4 unicast
+          - address-family vpnv6 unicast
+          - address-family l2vpn evpn
+          - neighbor 10.0.0.1
+            - remote-as 65001
+            - update-source Loopback0
+            - address-family vpnv4 unicast
+            - address-family vpnv6 unicast
+            - address-family l2vpn evpn
+          - neighbor 10.0.0.2
+            - remote-as 65001
+            - update-source Loopback0
+            - address-family vpnv4 unicast
+            - address-family vpnv6 unicast
+            - address-family l2vpn evpn
+          - neighbor 10.0.0.6
+            - remote-as 65001
+            - update-source Loopback0
+            - address-family vpnv4 unicast
+            - address-family vpnv6 unicast
+            - address-family l2vpn evpn
+          - neighbor 10.0.0.12
+            - remote-as 65001
+            - update-source Loopback0
+            - address-family ipv4 unicast
+              - next-hop-self
+            - address-family vpnv4 unicast
+          - vrf voice
+            - rd 65001:1
+            - address-family ipv4 unicast
+              - label mode per-vrf
+              - redistribute connected
+          - vrf netmgt
+            - rd 65001:2
+            - address-family ipv4 unicast
+              - label mode per-vrf
+              - redistribute connected
+          - vrf INTERNET
+            - rd 65001:3
+            - address-family ipv4 unicast
+              - label mode per-vrf
+              - redistribute connected
+              - redistribute static
+            - address-family ipv6 unicast
+              - label mode per-vrf
+              - redistribute connected
+              - redistribute static
+          - commit best-effort
+      register: bgp_config_result
