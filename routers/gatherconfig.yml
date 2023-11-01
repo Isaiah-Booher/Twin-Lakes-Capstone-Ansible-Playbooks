@@ -22,6 +22,16 @@
       debug:
         var: hostname.stdout_lines
 
+    - name: Parse hostname
+      set_fact:
+        extracted_hostname: "{{ hostname_lines[0].split()[-1] }}"
+      vars:
+        hostname_lines: "{{ hostname.stdout_lines[0] }}"
+
+    - name: Display extracted hostname
+      debug:
+        var: extracted_hostname
+
     # - name: Save running configuration to a file
     #   copy:
     #     content: "{{ running_config.stdout_lines }}"
