@@ -17,7 +17,7 @@
         commands:
           - show snmp | include Chassis
       register: hostname
-      become: no  # Use 'yes' if you need elevated privilege
+      become: yes  # Use 'yes' if you need elevated privilege
 
     - name: Display Hostname
       debug:
