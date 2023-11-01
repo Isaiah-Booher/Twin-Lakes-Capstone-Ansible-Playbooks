@@ -16,16 +16,12 @@
         commands:
           - show running-config | include hostname
       register: hostname
-      become: no
-
-    - name: Extract hostname
-      set_fact:
-        router_hostname: "{{ hostname.stdout_lines[0].split(' ')[1] }}"
-      when: hostname.stdout_lines | length > 0
+      become: no  # Use 'yes' if you need elevated privileges
 
     - name: Display Hostname
       debug:
-        var: router_hostname
+        var: hostname.stdout_lines
+
     # - name: Save running configuration to a file
     #   copy:
     #     content: "{{ structured_config }}"
