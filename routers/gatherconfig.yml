@@ -31,10 +31,11 @@
     - name: Display extracted hostname
       debug:
         var: extracted_hostname
+      register: host
 
-    # - name: Save running configuration to a file
-    #   copy:
-    #     content: "{{ running_config.stdout_lines }}"
-    #     dest: "/etc/ansible/router_backup_configurations/router1_running_config.cfg"
-    #   when: running_config is defined
-    #   become: no
+    - name: Save running configuration to a file
+      copy:
+        content: "{{ running_config.stdout_lines }}"
+        dest: "/etc/ansible/router_backup_configurations/{{ host }}_running_config.cfg"
+      when: running_config is defined
+      become: no
