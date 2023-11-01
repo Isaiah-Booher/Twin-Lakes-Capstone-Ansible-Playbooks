@@ -6,23 +6,15 @@
 
   tasks:
     - name: Configure BGP
-      iosxr_bgp:
-        state: present
-        asn: 65001
-        router_id: 10.0.0.10
-        router_bgp:
-          - neighbor: 10.0.0.1
-            remote_as: 65001
-            update_source: Loopback0
-            address_family:
-              - afi: ipv4
-                safi: unicast
-              - afi: vpnv4
-                safi: unicast
-              - afi: vpnv6
-                safi: unicast
-              - afi: l2vpn
-                safi: evpn
+      iosxr_config:
+        lines:
+          - router bgp 65001
+          - nsr
+          - bgp router-id 10.0.0.10
+          - address-family ipv4 unicast
+          - address-family vpnv4 unicast
+          - address-family vpnv6 unicast
+          - address-family l2vpn evpn
           # - neighbor 10.0.0.1
           #   - remote-as 65001
           #   - update-source Loopback0
