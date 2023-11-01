@@ -12,15 +12,12 @@
       become: no  # Use 'yes' if you need elevated privileges
 
     - name: Gather hostname
-      ios_command:
-        commands:
-          - show running-config | include hostname
-      register: hostname
+      ios_facts:
       become: no  # Use 'yes' if you need elevated privileges
 
     - name: Display Hostname
       debug:
-        var: hostname.stdout_lines
+        var: ansible_netmiko_hostname
 
     # - name: Save running configuration to a file
     #   copy:
