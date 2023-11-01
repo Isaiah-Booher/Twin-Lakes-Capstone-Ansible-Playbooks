@@ -24,7 +24,7 @@
 
     - name: Save running configuration to a file
       copy:
-        content: "{{ running_config.stdout_lines | join('\n') }}"
+        content: "{{ running_config.stdout_lines | !join('\n') }}"
         dest: "/etc/ansible/router_backup_configurations/router1_running_config.cfg"
       when: running_config is defined
       become: no
