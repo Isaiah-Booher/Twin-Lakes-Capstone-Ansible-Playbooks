@@ -25,13 +25,6 @@
           -----------------------------------------------------------
         state: present
       register: banner_result
-      
-
-    - name: Show Banner Configuration
-      ios_command:
-        commands:
-          - show running-config | include banner login
-      register: show_result
 
     - name: Display Configuration
       debug:
