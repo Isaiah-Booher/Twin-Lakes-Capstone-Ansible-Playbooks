@@ -70,7 +70,7 @@
           - label mode per-vrf
           - redistribute connected
           - redistribute static
-          - commit 
+          - commit best-effort
 
       register: bgp_config_result
 
