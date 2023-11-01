@@ -2,11 +2,11 @@
 - name: Configure BGP on Cisco Router
   hosts: routers
   gather_facts: no
-  become: no
+  become: yes
 
   tasks:
     - name: Configure BGP
-      iosxr_config:
+      ios_config:
         lines:
           - router bgp 65001
           - nsr
