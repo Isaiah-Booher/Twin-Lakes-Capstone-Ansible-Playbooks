@@ -11,9 +11,20 @@
       register: running_config
       become: no  # Use 'yes' if you need elevated privileges
 
-    - name: Save running configuration to a file
-      copy:
-        content: "{{ structured_config }}"
-        dest: "/etc/ansible/router_backup_configurations/routers_running_config.cfg"
-      when: running_config is defined
-      become: no
+    - name: Gather hostname
+      ios_command:
+        commands:
+          - show running-config | include hostname
+      register: hostname
+      become: no  # Use 'yes' if you need elevated privileges
+
+    - name: Display Hostname
+      debug:
+        var: hostname.stdout_lines
+
+    # - name: Save running configuration to a file
+    #   copy:
+    #     content: "{{ structured_config }}"
+    #     dest: "/etc/ansible/router_backup_configurations/{{ hostname }}_running_config.cfg"
+    #   when: running_config is defined
+    #   become: no
