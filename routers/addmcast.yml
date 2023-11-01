@@ -6,8 +6,8 @@
 
   tasks:
     - name: Configure multicast-routing
-      ios_config:
-        lines:
+      ios_command:
+        commands:
           - multicast-routing
           - address-family ipv4
           - interface Bundle-Ether402
