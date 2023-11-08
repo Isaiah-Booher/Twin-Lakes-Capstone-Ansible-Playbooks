@@ -1,0 +1,15 @@
+---
+- name: Show l2vpn xconnect
+  hosts: routers
+  gather_facts: no
+  become: no
+
+  tasks:
+    - name: Execute show l2vpn xconnect
+      ios_command:
+        commands: "show l2vpn xconnect"
+      register: show_running_configuration_output
+
+    - name: Display show run output
+      debug:
+        var: show_running_configuration_output.stdout_lines

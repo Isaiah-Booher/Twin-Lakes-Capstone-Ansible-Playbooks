@@ -1,4 +1,5 @@
 ---
+<<<<<<< HEAD
 - name: Show Running Configuration of SNMP Server
   hosts: ta5k
   gather_facts: no
@@ -11,3 +12,21 @@
     - name: Display Running Configuration of SNMP Server
       debug:
         var: snmp_server_running_config.stdout_lines
+=======
+- name: Execute "show run snmp-server" Command
+  hosts: ta5k
+  gather_facts: no
+  become: yes
+  
+  tasks:
+    - name: Execute Show Run SNMP-Server
+      ios_command:
+        commands: "show run snmp-server"
+      register: command_output
+
+    - name: Display Show Run SNMP-Server
+      debug:
+        var: command_output.stdout_lines
+
+# Add additional tasks or handlers as needed
+>>>>>>> 45b12b776476dc4ccb9e2c436e242e0168a81a38

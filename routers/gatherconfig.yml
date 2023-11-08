@@ -1,0 +1,40 @@
+---
+- name: Backup Cisco Router Running Configuration
+  hosts: routers  # Replace with the hostname or group name for your router(s)
+  gather_facts: no
+
+  tasks:
+    - name: Gather running configuration
+      ios_command:
+        commands:
+          - show running-config
+      register: running_config
+      become: no  # Use 'yes' if you need elevated privileges
+
+    - name: Gather hostname
+      ios_command:
+        commands:
+          - show running-config | include hostname
+      register: hostname
+      become: no  # Use 'yes' if you need elevated privilege
+
+    - name: Display Hostname
+      debug:
+        var: hostname.stdout_lines
+
+    - name: Parse hostname
+      set_fact:
+        extracted_hostname: "{{ hostname_lines[2].split()[-1] }}"
+      vars:
+        hostname_lines: "{{ hostname.stdout_lines[0] }}"
+
+    - name: Display extracted hostname
+      debug:
+        var: extracted_hostname
+
+    - name: Save running configuration to a file using it's Hostname
+      copy:
+        content: "{{ running_config.stdout_lines }}"
+        dest: "/etc/ansible/router_backup_configurations/{{ extracted_hostname }}_running_config.cfg"
+      when: running_config is defined
+      become: no

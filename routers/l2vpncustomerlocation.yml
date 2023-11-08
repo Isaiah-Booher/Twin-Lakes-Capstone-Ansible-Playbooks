@@ -1,0 +1,26 @@
+---
+- name: Configure L2VPN on Connection to Customer Location
+  hosts: routers
+  gather_facts: no
+  become: no
+  
+  tasks:
+    - name: Configure L2VPN
+      ios_config:
+        lines:
+          - interface Bundle-Ether400.2139 l2transport
+          - encapsulation dot1q 2139
+          - rewrite ingress tag pop 1 symmetric
+          - mtu 1518
+          - exit
+          - l2vpn
+          - xconnect group MetroE
+          - p2p TDOT_PICKETT_2139
+          - interface Bundle-Ether400.2139
+          - neighbor ipv4 10.0.0.1 pw-id 2139
+          - exit
+          - exit
+          - exit
+          - exit
+          - commit best-effort          
+        parents: interface Bundle-Ether400.2139
