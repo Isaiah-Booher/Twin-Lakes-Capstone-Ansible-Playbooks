@@ -1,0 +1,13 @@
+---
+- name: Show Running Configuration of EVC Maps
+  hosts: ta5k
+  gather_facts: no
+  tasks:
+    - name: Execute Show Running-Config EVC Maps Command
+      ios_command:   # Replace with the appropriate module for your network device
+        commands: "show running-config | include evc-map"
+      register: evc_map_running_config
+
+    - name: Display Running Configuration of EVC Maps
+      debug:
+        var: evc_map_running_config.stdout_lines

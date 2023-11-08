@@ -1,0 +1,13 @@
+---
+- name: Show EVC Table
+  hosts: ta5k
+  gather_facts: no
+  tasks:
+    - name: Execute Show Table EVC Command
+      ios_command:   # Replace with the appropriate module for your network device
+        commands: "show table EVC"
+      register: evc_table_output
+
+    - name: Display EVC Table
+      debug:
+        var: evc_table_output.stdout_lines

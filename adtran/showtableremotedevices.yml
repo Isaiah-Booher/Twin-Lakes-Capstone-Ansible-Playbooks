@@ -1,0 +1,12 @@
+---
+- name: Show Remote Devices Table
+  hosts: ta5k
+  gather_facts: no
+  tasks:
+    - name: Execute Show Remote Devices Table Command
+      command: "show table remote-devices"
+      register: remote_devices_table_output
+
+    - name: Display Remote Devices Table
+      debug:
+        var: remote_devices_table_output.stdout_lines
