@@ -1,0 +1,101 @@
+---
+- name: Configure ADTRAN Device
+  hosts: your_adtran_device  # Replace with the target device hostname or IP address
+  gather_facts: no
+  connection: network_cli
+  tasks:
+    - name: Configure Auto-Upgrade
+      ios_config:
+        lines:
+          - auto-upgrade
+            mode auto
+            scr
+        parents: 'configure terminal'
+
+    - name: Configure AAA Authentication
+      ios_config:
+        lines:
+          - aaa authentication login default group radius local
+        parents: 'configure terminal'
+
+    - name: Configure IP Domain Name and Name Servers
+      ios_config:
+        lines:
+          - ip domain-name-list "twlakes.local"
+          - ip name-server primary 192.168.150.2
+          - ip name-server secondary 192.168.150.3
+          - ip domain-lookup
+        parents: 'configure terminal'
+
+    - name: Configure Radius Servers
+      ios_config:
+        lines:
+          - radius-server host 192.168.150.4 auth-port 1645
+            radius-server host 192.168.150.4 name "RADIUS1"
+            radius-server host 192.168.150.4 retransmit 3
+            radius-server host 192.168.150.4 sequence-number 1
+            radius-server host 192.168.150.4 timeout 1
+          - radius-server host 192.168.150.5 auth-port 1645
+            radius-server host 192.168.150.5 name "RADIUS2"
+            radius-server host 192.168.150.5 retransmit 3
+            radius-server host 192.168.150.5 sequence-number 2
+            radius-server host 192.168.150.5 timeout 1
+        parents: 'configure terminal'
+
+    - name: Configure LACP Response Mode
+      ios_config:
+        lines:
+          - lacp response-mode 1/A reporter-only
+        parents: 'configure terminal'
+
+    - name: Configure QoS and Cos Mapping
+      ios_config:
+        lines:
+          - qos cos-queues 8
+          - qos mode system-cos-map
+          - qos cos-map 0 0
+          - qos cos-map 1 1
+          - qos cos-map 2 2
+          - qos cos-map 3 3
+          - qos cos-map 4 4
+          - qos cos-map 5 5
+          - qos cos-map 6 6
+          - qos cos-map 7 7
+        parents: 'configure terminal'
+
+    - name: Configure Voice Conference and SIP Trunk
+      ios_config:
+        lines:
+          - voice conference mode local
+            voice conference local originator flashhook split
+          - voice sip-trunk T01
+            sip proxy primary 10.202.0.150
+            sip registrar primary 10.202.0.150
+            domain "10.202.0.150"
+        parents: 'configure terminal'
+
+    - name: Configure Voice Profile
+      ios_config:
+        lines:
+          - voice profile call-feature "CALL_FEAT"
+            feature-mode local
+            conference local originator flashhook split
+            conference enable
+          - voice profile codec-list "CODEC"
+            preference 1 codec g711ulaw
+          - voice profile media "MEDIA_PROFILE"
+            voice-activity-detection enable
+        parents: 'configure terminal'
+
+    - name: Configure Fan Speed
+      ios_config:
+        lines:
+          - fan 1/f
+            speed auto
+        parents: 'configure terminal'
+
+    - name: Configure Banner
+      ios_config:
+        lines:
+          - banner login $
+        parents: 'configure terminal'

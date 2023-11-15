@@ -1,0 +1,75 @@
+---
+- name: Configure ADTRAN Device
+  hosts: your_adtran_device
+  gather_facts: no
+  connection: network_cli
+  tasks:
+    - name: Configure SCA
+      ios_config:
+        lines:
+          - sca autosave
+          - sca max-instances 5
+          - sca prefix "/SCA/A5K-JCCO-01"
+        parents: 'configure terminal'
+
+    - name: Configure Network Name
+      ios_config:
+        lines:
+          - network-name "T5K-JEFC-01 Network"
+        parents: 'configure terminal'
+
+    - name: Configure System Management EVC
+      ios_config:
+        lines:
+          - system-management-evc
+          - s-tag 99
+          - no ip address dhcp
+          - ip address 10.96.99.11 255.255.255.0
+          - ip dhcp option 60 enable
+          - ip dhcp option 60 vendor-class-identifier "ADTRAN."
+          - ip dhcp option 61 enable
+          - ip dhcp option 61 client-identifier ""
+        parents: 'configure terminal'
+
+    - name: Configure Default Gateway
+      ios_config:
+        lines:
+          - ip default-gateway 10.96.99.254
+        parents: 'configure terminal'
+
+    - name: Configure EVCs
+      ios_config:
+        lines:
+          - evc "DATA"
+          - s-tag 1101
+          - connect men-port default-ethernet
+          - mac-switched
+          - no preserve-ce-vlan
+          - no shutdown
+          - evc "FTTH_VOICE"
+          - s-tag 211
+          - connect men-port default-ethernet
+          - mac-switched
+          - no preserve-ce-vlan
+          - no shutdown
+          - evc "VIDEO"
+          - s-tag 401
+          - connect men-port default-ethernet
+          - mac-switched
+          - ip igmp version v3 lite
+          - no preserve-ce-vlan
+          - no shutdown
+        parents: 'configure terminal'
+
+    - name: Configure IGMP
+      ios_config:
+        lines:
+          - ip igmp evc "VIDEO" 1/1 proxy host ip address 10.96.99.11
+        parents: 'configure terminal'
+
+    - name: Configure SNMP
+      ios_config:
+        lines:
+          - snmp-server chassis-id "A5K-JCCO-01"
+          - snmp-server location "36.12987,-83.49032 1908 Black Oak St 37760"
+        parents: 'configure terminal'
