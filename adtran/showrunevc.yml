@@ -1,5 +1,4 @@
 ---
-<<<<<<< HEAD
 - name: Show Running Configuration of EVC
   hosts: ta5k
   gather_facts: no
@@ -12,21 +11,20 @@
     - name: Display Running Configuration of EVC
       debug:
         var: evc_running_config.stdout_lines
-=======
-- name: Execute "show run evc" Command
-  hosts: ta5k
-  gather_facts: no
-  become: yes
-  
-  tasks:
-    - name: Execute Show Run EVC
-      ios_command:
-        commands: "show run evc"
-      register: show_run_evc_output
 
-    - name: Display Show Run EVC
-      debug:
-        var: show_run_evc_output.stdout_lines
+# - name: Execute "show run evc" Command
+#   hosts: ta5k
+#   gather_facts: no
+#   become: yes
+  
+#   tasks:
+#     - name: Execute Show Run EVC
+#       ios_command:
+#         commands: "show run evc"
+#       register: show_run_evc_output
+
+#     - name: Display Show Run EVC
+#       debug:
+#         var: show_run_evc_output.stdout_lines
 
 # Add additional tasks or handlers as needed
->>>>>>> 45b12b776476dc4ccb9e2c436e242e0168a81a38
