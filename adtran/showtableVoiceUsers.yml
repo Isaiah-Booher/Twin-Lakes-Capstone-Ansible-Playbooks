@@ -12,17 +12,3 @@
       debug:
         var: show_table_voice_user_sip_output.stdout_lines
 
-# Add additional tasks or handlers as needed
-
-# ---
-# - name: Show SIP Voice Users Table
-#   hosts: ta5k
-#   gather_facts: no
-#   tasks:
-#     - name: Execute Show SIP Voice Users Table Command
-#       commands: "show table voice user sip"
-#       register: sip_users_table_output
-
-#     - name: Display SIP Voice Users Table
-#       debug:
-#         var: sip_users_table_output.stdout_lines
