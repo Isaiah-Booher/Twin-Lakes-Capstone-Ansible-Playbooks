@@ -1,8 +1,9 @@
 ---
 - name: Configure ADTRAN Device
-  hosts: your_adtran_device
+  hosts: ta5k
   gather_facts: no
-  connection: network_cli
+  become: yes
+  
   tasks:
     - name: Configure SCA
       ios_config:
