@@ -3,7 +3,7 @@
   hosts: ta5k
   gather_facts: no
   become: yes
-  
+
   tasks:
     - name: Configure SCA
       ios_config:
@@ -19,18 +19,18 @@
           - network-name "T5K-JEFC-01 Network"
         parents: 'configure terminal'
 
-    - name: Configure System Management EVC
-      ios_config:
-        lines:
-          - system-management-evc
-          - s-tag 99
-          - no ip address dhcp
-          - ip address 10.96.99.11 255.255.255.0
-          - ip dhcp option 60 enable
-          - ip dhcp option 60 vendor-class-identifier "ADTRAN."
-          - ip dhcp option 61 enable
-          - ip dhcp option 61 client-identifier ""
-        parents: 'configure terminal'
+    # - name: Configure System Management EVC #failed here
+    #   ios_config:
+    #     lines:
+    #       - system-management-evc
+    #       - s-tag 99
+    #       - no ip address dhcp
+    #       - ip address 10.96.99.11 255.255.255.0
+    #       - ip dhcp option 60 enable
+    #       - ip dhcp option 60 vendor-class-identifier "ADTRAN."
+    #       - ip dhcp option 61 enable
+    #       - ip dhcp option 61 client-identifier ""
+    #     parents: 'configure terminal'
 
     - name: Configure Default Gateway
       ios_config:
