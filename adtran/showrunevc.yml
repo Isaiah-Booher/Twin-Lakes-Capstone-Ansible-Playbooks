@@ -2,6 +2,8 @@
 - name: Show Running Configuration of EVC
   hosts: ta5k
   gather_facts: no
+  become: yes
+
   tasks:
     - name: Execute Show Running-Config EVC Command
       ios_command:   # Replace with the appropriate module for your network device
