@@ -1,8 +1,9 @@
 ---
 - name: Configure Lag-Group for Node
-  hosts: your_adtran_device  # Replace with the target device hostname or IP address
+  hosts: ta5k  
   gather_facts: no
-  connection: network_cli
+  become: yes
+
   tasks:
     - name: Determine if the node is directly connected to a router
       ios_command:
@@ -13,17 +14,17 @@
       ios_config:
         lines:
           - interface lag-group 1/A/1
-            alias "UPLINK_TO_RTR"
-            cross-slot
-            link ten-gigabit-ethernet 1/A/1
-            link ten-gigabit-ethernet 1/B/1
+          - alias "UPLINK_TO_RTR"
+          - cross-slot
+          - link ten-gigabit-ethernet 1/A/1
+          - link ten-gigabit-ethernet 1/B/1
           - interface ten-gigabit-ethernet 1/A/1
-            no shutdown
-            lacp mode active
-            lldp disable
+          - no shutdown
+          - lacp mode active
+          - lldp disable
           - interface ten-gigabit-ethernet 1/B/1
-            no shutdown
-            lacp mode active
-            lldp disable
+          - no shutdown
+          - lacp mode active
+          - lldp disable
           - ethernet default interface lag-group 1/A/1
         when: node_info.stdout_lines[0] is search("directly connected to router")

@@ -8,8 +8,8 @@
       ios_config:
         lines:
           - auto-upgrade
-            mode auto
-            scr
+          - mode auto
+          - scr
         parents: 'configure terminal'
 
     - name: Configure AAA Authentication
@@ -31,15 +31,15 @@
       ios_config:
         lines:
           - radius-server host 192.168.150.4 auth-port 1645
-            radius-server host 192.168.150.4 name "RADIUS1"
-            radius-server host 192.168.150.4 retransmit 3
-            radius-server host 192.168.150.4 sequence-number 1
-            radius-server host 192.168.150.4 timeout 1
+          - radius-server host 192.168.150.4 name "RADIUS1"
+          - radius-server host 192.168.150.4 retransmit 3
+          - radius-server host 192.168.150.4 sequence-number 1
+          - radius-server host 192.168.150.4 timeout 1
           - radius-server host 192.168.150.5 auth-port 1645
-            radius-server host 192.168.150.5 name "RADIUS2"
-            radius-server host 192.168.150.5 retransmit 3
-            radius-server host 192.168.150.5 sequence-number 2
-            radius-server host 192.168.150.5 timeout 1
+          - radius-server host 192.168.150.5 name "RADIUS2"
+          - radius-server host 192.168.150.5 retransmit 3
+          - radius-server host 192.168.150.5 sequence-number 2
+          - radius-server host 192.168.150.5 timeout 1
         parents: 'configure terminal'
 
     - name: Configure LACP Response Mode
@@ -67,31 +67,31 @@
       ios_config:
         lines:
           - voice conference mode local
-            voice conference local originator flashhook split
+          - voice conference local originator flashhook split
           - voice sip-trunk T01
-            sip proxy primary 10.202.0.150
-            sip registrar primary 10.202.0.150
-            domain "10.202.0.150"
+          - sip proxy primary 10.202.0.150
+          - sip registrar primary 10.202.0.150
+          - domain "10.202.0.150"
         parents: 'configure terminal'
 
     - name: Configure Voice Profile
       ios_config:
         lines:
           - voice profile call-feature "CALL_FEAT"
-            feature-mode local
-            conference local originator flashhook split
-            conference enable
+          - feature-mode local
+          - conference local originator flashhook split
+          - conference enable
           - voice profile codec-list "CODEC"
-            preference 1 codec g711ulaw
+          - preference 1 codec g711ulaw
           - voice profile media "MEDIA_PROFILE"
-            voice-activity-detection enable
+          - voice-activity-detection enable
         parents: 'configure terminal'
 
     - name: Configure Fan Speed
       ios_config:
         lines:
           - fan 1/f
-            speed auto
+          - speed auto
         parents: 'configure terminal'
 
     - name: Configure Banner

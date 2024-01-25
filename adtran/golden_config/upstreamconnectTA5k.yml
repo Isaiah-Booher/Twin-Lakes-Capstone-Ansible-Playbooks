@@ -1,8 +1,9 @@
 ---
 - name: Configure Regular Connection for Node
-  hosts: your_adtran_device  # Replace with the target device hostname or IP address
+  hosts: ta5k  
   gather_facts: no
-  connection: network_cli
+  become: yes
+
   tasks:
     - name: Determine if the node connects upstream to another TA5K
       ios_command:
@@ -13,8 +14,8 @@
       ios_config:
         lines:
           - interface ten-gigabit-ethernet 1/A/1
-            no shutdown
+          - no shutdown
           - interface ten-gigabit-ethernet 1/B/1
-            no shutdown
+          - no shutdown
           - ethernet default interface ten-gigabit-ethernet 1/A/1
         when: node_info.stdout_lines[0] is search("connects upstream to another TA5K")

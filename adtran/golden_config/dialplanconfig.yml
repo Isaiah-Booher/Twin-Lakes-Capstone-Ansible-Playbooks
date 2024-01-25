@@ -13,18 +13,18 @@
       ios_config:
         lines:
           - voice profile dialing "DIAL_PLAN"
-            description "Plan for ONTs in 865 area"
-            dial-plan always-permitted 911 external-line-code prohibited
-            dial-plan always-permitted 988 external-line-code prohibited
-            dial-plan international 011-N$
-            dial-plan local 865-NXX-XXXX
-            dial-plan local 86[012346789]-XXXX
-            dial-plan local 8[012345789]X-XXXX
-            dial-plan local [2345679]XX-XXXX
-            dial-plan national 1-NXX-NXX-XXXX
-            dial-plan operator-assisted 1-411
-            dial-plan user1 N11
-            spre *XX& tone stutter-dial
+          - description "Plan for ONTs in 865 area"
+          - dial-plan always-permitted 911 external-line-code prohibited
+          - dial-plan always-permitted 988 external-line-code prohibited
+          - dial-plan international 011-N$
+          - dial-plan local 865-NXX-XXXX
+          - dial-plan local 86[012346789]-XXXX
+          - dial-plan local 8[012345789]X-XXXX
+          - dial-plan local [2345679]XX-XXXX
+          - dial-plan national 1-NXX-NXX-XXXX
+          - dial-plan operator-assisted 1-411
+          - dial-plan user1 N11
+          - spre *XX& tone stutter-dial
           - clock timezone "EST" -5 0
         when: location_info.stdout_lines[0] is search("AEC|East Tennessee")
 
@@ -32,20 +32,20 @@
       ios_config:
         lines:
           - voice profile dialing "DIAL_PLAN"
-            description "DIAL-PLAN FOR ONTs in 931/615"
-            dial-plan always-permitted 911 external-line-code prohibited
-            dial-plan always-permitted 988 external-line-code prohibited
-            dial-plan international 011-N$
-            dial-plan international 1-NXX-NXX-XXXX
-            dial-plan local 615-NXX-XXXX
-            dial-plan local 6X[012346789]-XXXX
-            dial-plan local 6[023456789]X-XXXX
-            dial-plan local 931-NXX-XXXX
-            dial-plan local 93[023456789]-XXXX
-            dial-plan local 9[012456789]X-XXXX
-            dial-plan local [234578]XX-XXXX
-            dial-plan operator-assisted 1-411
-            dial-plan user1 N11
-            spre *XX& tone stutter-dial
+          - description "DIAL-PLAN FOR ONTs in 931/615"
+          - dial-plan always-permitted 911 external-line-code prohibited
+          - dial-plan always-permitted 988 external-line-code prohibited
+          - dial-plan international 011-N$
+          - dial-plan international 1-NXX-NXX-XXXX
+          - dial-plan local 615-NXX-XXXX
+          - dial-plan local 6X[012346789]-XXXX
+          - dial-plan local 6[023456789]X-XXXX
+          - dial-plan local 931-NXX-XXXX
+          - dial-plan local 93[023456789]-XXXX
+          - dial-plan local 9[012456789]X-XXXX
+          - dial-plan local [234578]XX-XXXX
+          - dial-plan operator-assisted 1-411
+          - dial-plan user1 N11
+          - spre *XX& tone stutter-dial
           - clock timezone "CST" -6 0
         when: location_info.stdout_lines[0] is search("COOP")
