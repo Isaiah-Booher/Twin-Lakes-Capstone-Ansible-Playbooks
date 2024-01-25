@@ -1,0 +1,46 @@
+---
+- name: Update Cisco Router Configuration
+  hosts: routers
+  gather_facts: no
+  become: yes
+
+  tasks:
+    - name: Configure PIM for IPv4
+      ios_config:
+        lines:
+          - router pim
+          - address-family ipv4
+          - interface Bundle-Ether402
+          - enable
+          - exit
+          - interface Bundle-Ether403
+          - enable
+          - exit
+          - interface Bundle-Ether400.400
+          - enable
+          - exit
+          - interface Bundle-Ether400.401
+          - enable
+          - exit
+          - interface Bundle-Ether400.402
+          - enable
+          - exit
+          - interface Bundle-Ether400.403
+          - enable
+          - exit
+          - interface Bundle-Ether400.404
+          - enable
+          - exit
+          - interface Bundle-Ether400.405
+          - enable
+          - exit
+          - interface Bundle-Ether400.406
+          - enable
+          - exit
+          - interface Bundle-Ether400.408
+          - enable
+          - exit
+          - interface Bundle-Ether400.409
+          - enable
+          - exit
+          - exit

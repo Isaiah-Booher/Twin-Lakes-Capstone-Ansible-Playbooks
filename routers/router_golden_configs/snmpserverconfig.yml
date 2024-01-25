@@ -1,0 +1,75 @@
+---
+- name: Update Cisco Router Configuration
+  hosts: routers
+  gather_facts: no
+  become: yes
+
+  tasks:
+    - name: Configure SNMP
+      ios_config:
+        lines:
+          - snmp-server vrf netmgt
+          - host 10.2.0.10 traps TLTC7609
+          - host 10.2.0.10 traps TwinLakesCoreNetwork
+          - host 10.2.0.11 traps TLTC7609
+          - host 10.2.0.11 traps TwinLakesCoreNetwork
+          - exit
+          - snmp-server group snmp_admin v3 priv
+          - snmp-server contact networking@twinlakes.net
+          - snmp-server location [36.570583,-85.135065] 401 W Main St, Byrdstown, TN 38549
+
+    - name: Configure DHCP
+      ios_config:
+        lines:
+          - dhcp ipv4
+          - vrf INTERNET relay
+          - profile IPTV-STB relay
+          - helper-address vrf default 10.1.17.31
+          - helper-address vrf default 10.1.17.32
+          - relay information option allow-untrusted
+          - exit
+          - profile FTTX_MGMT relay
+          - helper-address vrf netmgt 10.1.18.11
+          - helper-address vrf netmgt 10.1.18.12
+          - relay information option allow-untrusted
+          - exit
+          - profile FTTX_VOICE relay
+          - helper-address vrf voice 10.1.19.11
+          - helper-address vrf voice 10.1.19.12
+          - relay information option allow-untrusted
+          - exit
+
+    - name: Configure FPD
+      ios_config:
+        lines:
+          - fpd auto-reload enable
+          - fpd auto-upgrade enable
+
+    - name: Configure ICMP
+      ios_config:
+        lines:
+          - icmp ipv4 source vrf
+          - icmp ipv4 rate-limit unreachable DF 200
+
+    - name: Configure NTP
+      ios_config:
+        lines:
+          - ntp
+          - server vrf netmgt 10.1.10.254 version 4
+          - server vrf netmgt 10.1.13.254 version 4
+          - server vrf netmgt 10.1.14.254 version 4
+          - exit
+
+    - name: Configure Call Home
+      ios_config:
+        lines:
+          - call-home
+          - vrf netmgt
+          - service active
+          - contact smart-licensing
+          - source-interface Loopback1
+          - profile CiscoTAC-1
+          - active
+          - destination transport-method http
+          - exit
+          - exit

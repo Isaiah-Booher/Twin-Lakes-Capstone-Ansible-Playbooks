@@ -1,0 +1,46 @@
+---
+- name: Update Cisco Router Configuration
+  hosts: routers
+  gather_facts: no
+  become: yes
+
+  tasks:
+    - name: Configure hostname
+      ios_config:
+        lines:
+          - hostname ASR-BYTW-10
+
+    - name: Configure AAA
+      ios_config:
+        lines:
+          - aaa default-taskgroup root-lr
+
+    - name: Configure clock timezone
+      ios_config:
+        lines:
+          - clock timezone CST America/Chicago
+
+    - name: Configure logging
+      ios_config:
+        lines:
+          - logging trap informational
+          - logging console disable
+          - logging monitor disable
+          - logging buffered debugging
+          - logging 10.2.0.10 vrf netmgt severity info port default
+          - logging 10.2.0.12 vrf netmgt severity info port default
+          - logging 10.2.0.13 vrf netmgt severity info port default
+          - logging source-interface Loopback1 vrf netmgt
+
+    - name: Configure service timestamps
+      ios_config:
+        lines:
+          - service timestamps log datetime localtime msec show-timezone
+          - service timestamps debug datetime localtime msec show-timezone
+
+    - name: Configure domain and name servers
+      ios_config:
+        lines:
+          - domain vrf netmgt name-server 192.168.150.2
+          - domain vrf netmgt name-server 192.168.150.3
+          - domain name TWLAKES.LOCAL

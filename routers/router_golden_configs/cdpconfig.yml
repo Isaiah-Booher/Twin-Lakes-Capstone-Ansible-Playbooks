@@ -1,0 +1,11 @@
+---
+- name: Update Cisco Router Configuration
+  hosts: routers
+  gather_facts: no
+  become: yes
+  
+  tasks:
+    - name: Enable CDP
+      ios_config:
+        lines:
+          - "cdp run"

@@ -1,0 +1,22 @@
+---
+- name: Update Cisco Router Configuration
+  hosts: routers
+  gather_facts: no
+  become: yes
+
+  tasks:
+    - name: Configure AAA group server radius
+      ios_config:
+        lines:
+          - aaa group server radius twlakes
+          - vrf netmgt
+          - server-private 192.168.150.4 auth-port 1645 acct-port 1646
+          - server-private 192.168.150.5 auth-port 1645 acct-port 1646
+          - source-interface Loopback1
+          - exit
+    
+    - name: Configure AAA authentication login
+      ios_config:
+        lines:
+          - aaa authentication login default group twlakes local
+          - commit best-effort

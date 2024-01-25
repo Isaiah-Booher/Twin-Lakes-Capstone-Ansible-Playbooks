@@ -1,0 +1,14 @@
+---
+- name: Update Cisco Router Configuration
+  hosts: routers
+  gather_facts: no
+  become: yes
+
+  tasks:
+    - name: Configure interface Bundle-Ether400
+      ios_config:
+        lines:
+          - interface Bundle-Ether400
+          - description "Downlink to AGSW Cluster"
+          - mtu 9216
+          - exit
