@@ -1,5 +1,5 @@
 ---
-- name: Configure Dial Plan
+- name: Configure Dial Plan COOP
   hosts: ta5k  # Replace with the target device hostname or IP address
   gather_facts: no
   connection: network_cli
