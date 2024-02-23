@@ -6,8 +6,8 @@
 
   tasks:
     - name: Configure AAA group server radius
-      ios_config:
-        lines:
+      ios_commands:
+        commands:
           - conf t 
           - aaa group server radius twlakes
           - vrf netmgt
@@ -17,8 +17,8 @@
           - exit
     
     - name: Configure AAA authentication login
-      ios_config:
-        lines:
+      ios_commands:
+        commands:
           - conf t
           - aaa authentication login default group twlakes local
           - commit best-effort
