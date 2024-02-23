@@ -6,8 +6,8 @@
 
   tasks:
     - name: Configure Regular Connection if connecting upstream to another TA5K
-      ios_config:
-        lines:
+      ios_command:
+        commands:
           - conf t
           - interface ten-gigabit-ethernet 1/A/1
           - no shutdown

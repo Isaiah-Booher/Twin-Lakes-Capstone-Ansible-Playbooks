@@ -7,8 +7,8 @@
 
   tasks:
     - name: Configure Dial Plan for AEC/East Tennessee
-      ios_config:
-        lines:
+      ios_command:
+        commands:
           - conf t
           - voice profile dialing "DIAL_PLAN"
           - description "Plan for ONTs in 865 area"

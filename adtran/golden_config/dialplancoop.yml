@@ -7,8 +7,8 @@
 
   tasks:
     - name: Configure Dial Plan for COOP
-      ios_config:
-        lines:
+      ios_command:
+        commands:
           - conf t
           - voice profile dialing "DIAL_PLAN"
           - description "DIAL-PLAN FOR ONTs in 931/615"

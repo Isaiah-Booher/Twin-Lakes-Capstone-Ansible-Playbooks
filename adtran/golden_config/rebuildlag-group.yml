@@ -6,8 +6,8 @@
 
   tasks:
     - name: Configure Lag-Group if directly connected to a router
-      ios_config:
-        lines:
+      ios_command:
+        commands:
           - conf t
           - interface lag-group 1/A/1
           - alias "UPLINK_TO_RTR"

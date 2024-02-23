@@ -7,8 +7,8 @@
 
   tasks:
     - name: Configure Auto-Upgrade
-      ios_config:
-        lines:
+      ios_command:
+        commands:
           - conf t
           - auto-upgrade
           - mode auto
@@ -16,14 +16,14 @@
         parents: 'configure terminal'
 
     - name: Configure AAA Authentication
-      ios_config:
-        lines:
+      ios_command:
+        commands:
           - aaa authentication login default group radius local
         parents: 'configure terminal'
 
     - name: Configure IP Domain Name and Name Servers
-      ios_config:
-        lines:
+      ios_command:
+        commands:
           - ip domain-name-list "twlakes.local"
           - ip name-server primary 192.168.150.2
           - ip name-server secondary 192.168.150.3
@@ -31,8 +31,8 @@
         parents: 'configure terminal'
 
     - name: Configure Radius Servers
-      ios_config:
-        lines:
+      ios_command:
+        commands:
           - radius-server host 192.168.150.4 auth-port 1645
           - radius-server host 192.168.150.4 name "RADIUS1"
           - radius-server host 192.168.150.4 retransmit 3
@@ -46,14 +46,14 @@
         parents: 'configure terminal'
 
     - name: Configure LACP Response Mode
-      ios_config:
-        lines:
+      ios_command:
+        commands:
           - lacp response-mode 1/A reporter-only
         parents: 'configure terminal'
 
     - name: Configure QoS and Cos Mapping
-      ios_config:
-        lines:
+      ios_command:
+        commands:
           - qos cos-queues 8
           - qos mode system-cos-map
           - qos cos-map 0 0
@@ -67,8 +67,8 @@
         parents: 'configure terminal'
 
     - name: Configure Voice Conference and SIP Trunk
-      ios_config:
-        lines:
+      ios_command:
+        commands:
           - voice conference mode local
           - voice conference local originator flashhook split
           - voice sip-trunk T01
@@ -78,8 +78,8 @@
         parents: 'configure terminal'
 
     - name: Configure Voice Profile
-      ios_config:
-        lines:
+      ios_command:
+        commands:
           - voice profile call-feature "CALL_FEAT"
           - feature-mode local
           - conference local originator flashhook split
@@ -91,14 +91,14 @@
         parents: 'configure terminal'
 
     - name: Configure Fan Speed
-      ios_config:
-        lines:
+      ios_command:
+        commands:
           - fan 1/f
           - speed auto
         parents: 'configure terminal'
 
     - name: Configure Banner
-      ios_config:
-        lines:
+      ios_command:
+        commands:
           - banner login $
         parents: 'configure terminal'
