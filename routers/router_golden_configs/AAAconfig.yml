@@ -8,6 +8,7 @@
     - name: Configure AAA group server radius
       ios_config:
         lines:
+          - conf t 
           - aaa group server radius twlakes
           - vrf netmgt
           - server-private 192.168.150.4 auth-port 1645 acct-port 1646
@@ -18,5 +19,6 @@
     - name: Configure AAA authentication login
       ios_config:
         lines:
+          - conf t
           - aaa authentication login default group twlakes local
           - commit best-effort
