@@ -2,12 +2,13 @@
 - name: Update Cisco Router Configuration
   hosts: routers
   gather_facts: no
-  become: yes
+  become: no
 
   tasks:
     - name: Configure class map for Network Management Traffic
       ios_command:
         commands:
+          - conf t
           - class-map match-any cmap-mgmt-dscp
           - description "Network Mangement Traffic Class"
           - match dscp cs7

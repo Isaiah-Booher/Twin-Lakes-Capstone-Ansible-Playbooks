@@ -2,12 +2,13 @@
 - name: Update Cisco Router Configuration
   hosts: routers
   gather_facts: no
-  become: yes
+  become: no
 
   tasks:
     - name: Configure SNMP
       ios_command:
         commands:
+          - conf t
           - snmp-server vrf netmgt
           - host 10.2.0.10 traps TLTC7609
           - host 10.2.0.10 traps TwinLakesCoreNetwork

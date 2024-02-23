@@ -2,12 +2,13 @@
 - name: Update Cisco Router Configuration
   hosts: routers
   gather_facts: no
-  become: yes
+  become: no
 
   tasks:
     - name: Configure policy map for Access Out
       ios_command:
         commands:
+          - conf t
           - policy-map pmap-access-out
           - class cmap-voice-dscp
           - bandwidth percent 10

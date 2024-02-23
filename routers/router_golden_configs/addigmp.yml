@@ -2,12 +2,13 @@
 - name: Update Cisco Router Configuration
   hosts: routers
   gather_facts: no
-  become: yes
+  become: no
 
   tasks:
     - name: Configure IGMP on Bundle-Ether400 sub-interfaces
       ios_command:
         commands:
+          - conf t
           - router igmp
           - interface Bundle-Ether400.400
           - exit

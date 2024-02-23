@@ -2,12 +2,13 @@
 - name: Update Cisco Router Configuration
   hosts: routers
   gather_facts: no
-  become: yes
+  become: no
 
   tasks:
     - name: Configure EVPN for EVI 11001
       ios_command:
         commands:
+          - conf t
           - evpn
           - evi 11001
           - bgp

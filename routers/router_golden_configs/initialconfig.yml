@@ -2,12 +2,13 @@
 - name: Update Cisco Router Configuration
   hosts: routers
   gather_facts: no
-  become: yes
+  become: no
 
   tasks:
     - name: Configure hostname
       ios_command:
         commands:
+          - conf t
           - hostname ASR-BYTW-10
 
     - name: Configure AAA

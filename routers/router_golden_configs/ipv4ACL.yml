@@ -2,12 +2,13 @@
 - name: Update Cisco Router Configuration
   hosts: routers
   gather_facts: no
-  become: yes
+  become: no
 
   tasks:
     - name: Configure IPv4 access-list SSM
       ios_command:
         commands:
+          - conf t
           - ipv4 access-list SSM
           - 10 permit ipv4 224.2.0.0 0.0.255.255 any
           - 20 permit ipv4 225.50.0.0 0.0.255.255 any
