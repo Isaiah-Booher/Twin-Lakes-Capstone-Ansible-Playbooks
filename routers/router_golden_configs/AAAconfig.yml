@@ -6,7 +6,7 @@
 
   tasks:
     - name: Configure AAA group server radius
-      ios_commands:
+      ios_command:
         commands:
           - conf t 
           - aaa group server radius twlakes
@@ -17,7 +17,7 @@
           - exit
     
     - name: Configure AAA authentication login
-      ios_commands:
+      ios_command:
         commands:
           - conf t
           - aaa authentication login default group twlakes local
