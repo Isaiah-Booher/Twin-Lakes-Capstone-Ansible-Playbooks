@@ -5,7 +5,7 @@
   become: no
 
   tasks:
-    - name: Configure AAA group server radius
+    - name: Configure AAA group server radius & Authentication Login
       ios_command:
         commands:
           - conf t 
@@ -15,9 +15,5 @@
           - server-private 192.168.150.5 auth-port 1645 acct-port 1646
           - source-interface Loopback1
           - exit
-    
-    - name: Configure AAA authentication login
-      ios_command:
-        commands:
           - aaa authentication login default group twlakes local
           - commit
