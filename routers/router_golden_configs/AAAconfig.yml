@@ -19,6 +19,5 @@
     - name: Configure AAA authentication login
       ios_command:
         commands:
-          - conf t
           - aaa authentication login default group twlakes local
-          - commit best-effort
+          - commit
