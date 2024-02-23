@@ -3,12 +3,13 @@
   hosts: ta5k  # Replace with the target device hostname or IP address
   gather_facts: no
   connection: network_cli
-  become: yes
+  become: no
 
   tasks:
     - name: Configure Auto-Upgrade
       ios_config:
         lines:
+          - conf t
           - auto-upgrade
           - mode auto
           - scr

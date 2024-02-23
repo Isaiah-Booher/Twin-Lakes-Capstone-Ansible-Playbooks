@@ -3,12 +3,13 @@
   hosts: ta5k  # Replace with the target device hostname or IP address
   gather_facts: no
   connection: network_cli
-  become: yes 
+  become: no
 
   tasks:
     - name: Configure Dial Plan for COOP
       ios_config:
         lines:
+          - conf t
           - voice profile dialing "DIAL_PLAN"
           - description "DIAL-PLAN FOR ONTs in 931/615"
           - dial-plan always-permitted 911 external-line-code prohibited

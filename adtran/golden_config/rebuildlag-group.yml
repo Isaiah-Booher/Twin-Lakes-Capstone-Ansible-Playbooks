@@ -2,12 +2,13 @@
 - name: Configure Lag-Group for Node
   hosts: ta5k  
   gather_facts: no
-  become: yes
+  become: no
 
   tasks:
     - name: Configure Lag-Group if directly connected to a router
       ios_config:
         lines:
+          - conf t
           - interface lag-group 1/A/1
           - alias "UPLINK_TO_RTR"
           - cross-slot

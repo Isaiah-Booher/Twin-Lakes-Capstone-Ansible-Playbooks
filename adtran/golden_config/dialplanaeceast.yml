@@ -3,12 +3,13 @@
   hosts: ta5k  # Replace with the target device hostname or IP address
   gather_facts: no
   connection: network_cli
-  become: yes
+  become: no 
 
   tasks:
     - name: Configure Dial Plan for AEC/East Tennessee
       ios_config:
         lines:
+          - conf t
           - voice profile dialing "DIAL_PLAN"
           - description "Plan for ONTs in 865 area"
           - dial-plan always-permitted 911 external-line-code prohibited
