@@ -9,9 +9,9 @@
       ios_command:
         commands:
           - conf t 
-          - aaa group server radius twlakes1
+          - aaa group server radius twlakes
           - vrf netmgt
-          - server-private 192.168.150.4 auth-port 1645 acct-port 1646
+          - server-private 192.168.150.8 auth-port 1645 acct-port 1646
           - server-private 192.168.150.5 auth-port 1645 acct-port 1646
           - source-interface Loopback1
           - exit
