@@ -3,12 +3,9 @@
   hosts: ta5k  # Replace with the target device hostname or IP address
   gather_facts: no
   connection: network_cli
-  tasks:
-    - name: Determine the deployment location
-      ios_command:
-        commands: show location
-      register: location_info
+  become: yes 
 
+  tasks:
     - name: Configure Dial Plan for COOP
       ios_config:
         lines:
@@ -29,4 +26,3 @@
           - dial-plan user1 N11
           - spre *XX& tone stutter-dial
           - clock timezone "CST" -6 0
-        when: location_info.stdout_lines[0] is search("COOP")
