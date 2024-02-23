@@ -6,8 +6,8 @@
 
   tasks:
     - name: Configure PIM for IPv4
-      ios_config:
-        lines:
+      ios_command:
+        commands:
           - router pim
           - address-family ipv4
           - interface Bundle-Ether402

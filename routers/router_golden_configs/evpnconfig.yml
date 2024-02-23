@@ -6,8 +6,8 @@
 
   tasks:
     - name: Configure EVPN for EVI 11001
-      ios_config:
-        lines:
+      ios_command:
+        commands:
           - evpn
           - evi 11001
           - bgp
@@ -21,8 +21,8 @@
           - exit
 
     - name: Configure EVPN for Bundle-Ether400 interface
-      ios_config:
-        lines:
+      ios_command:
+        commands:
           - interface Bundle-Ether400
           - ethernet-segment
           - identifier type 0 00.01.10.10.10.10.10.10.10

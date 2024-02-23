@@ -6,8 +6,8 @@
 
   tasks:
     - name: Configure SNMP
-      ios_config:
-        lines:
+      ios_command:
+        commands:
           - snmp-server vrf netmgt
           - host 10.2.0.10 traps TLTC7609
           - host 10.2.0.10 traps TwinLakesCoreNetwork
@@ -19,8 +19,8 @@
           - snmp-server location [36.570583,-85.135065] 401 W Main St, Byrdstown, TN 38549
 
     - name: Configure DHCP
-      ios_config:
-        lines:
+      ios_command:
+        commands:
           - dhcp ipv4
           - vrf INTERNET relay
           - profile IPTV-STB relay
@@ -40,20 +40,20 @@
           - exit
 
     - name: Configure FPD
-      ios_config:
-        lines:
+      ios_command:
+        commands:
           - fpd auto-reload enable
           - fpd auto-upgrade enable
 
     - name: Configure ICMP
-      ios_config:
-        lines:
+      ios_command:
+        commands:
           - icmp ipv4 source vrf
           - icmp ipv4 rate-limit unreachable DF 200
 
     - name: Configure NTP
-      ios_config:
-        lines:
+      ios_command:
+        commands:
           - ntp
           - server vrf netmgt 10.1.10.254 version 4
           - server vrf netmgt 10.1.13.254 version 4
@@ -61,8 +61,8 @@
           - exit
 
     - name: Configure Call Home
-      ios_config:
-        lines:
+      ios_command:
+        commands:
           - call-home
           - vrf netmgt
           - service active

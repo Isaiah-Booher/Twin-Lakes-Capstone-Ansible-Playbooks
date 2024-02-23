@@ -6,16 +6,16 @@
 
   tasks:
     - name: Configure Loopback0 interface
-      ios_config:
-        lines:
+      ios_command:
+        commands:
           - interface Loopback0
           - description MPLS/HSD/RID
           - ipv4 address 10.0.0.10 255.255.255.255
           - exit
 
     - name: Configure Loopback1 interface
-      ios_config:
-        lines:
+      ios_command:
+        commands:
           - interface Loopback1
           - description Management
           - vrf netmgt
@@ -23,8 +23,8 @@
           - exit
 
     - name: Configure Loopback3 interface
-      ios_config:
-        lines:
+      ios_command:
+        commands:
           - interface Loopback3
           - description Voice RID
           - vrf voice

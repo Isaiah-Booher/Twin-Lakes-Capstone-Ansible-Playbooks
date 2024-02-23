@@ -6,8 +6,8 @@
 
   tasks:
     - name: Configure IPv4 access-list SSM
-      ios_config:
-        lines:
+      ios_command:
+        commands:
           - ipv4 access-list SSM
           - 10 permit ipv4 224.2.0.0 0.0.255.255 any
           - 20 permit ipv4 225.50.0.0 0.0.255.255 any
@@ -31,8 +31,8 @@
           - exit
 
     - name: Configure IPv4 access-list ssh
-      ios_config:
-        lines:
+      ios_command:
+        commands:
           - ipv4 access-list ssh
           - 5 permit ipv4 192.168.34.0/24 any
           - 10 permit ipv4 host 10.2.0.10 any
@@ -73,15 +73,15 @@
           - exit
 
     - name: Configure IPv4 access-list SSMv2
-      ios_config:
-        lines:
+      ios_command:
+        commands:
           - ipv4 access-list SSMv2
           - 10 permit ipv4 224.0.0.0 15.255.255.255 any
           - exit
 
     - name: Configure IPv4 access-list snmp-access
-      ios_config:
-        lines:
+      ios_command:
+        commands:
           - ipv4 access-list snmp-access
           - 10 remark allows snmp access to router
           - 20 permit udp host 10.2.0.10 any eq snmp
@@ -90,8 +90,8 @@
           - exit
 
     - name: Configure IPv4 access-list SSM_10.3.0.30
-      ios_config:
-        lines:
+      ios_command:
+        commands:
           - ipv4 access-list SSM_10.3.0.30
           - 10 permit ipv4 host 224.2.2.4 any
           - 20 permit ipv4 host 225.50.50.27 any
@@ -114,8 +114,8 @@
           - exit
 
     - name: Configure IPv4 access-list SSM_10.3.0.60
-      ios_config:
-        lines:
+      ios_command:
+        commands:
           - ipv4 access-list SSM_10.3.0.60
           - 10 permit ipv4 host 239.3.60.101 any
           - 20 permit ipv4 host 239.3.60.102 any
@@ -131,51 +131,51 @@
           - exit
 
     - name: Configure IPv4 access-list SSM_10.3.7.156
-      ios_config:
-        lines:
+      ios_command:
+        commands:
           - ipv4 access-list SSM_10.3.7.156
           - 10 permit ipv4 host 239.1.3.200 any
           - exit
 
     - name: Configure IPv4 access-list SSM_10.65.0.99
-      ios_config:
-        lines:
+      ios_command:
+        commands:
           - ipv4 access-list SSM_10.65.0.99
           - 10 permit ipv4 host 239.58.10.37 any
           - 20 permit ipv4 host 239.58.10.57 any
           - exit
 
     - name: Configure IPv4 access-list SSM_10.92.0.10
-      ios_config:
-        lines:
+      ios_command:
+        commands:
           - ipv4 access-list SSM_10.92.0.10
           - 10 permit ipv4 host 239.1.9.7 any
           - exit
 
     - name: Configure IPv4 access-list SSM_10.28.0.254
-      ios_config:
-        lines:
+      ios_command:
+        commands:
           - ipv4 access-list SSM_10.28.0.254
           - 10 permit ipv4 host 239.1.9.51 any
           - exit
 
     - name: Configure IPv4 access-list SSM_10.76.0.253
-      ios_config:
-        lines:
+      ios_command:
+        commands:
           - ipv4 access-list SSM_10.76.0.253
           - 10 permit ipv4 host 239.1.9.53 any
           - exit
 
     - name: Configure IPv4 access-list SSM_10.76.0.254
-      ios_config:
-        lines:
+      ios_command:
+        commands:
           - ipv4 access-list SSM_10.76.0.254
           - 10 permit ipv4 host 239.1.9.54 any
           - exit
 
     - name: Configure IPv4 access-list SSM_173.17.17.2
-      ios_config:
-        lines:
+      ios_command:
+        commands:
           - ipv4 access-list SSM_173.17.17.2
           - 10 permit ipv4 host 226.100.4.22 any
           - 20 permit ipv4 host 226.101.4.221 any
@@ -184,8 +184,8 @@
           - exit
 
     - name: Configure IPv4 access-list SSM_173.19.17.9
-      ios_config:
-        lines:
+      ios_command:
+        commands:
           - ipv4 access-list SSM_173.19.17.9
           - 10 permit ipv4 host 225.101.4.102 any
           - 20 permit ipv4 host 225.101.4.2 any
@@ -233,15 +233,15 @@
           - exit
 
     - name: Configure IPv4 access-list SSM_10.3.103.100
-      ios_config:
-        lines:
+      ios_command:
+        commands:
           - ipv4 access-list SSM_10.3.103.100
           - 10 permit ipv4 host 224.2.200.200 any
           - exit
 
     - name: Configure IPv4 access-list SSM_204.29.15.34
-      ios_config:
-        lines:
+      ios_command:
+        commands:
           - ipv4 access-list SSM_204.29.15.34
           - 10 permit ipv4 host 226.101.4.5 any
           - 20 permit ipv4 host 226.100.4.5 any
@@ -262,8 +262,8 @@
           - exit
 
     - name: Configure IPv4 access-list SSM_204.29.15.35
-      ios_config:
-        lines:
+      ios_command:
+        commands:
           - ipv4 access-list SSM_204.29.15.35
           - 10 permit ipv4 host 226.101.4.108 any
           - 20 permit ipv4 host 226.101.4.8 any
@@ -276,8 +276,8 @@
           - exit
 
     - name: Configure IPv4 access-list SSM_204.29.15.36
-      ios_config:
-        lines:
+      ios_command:
+        commands:
           - ipv4 access-list SSM_204.29.15.36
           - 10 permit ipv4 host 226.100.4.22 any
           - 20 permit ipv4 host 226.101.4.22 any
@@ -289,15 +289,15 @@
           - exit
 
     - name: Configure IPv4 access-list SSM_204.29.15.37
-      ios_config:
-        lines:
+      ios_command:
+        commands:
           - ipv4 access-list SSM_204.29.15.37
           - 10 permit ipv4 host 226.100.4.44 any
           - exit
 
     - name: Configure IPv4 access-list SSM_10.255.210.18
-      ios_config:
-        lines:
+      ios_command:
+        commands:
           - ipv4 access-list SSM_10.255.210.18
           - 10 permit ipv4 host 226.101.4.8 any
           - 20 permit ipv4 host 226.101.4.108 any
@@ -305,22 +305,22 @@
           - exit
 
     - name: Configure IPv4 access-list SSM_10.76.128.254
-      ios_config:
-        lines:
+      ios_command:
+        commands:
           - ipv4 access-list SSM_10.76.128.254
           - 10 permit ipv4 host 239.1.9.52 any
           - exit
 
     - name: Configure IPv4 access-list SSM_192.168.206.12
-      ios_config:
-        lines:
+      ios_command:
+        commands:
           - ipv4 access-list SSM_192.168.206.12
           - 20 permit ipv4 host 239.112.3.28 any
           - exit
 
     - name: Configure IPv4 access-list SSM_192.168.206.23
-      ios_config:
-        lines:
+      ios_command:
+        commands:
           - ipv4 access-list SSM_192.168.206.23
           - 10 permit ipv4 host 239.80.0.24 any
           - 20 permit ipv4 host 239.80.3.24 any
@@ -356,8 +356,8 @@
           - exit
 
     - name: Configure IPv4 access-list SSM_192.168.206.24
-      ios_config:
-        lines:
+      ios_command:
+        commands:
           - ipv4 access-list SSM_192.168.206.24
           - 10 permit ipv4 host 239.80.0.24 any
           - 20 permit ipv4 host 239.80.3.24 any
@@ -393,8 +393,8 @@
           - exit
 
     - name: Configure IPv4 access-list SSM_192.168.205.103
-      ios_config:
-        lines:
+      ios_command:
+        commands:
           - ipv4 access-list SSM_192.168.205.103
           - 10 permit ipv4 host 239.10.9.0 any
           - 20 permit ipv4 host 239.10.9.1 any
@@ -449,8 +449,8 @@
           - exit
 
     - name: Configure IPv4 access-list SSM_192.168.205.202
-      ios_config:
-        lines:
+      ios_command:
+        commands:
           - ipv4 access-list SSM_192.168.205.202
           - 10 permit ipv4 host 239.1.9.100 any
           - 20 permit ipv4 host 239.1.9.1 any
@@ -505,8 +505,8 @@
           - exit
 
     - name: Configure IPv4 access-list SSM_192.168.205.207
-      ios_config:
-        lines:
+      ios_command:
+        commands:
           - ipv4 access-list SSM_192.168.205.207
           - 10 permit ipv4 host 239.10.9.0 any
           - 20 permit ipv4 host 239.10.9.1 any
@@ -561,8 +561,8 @@
           - exit
 
     - name: Configure IPv4 access-list SSM_192.168.206.110
-      ios_config:
-        lines:
+      ios_command:
+        commands:
           - ipv4 access-list SSM_192.168.206.110
           - 10 permit ipv4 host 239.1.3.2 any
           - 20 permit ipv4 host 239.1.3.11 any
@@ -614,8 +614,8 @@
           - exit
 
     - name: Configure IPv4 access-list SSM_192.168.206.159
-      ios_config:
-        lines:
+      ios_command:
+        commands:
           - ipv4 access-list SSM_192.168.206.159
           - 10 permit ipv4 host 239.10.0.2 any
           - 20 permit ipv4 host 239.10.0.3 any
@@ -631,8 +631,8 @@
           - exit
 
     - name: Configure IPv4 access-list SSM_192.168.206.208
-      ios_config:
-        lines:
+      ios_command:
+        commands:
           - ipv4 access-list SSM_192.168.206.208
           - 30 permit ipv4 host 239.10.0.39 any
           - 40 permit ipv4 host 239.10.0.38 any
@@ -673,8 +673,8 @@
           - exit
 
     - name: Configure IPv4 access-list SSM_192.168.206.209
-      ios_config:
-        lines:
+      ios_command:
+        commands:
           - ipv4 access-list SSM_192.168.206.209
           - 10 permit ipv4 host 239.10.0.49 any
           - 20 permit ipv4 host 239.10.0.69 any
@@ -715,8 +715,8 @@
           - exit
 
     - name: Configure IPv4 access-list SSM_192.168.206.210
-      ios_config:
-        lines:
+      ios_command:
+        commands:
           - ipv4 access-list SSM_192.168.206.210
           - 20 permit ipv4 host 239.10.2.38 any
           - 30 permit ipv4 host 239.10.2.37 any
@@ -764,8 +764,8 @@
           - exit
 
     - name: Configure IPv4 access-list SSM_192.168.206.211
-      ios_config:
-        lines:
+      ios_command:
+        commands:
           - ipv4 access-list SSM_192.168.206.211
           - 20 permit ipv4 host 239.10.1.22 any
           - 30 permit ipv4 host 239.10.1.23 any
@@ -804,8 +804,8 @@
           - exit
 
     - name: Configure IPv4 access-list SSM_192.168.206.212
-      ios_config:
-        lines:
+      ios_command:
+        commands:
           - ipv4 access-list SSM_192.168.206.212
           - 10 permit ipv4 host 239.1.3.7 any
           - 20 permit ipv4 host 239.1.3.69 any
@@ -824,8 +824,8 @@
           - exit
 
     - name: Configure IPv4 access-list SSM_192.168.206.213
-      ios_config:
-        lines:
+      ios_command:
+        commands:
           - ipv4 access-list SSM_192.168.206.213
           - 10 permit ipv4 host 239.1.3.93 any
           - 20 permit ipv4 host 239.1.3.92 any
@@ -851,8 +851,8 @@
           - exit
 
     - name: Configure IPv4 access-list SSM_192.168.206.214
-      ios_config:
-        lines:
+      ios_command:
+        commands:
           - ipv4 access-list SSM_192.168.206.214
           - 10 permit ipv4 host 239.1.3.70 any
           - 20 permit ipv4 host 239.1.3.78 any
@@ -878,8 +878,8 @@
           - exit
 
     - name: Configure IPv4 access-list SSM_192.168.206.215
-      ios_config:
-        lines:
+      ios_command:
+        commands:
           - ipv4 access-list SSM_192.168.206.215
           - 10 permit ipv4 host 239.1.3.79 any
           - 20 permit ipv4 host 239.1.3.39 any
@@ -902,8 +902,8 @@
           - exit
 
     - name: Configure IPv4 access-list SSM_192.168.206.216
-      ios_config:
-        lines:
+      ios_command:
+        commands:
           - ipv4 access-list SSM_192.168.206.216
           - 10 permit ipv4 host 239.110.3.38 any
           - 20 permit ipv4 host 239.110.3.39 any
@@ -927,8 +927,8 @@
           - exit
 
     - name: Configure IPv4 access-list SSM_192.168.206.217
-      ios_config:
-        lines:
+      ios_command:
+        commands:
           - ipv4 access-list SSM_192.168.206.217
           - 10 permit ipv4 host 239.1.3.0 any
           - 20 permit ipv4 host 239.1.3.1 any
@@ -941,8 +941,8 @@
           - exit
 
     - name: Configure IPv4 access-list SSM_192.168.207.202
-      ios_config:
-        lines:
+      ios_command:
+        commands:
           - ipv4 access-list SSM_192.168.207.202
           - 10 permit ipv4 host 239.1.9.100 any
           - 20 permit ipv4 host 239.1.9.1 any
@@ -997,8 +997,8 @@
           - exit
           
     - name: Configure IPv4 access-list SSM_192.168.208.110
-      ios_config:
-        lines:
+      ios_command:
+        commands:
           - ipv4 access-list SSM_192.168.208.110
           - 10 permit ipv4 host 239.1.3.2 any
           - 20 permit ipv4 host 239.1.3.11 any
@@ -1050,8 +1050,8 @@
           - exit
 
     - name: Configure IPv4 access-list SSM_192.168.208.208
-      ios_config:
-        lines:
+      ios_command:
+        commands:
           - ipv4 access-list SSM_192.168.208.208
           - 10 permit ipv4 host 239.10.0.36 any
           - 20 permit ipv4 host 239.10.0.39 any
@@ -1092,8 +1092,8 @@
           - exit
 
     - name: Configure IPv4 access-list SSM_192.168.208.209
-      ios_config:
-        lines:
+      ios_command:
+        commands:
           - ipv4 access-list SSM_192.168.208.209
           - 10 permit ipv4 host 239.10.0.49 any
           - 20 permit ipv4 host 239.10.0.69 any
@@ -1131,8 +1131,8 @@
           - exit
 
     - name: Configure IPv4 access-list SSM_192.168.208.210
-      ios_config:
-        lines:
+      ios_command:
+        commands:
           - ipv4 access-list SSM_192.168.208.210
           - 20 permit ipv4 host 239.10.2.38 any
           - 30 permit ipv4 host 239.10.2.37 any
@@ -1177,8 +1177,8 @@
           - exit
 
     - name: Configure IPv4 access-list SSM_192.168.208.211
-      ios_config:
-        lines:
+      ios_command:
+        commands:
           - ipv4 access-list SSM_192.168.208.211
           - 20 permit ipv4 host 239.10.1.22 any
           - 30 permit ipv4 host 239.10.1.23 any
@@ -1217,8 +1217,8 @@
           - exit
 
     - name: Configure IPv4 access-list SSM_192.168.208.212
-      ios_config:
-        lines:
+      ios_command:
+        commands:
           - ipv4 access-list SSM_192.168.208.212
           - 10 permit ipv4 host 239.1.3.7 any
           - 20 permit ipv4 host 239.1.3.69 any
@@ -1237,8 +1237,8 @@
           - exit
 
     - name: Configure IPv4 access-list SSM_192.168.208.213
-      ios_config:
-        lines:
+      ios_command:
+        commands:
           - ipv4 access-list SSM_192.168.208.213
           - 10 permit ipv4 host 239.1.3.93 any
           - 20 permit ipv4 host 239.1.3.92 any
@@ -1263,8 +1263,8 @@
           - exit
 
     - name: Configure IPv4 access-list SSM_192.168.208.214
-      ios_config:
-        lines:
+      ios_command:
+        commands:
           - ipv4 access-list SSM_192.168.208.214
           - 10 permit ipv4 host 239.1.3.70 any
           - 20 permit ipv4 host 239.1.3.78 any
@@ -1290,8 +1290,8 @@
           - exit
 
     - name: Configure IPv4 access-list SSM_192.168.208.215
-      ios_config:
-        lines:
+      ios_command:
+        commands:
           - ipv4 access-list SSM_192.168.208.215
           - 10 permit ipv4 host 239.1.3.79 any
           - 20 permit ipv4 host 239.1.3.39 any
@@ -1314,8 +1314,8 @@
           - exit
 
     - name: Configure IPv4 access-list SSM_192.168.208.216
-      ios_config:
-        lines:
+      ios_command:
+        commands:
           - ipv4 access-list SSM_192.168.208.216
           - 10 permit ipv4 host 239.110.3.38 any
           - 20 permit ipv4 host 239.110.3.39 any
@@ -1336,8 +1336,8 @@
           - exit
 
     - name: Configure IPv4 access-list SSM_192.168.208.217
-      ios_config:
-        lines:
+      ios_command:
+        commands:
           - ipv4 access-list SSM_192.168.208.217
           - 10 permit ipv4 host 239.1.3.0 any
           - 20 permit ipv4 host 239.1.3.1 any

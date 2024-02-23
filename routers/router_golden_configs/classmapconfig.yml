@@ -6,8 +6,8 @@
 
   tasks:
     - name: Configure class map for Network Management Traffic
-      ios_config:
-        lines:
+      ios_command:
+        commands:
           - class-map match-any cmap-mgmt-dscp
           - description "Network Mangement Traffic Class"
           - match dscp cs7
@@ -16,8 +16,8 @@
           - exit
 
     - name: Configure class map for Video Traffic
-      ios_config:
-        lines:
+      ios_command:
+        commands:
           - class-map match-any cmap-video-dscp
           - description Video Traffic Class
           - match dscp af41 cs4
@@ -25,16 +25,16 @@
           - exit
 
     - name: Configure class map for Voice Traffic
-      ios_config:
-        lines:
+      ios_command:
+        commands:
           - class-map match-any cmap-voice-dscp
           - match dscp ef cs5
           - end-class-map
           - exit
 
     - name: Configure class map for Control Traffic
-      ios_config:
-        lines:
+      ios_command:
+        commands:
           - class-map match-any cmap-control-dscp
           - description Control Traffic Class
           - match dscp cs6
@@ -43,8 +43,8 @@
           - exit
 
     - name: Configure class map for VoIP Real-Time Traffic
-      ios_config:
-        lines:
+      ios_command:
+        commands:
           - class-map match-any cmap-voip-rt-dscp
           - description VoIP Traffic Class
           - match dscp ef

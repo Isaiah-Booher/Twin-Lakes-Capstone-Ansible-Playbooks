@@ -6,13 +6,13 @@
 
   tasks:
     - name: Configure SSH server for version 2
-      ios_config:
-        lines:
+      ios_command:
+        commands:
           - ssh server v2
           - exit
 
     - name: Configure SSH server using VRF netmgt
-      ios_config:
-        lines:
+      ios_command:
+        commands:
           - ssh server vrf netmgt
           - exit

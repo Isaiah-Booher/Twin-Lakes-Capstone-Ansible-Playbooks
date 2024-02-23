@@ -6,23 +6,23 @@
 
   tasks:
     - name: Configure hostname
-      ios_config:
-        lines:
+      ios_command:
+        commands:
           - hostname ASR-BYTW-10
 
     - name: Configure AAA
-      ios_config:
-        lines:
+      ios_command:
+        commands:
           - aaa default-taskgroup root-lr
 
     - name: Configure clock timezone
-      ios_config:
-        lines:
+      ios_command:
+        commands:
           - clock timezone CST America/Chicago
 
     - name: Configure logging
-      ios_config:
-        lines:
+      ios_command:
+        commands:
           - logging trap informational
           - logging console disable
           - logging monitor disable
@@ -33,14 +33,14 @@
           - logging source-interface Loopback1 vrf netmgt
 
     - name: Configure service timestamps
-      ios_config:
-        lines:
+      ios_command:
+        commands:
           - service timestamps log datetime localtime msec show-timezone
           - service timestamps debug datetime localtime msec show-timezone
 
     - name: Configure domain and name servers
-      ios_config:
-        lines:
+      ios_command:
+        commands:
           - domain vrf netmgt name-server 192.168.150.2
           - domain vrf netmgt name-server 192.168.150.3
           - domain name TWLAKES.LOCAL

@@ -6,8 +6,8 @@
 
   tasks:
     - name: Configure interface Bundle-Ether400
-      ios_config:
-        lines:
+      ios_command:
+        commands:
           - interface Bundle-Ether400
           - description "Downlink to AGSW Cluster"
           - mtu 9216

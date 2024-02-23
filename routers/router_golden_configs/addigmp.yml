@@ -6,8 +6,8 @@
 
   tasks:
     - name: Configure IGMP on Bundle-Ether400 sub-interfaces
-      ios_config:
-        lines:
+      ios_command:
+        commands:
           - router igmp
           - interface Bundle-Ether400.400
           - exit
