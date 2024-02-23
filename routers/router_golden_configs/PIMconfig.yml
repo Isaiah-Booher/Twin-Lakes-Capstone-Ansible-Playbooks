@@ -2,12 +2,13 @@
 - name: Update Cisco Router Configuration
   hosts: routers
   gather_facts: no
-  become: yes
+  become: no
 
   tasks:
     - name: Configure PIM for IPv4
       ios_command:
         commands:
+          - conf t
           - router pim
           - address-family ipv4
           - interface Bundle-Ether402
