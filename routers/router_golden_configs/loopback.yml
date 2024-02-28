@@ -23,6 +23,7 @@
           - vrf netmgt
           - ipv4 address 10.0.1.10 255.255.255.255
           - exit
+          - exit
 
     - name: Configure Loopback3 interface
       ios_command:
