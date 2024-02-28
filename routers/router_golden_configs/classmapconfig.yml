@@ -1,8 +1,63 @@
+# ---
+# - name: Update Cisco Router Configuration
+#   hosts: routers
+#   gather_facts: no
+#   become: no
+
+#   tasks:
+#     - name: Configure class map for Network Management Traffic
+#       ios_command:
+#         commands:
+#           - conf t
+#           - class-map match-any cmap-mgmt-dscp
+#           - description "Network Mangement Traffic Class"
+#           - match dscp cs7
+#           - match mpls experimental topmost 7
+#           - end-class-map
+#           - exit
+
+#     - name: Configure class map for Video Traffic
+#       ios_command:
+#         commands:
+#           - class-map match-any cmap-video-dscp
+#           - description Video Traffic Class
+#           - match dscp af41 cs4
+#           - end-class-map
+#           - exit
+
+#     - name: Configure class map for Voice Traffic
+#       ios_command:
+#         commands:
+#           - class-map match-any cmap-voice-dscp
+#           - match dscp ef cs5
+#           - end-class-map
+#           - exit
+
+#     - name: Configure class map for Control Traffic
+#       ios_command:
+#         commands:
+#           - class-map match-any cmap-control-dscp
+#           - description Control Traffic Class
+#           - match dscp cs6
+#           - match mpls experimental topmost 6
+#           - end-class-map
+#           - exit
+
+#     - name: Configure class map for VoIP Real-Time Traffic
+#       ios_command:
+#         commands:
+#           - class-map match-any cmap-voip-rt-dscp
+#           - description VoIP Traffic Class
+#           - match dscp ef
+#           - match mpls experimental topmost 5
+#           - end-class-map
+#           - exit
+#           - commit best-effort
 ---
 - name: Update Cisco Router Configuration
   hosts: routers
   gather_facts: no
-  become: no
+  become: yes
 
   tasks:
     - name: Configure class map for Network Management Traffic
@@ -13,26 +68,23 @@
           - description "Network Mangement Traffic Class"
           - match dscp cs7
           - match mpls experimental topmost 7
-          - end-class-map
-          - exit
-
+          - end
+          
     - name: Configure class map for Video Traffic
       ios_command:
         commands:
           - class-map match-any cmap-video-dscp
           - description Video Traffic Class
           - match dscp af41 cs4
-          - end-class-map
-          - exit
-
+          - end
+          
     - name: Configure class map for Voice Traffic
       ios_command:
         commands:
           - class-map match-any cmap-voice-dscp
           - match dscp ef cs5
-          - end-class-map
-          - exit
-
+          - end
+          
     - name: Configure class map for Control Traffic
       ios_command:
         commands:
@@ -40,9 +92,8 @@
           - description Control Traffic Class
           - match dscp cs6
           - match mpls experimental topmost 6
-          - end-class-map
-          - exit
-
+          - end
+          
     - name: Configure class map for VoIP Real-Time Traffic
       ios_command:
         commands:
@@ -50,6 +101,5 @@
           - description VoIP Traffic Class
           - match dscp ef
           - match mpls experimental topmost 5
-          - end-class-map
-          - exit
-          - commit best-effort
+          - end
+
