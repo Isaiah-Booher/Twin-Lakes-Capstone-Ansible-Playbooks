@@ -13,10 +13,12 @@
           - description MPLS/HSD/RID
           - ipv4 address 10.0.0.10 255.255.255.255
           - exit
+          - exit
 
     - name: Configure Loopback1 interface
       ios_command:
         commands:
+          - conf t
           - interface Loopback1
           - description Management
           - vrf netmgt
@@ -27,8 +29,10 @@
     - name: Configure Loopback3 interface
       ios_command:
         commands:
+          - conf t
           - interface Loopback3
           - description Voice RID
           - vrf voice
           - ipv4 address 10.0.3.10 255.255.255.255
+          - exit
           - exit
