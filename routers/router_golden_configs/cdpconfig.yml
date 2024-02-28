@@ -9,4 +9,4 @@
       ios_command:
         commands:
           - conf t
-          - "cdp run"
+          - cdp run
