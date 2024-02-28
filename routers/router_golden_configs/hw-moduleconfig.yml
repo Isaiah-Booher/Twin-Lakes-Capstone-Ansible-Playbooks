@@ -9,9 +9,10 @@
       ios_command:
         commands:
           - conf t
-          - hw-module profile itcam to-profile-se1 location 0/0/CPU0
+          - hardware profile itcam to-profile-se1 location 0/0/CPU0
+          - end
 
     - name: Configure hw-module profile for location 0/1/CPU0
       ios_command:
         commands:
-          - hw-module profile itcam to-profile-se1 location 0/1/CPU0
+          - hardware profile itcam to-profile-se1 location 0/1/CPU0
