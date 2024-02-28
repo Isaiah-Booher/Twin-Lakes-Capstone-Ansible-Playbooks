@@ -44,6 +44,7 @@
     - name: Configure Loopback interfaces
       ios_config:
         lines:
+          - conf t
           - interface Loopback0
           - description MPLS/HSD/RID
           - ipv4 address 10.0.0.10 255.255.255.255
