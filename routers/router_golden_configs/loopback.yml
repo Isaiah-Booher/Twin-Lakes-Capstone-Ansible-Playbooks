@@ -1,3 +1,39 @@
+# ---
+# - name: Update Cisco Router Configuration
+# hosts: routers
+# gather_facts: no
+# become: no
+
+# tasks:
+# - name: Configure Loopback0 interface
+# ios_command:
+#   commands:
+#     - conf t
+#     - interface Loopback0
+#     - description MPLS/HSD/RID
+#     - ipv4 address 10.0.0.10 255.255.255.255
+#     - exit
+
+# - name: Configure Loopback1 interface
+# ios_command:
+#   commands:
+#     - conf t
+#     - interface Loopback1
+#     - description Management
+#     - vrf netmgt
+#     - ipv4 address 10.0.1.10 255.255.255.255
+#     - exit
+
+# - name: Configure Loopback3 interface
+# ios_command:
+#   commands:
+#     - conf t
+#     - interface Loopback3
+#     - description Voice RID
+#     - vrf voice
+#     - ipv4 address 10.0.3.10 255.255.255.255
+#     - exit
+
 ---
 - name: Update Cisco Router Configuration
   hosts: routers
@@ -5,34 +41,21 @@
   become: no
 
   tasks:
-    - name: Configure Loopback0 interface
-      ios_command:
-        commands:
-          - conf t
+    - name: Configure Loopback interfaces
+      ios_config:
+        lines:
           - interface Loopback0
           - description MPLS/HSD/RID
           - ipv4 address 10.0.0.10 255.255.255.255
           - exit
-          - exit
-
-    - name: Configure Loopback1 interface
-      ios_command:
-        commands:
-          - conf t
           - interface Loopback1
           - description Management
           - vrf netmgt
           - ipv4 address 10.0.1.10 255.255.255.255
           - exit
-          - exit
-
-    - name: Configure Loopback3 interface
-      ios_command:
-        commands:
-          - conf t
           - interface Loopback3
           - description Voice RID
           - vrf voice
           - ipv4 address 10.0.3.10 255.255.255.255
           - exit
-          - exit
+      timeout: 60
