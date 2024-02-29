@@ -1,9 +1,53 @@
+# ---
+# - name: Update Cisco Router Configuration
+#   hosts: routers
+#   gather_facts: no
+#   become: no
+
+#   tasks:
+#     - name: Configure policy map for Access Out
+#       ios_command:
+#         commands:
+#           - conf t
+#           - policy-map pmap-access-out
+#           - class cmap-voice-dscp
+#           - bandwidth percent 10
+#           - exit
+#           - class cmap-video-dscp
+#           - bandwidth 300 mbps
+#           - exit
+#           - class class-default
+#           - exit
+#           - end-policy-map
+#           - exit
+
+#     - name: Configure policy map for Core Egress
+#       ios_command:
+#         commands:
+#           - policy-map pmap-core-egress
+#           - class cmap-voip-rt-dscp
+#           - police rate 5 gbps
+#           - priority level 1
+#           - exit
+#           - class cmap-video-dscp
+#           - bandwidth percent 30
+#           - exit
+#           - class cmap-mgmt-dscp
+#           - bandwidth percent 5
+#           - exit
+#           - class cmap-control-dscp
+#           - bandwidth percent 5
+#           - exit
+#           - class class-default
+#           - exit
+#           - end-policy-map
 ---
 - name: Update Cisco Router Configuration
   hosts: routers
   gather_facts: no
-  become: no
-
+  become: yes
+  connection: network_cli
+  
   tasks:
     - name: Configure policy map for Access Out
       ios_command:
@@ -18,12 +62,12 @@
           - exit
           - class class-default
           - exit
-          - end-policy-map
           - exit
 
     - name: Configure policy map for Core Egress
       ios_command:
         commands:
+          - conf t
           - policy-map pmap-core-egress
           - class cmap-voip-rt-dscp
           - police rate 5 gbps
@@ -40,5 +84,6 @@
           - exit
           - class class-default
           - exit
-          - end-policy-map
+          - exit
+
           
