@@ -8,6 +8,5 @@
   tasks:
     - name: Enable CDP
       ios_command:
-        commands:
-          - conf t
-          - cdp run
+        commands: conf t && cdp run
+
