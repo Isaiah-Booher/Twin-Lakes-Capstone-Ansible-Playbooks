@@ -70,7 +70,7 @@
   hosts: routers
   gather_facts: no
   become: yes
-  become_method: en  # Specify privilege escalation method
+  become_method: enable  # Specify privilege escalation method
   tasks:
     - name: Configure VRF for Voice
       ios_command:
