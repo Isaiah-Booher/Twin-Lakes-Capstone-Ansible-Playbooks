@@ -3,6 +3,7 @@
   hosts: routers
   gather_facts: no
   become: no
+  connection: network_cli
 
   tasks:
     - name: Configure SSH server for version 2
