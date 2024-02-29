@@ -1,0 +1,23 @@
+---
+- name: Configure VRF for INTERNET
+  hosts: routers
+
+  tasks:
+    - name: Configure VRF for INTERNET
+      ios_config:
+        lines:
+          - vrf definition INTERNET
+          - rd 65001:3
+          - address-family ipv4 unicast
+          - label mode per-vrf
+          - redistribute connected
+          - redistribute static
+          - exit
+          - address-family ipv6 unicast
+          - label mode per-vrf
+          - redistribute connected
+          - redistribute static
+          - exit
+          - exit
+          - exit
+          - commit best-effort

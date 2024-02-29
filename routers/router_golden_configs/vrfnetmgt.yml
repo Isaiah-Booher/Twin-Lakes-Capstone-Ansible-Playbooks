@@ -1,0 +1,17 @@
+---
+- name: Configure VRF for netmgt
+  hosts: routers
+
+  tasks:
+    - name: Configure VRF for netmgt
+      ios_config:
+        lines:
+          - vrf definition netmgt
+          - rd 65001:2
+          - address-family ipv4 unicast
+          - label mode per-vrf
+          - redistribute connected
+          - exit
+          - exit
+          - exit
+          - commit best-effort
