@@ -1,7 +1,6 @@
 ---
 - name: Update Cisco Router Configuration
   hosts: routers
-  gather_facts: no
   become: no
 
   tasks:
