@@ -24,34 +24,35 @@
     #       - vrf voice
     #       - ipv4 address 10.0.3.10 255.255.255.255
     #       - exit
-    # Configure Loopback0 Interface
       - name: Configure Loopback0 Interface
         ios_command:
           commands:
-            - conf t
+            - configure terminal
             - interface Loopback0
             - description MPLS/HSD/RID
-            - ipv4 address 10.0.0.10 255.255.255.255
+            - ip address 10.0.0.10 255.255.255.255
             - exit
-      
-      # Configure Loopback1 Interface
+          authorize: yes
+
       - name: Configure Loopback1 Interface
         ios_command:
           commands:
-            - conf t
+            - configure terminal
             - interface Loopback1
             - description Management
-            - vrf netmgt
-            - ipv4 address 10.0.1.10 255.255.255.255
+            - vrf forwarding netmgt
+            - ip address 10.0.1.10 255.255.255.255
             - exit
-      
-      # Configure Loopback3 Interface
+          authorize: yes
+
       - name: Configure Loopback3 Interface
         ios_command:
           commands:
-            - conf t
+            - configure terminal
             - interface Loopback3
             - description Voice RID
-            - vrf voice
-            - ipv4 address 10.0.3.10 255.255.255.255
+            - vrf forwarding voice
+            - ip address 10.0.3.10 255.255.255.255
             - exit
+          authorize: yes
+
