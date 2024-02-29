@@ -3,7 +3,7 @@
   hosts: routers
   gather_facts: no
 
-#   tasks:
+  tasks:
 #     - name: Configure VRF for Voice
 #       ios_command:
 #         commands:
@@ -64,48 +64,47 @@
 #         commands:
 #           - vty-pool default 0 20 line-template login
 #           - commit best-effort
-    tasks:
-      - name: Configure VRF for voice
-        ios_command:
-          commands:
-            - vrf definition voice
-            - rd 65001:1
-            - address-family ipv4 unicast
-            - label mode per-vrf
-            - redistribute connected
-            - exit
-            - exit
-            - exit
-            - commit best-effort
+    - name: Configure VRF for voice
+      ios_command:
+        commands:
+          - vrf definition voice
+          - rd 65001:1
+          - address-family ipv4 unicast
+          - label mode per-vrf
+          - redistribute connected
+          - exit
+          - exit
+          - exit
+          - commit best-effort
 
-      - name: Configure VRF for netmgt
-        ios_command:
-          commands:
-            - vrf definition netmgt
-            - rd 65001:2
-            - address-family ipv4 unicast
-            - label mode per-vrf
-            - redistribute connected
-            - exit
-            - exit
-            - exit
-            - commit best-effort
+    - name: Configure VRF for netmgt
+      ios_command:
+        commands:
+          - vrf definition netmgt
+          - rd 65001:2
+          - address-family ipv4 unicast
+          - label mode per-vrf
+          - redistribute connected
+          - exit
+          - exit
+          - exit
+          - commit best-effort
 
-      - name: Configure VRF for INTERNET
-        ios_command:
-          commands:
-            - vrf definition INTERNET
-            - rd 65001:3
-            - address-family ipv4 unicast
-            - label mode per-vrf
-            - redistribute connected
-            - redistribute static
-            - exit
-            - address-family ipv6 unicast
-            - label mode per-vrf
-            - redistribute connected
-            - redistribute static
-            - exit
-            - exit
-            - exit
-            - commit best-effort
+    - name: Configure VRF for INTERNET
+      ios_command:
+        commands:
+          - vrf definition INTERNET
+          - rd 65001:3
+          - address-family ipv4 unicast
+          - label mode per-vrf
+          - redistribute connected
+          - redistribute static
+          - exit
+          - address-family ipv6 unicast
+          - label mode per-vrf
+          - redistribute connected
+          - redistribute static
+          - exit
+          - exit
+          - exit
+          - commit best-effort
