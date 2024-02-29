@@ -3,6 +3,7 @@
   hosts: routers
   gather_facts: no
   become: no
+  connection: network_cli
   
   tasks:
     - name: Enable CDP
@@ -10,5 +11,3 @@
         commands:
           - conf t
           - cdp run
-      connection: network_cli
-      transport: cli
