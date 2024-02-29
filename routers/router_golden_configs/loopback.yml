@@ -32,7 +32,6 @@
     #       - vrf voice
     #       - ipv4 address 10.0.3.10 255.255.255.255
     #       - exit
-  tasks:
     - name: Configure Loopback Interfaces
       ios_config:
         lines:
