@@ -70,16 +70,17 @@
   hosts: routers
   gather_facts: no
   become: yes
+  become_method: en  # Specify privilege escalation method
   tasks:
     - name: Configure VRF for Voice
       ios_command:
         commands:
-          - en
           - ip vrf voice
           - rd 65001:1
           - address-family ipv4
           - exit-address-family
       register: vrf_voice
+
 
 
     # - name: Configure VRF for Netmgt
