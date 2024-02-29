@@ -70,34 +70,31 @@
 - name: Update Cisco Router Configuration
   hosts: routers
   gather_facts: no
-  become: no
+  become: yes
   tasks:
     - name: Configure VRF for voice
       ios_command:
         commands:
-          - vrf definition voice
-          - address-family ipv4 unicast
-          - import route-target 65001:1
-          - export route-target 65001:1
-          - exit
+          - ip vrf voice
+          - rd 65001:1
+          - route-target export 65001:1
+          - route-target import 65001:1
 
     - name: Configure VRF for netmgt
       ios_command:
         commands:
-          - vrf definition netmgt
-          - address-family ipv4 unicast
-          - import route-target 65001:2
-          - export route-target 65001:2
-          - exit
+          - ip vrf netmgt
+          - rd 65001:2
+          - route-target export 65001:2
+          - route-target import 65001:2
 
     - name: Configure VRF for INTERNET
       ios_command:
         commands:
-          - vrf definition INTERNET
-          - address-family ipv4 unicast
-          - import route-target 65001:3
-          - export route-target 65001:3
-          - exit
+          - ip vrf INTERNET
+          - rd 65001:3
+          - route-target export 65001:3
+          - route-target import 65001:3
 
     - name: Configure line template login
       ios_command:
@@ -106,6 +103,14 @@
           - exec-timeout 15 0
           - length 50
           - session-timeout 15
+          - transport input ssh
+          - transport output ssh
+
+    - name: Configure VTY pool
+      ios_command:
+        commands:
+          - vty-pool default 0 20 line-template login
+
           - transport input ssh
           - transport output ssh
 
