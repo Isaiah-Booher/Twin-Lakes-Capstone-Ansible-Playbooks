@@ -31,9 +31,10 @@
         commands:
           - conf t
           - ssh server v2
-          
+
     - name: Configure SSH server using VRF netmgt
       ios_command:
         commands:
           - conf t
           - ssh server vrf netmgt
+          - exit
