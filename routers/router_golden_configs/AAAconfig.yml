@@ -17,3 +17,4 @@
           - exit
           - aaa authentication login default group twlakes local
           - commit
+      check_mode: yes
