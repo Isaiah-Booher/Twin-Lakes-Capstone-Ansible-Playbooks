@@ -43,7 +43,7 @@
 - name: Update Cisco Router Configuration
   hosts: routers
   gather_facts: no
-  become: no
+  become: yes
   connection: network_cli
 
   tasks:
@@ -60,7 +60,6 @@
           - class class-default
           - exit
         parents: ['']
-      become: yes
 
     - name: Configure policy map for Core Egress
       cisco.ios.ios_config:
@@ -82,5 +81,4 @@
           - class class-default
           - exit
         parents: ['']
-      become: yes
 
