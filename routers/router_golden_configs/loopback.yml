@@ -6,7 +6,7 @@
   tasks:
     - name: Configure Loopback0 Interface
       ios_command:
-      commands:
+        commands:
         - conf t
         - interface Loopback0
         - description MPLS/HSD/RID
@@ -15,7 +15,7 @@
 
     - name: Configure Loopback1 Interface
       ios_command:
-      commands:
+        commands:
         - conf t
         - interface Loopback1
         - description Management
@@ -24,14 +24,14 @@
         - exit
 
     - name: Configure Loopback3 Interface
-        ios_command:
+      ios_command:
         commands:
-          - conf t
-          - interface Loopback3
-          - description Voice RID
-          - vrf voice
-          - ipv4 address 10.0.3.10 255.255.255.255
-          - exit
+        - conf t
+        - interface Loopback3
+        - description Voice RID
+        - vrf voice
+        - ipv4 address 10.0.3.10 255.255.255.255
+        - exit
 # ---
 # - name: Update Cisco Router Configuration
 #   hosts: routers
