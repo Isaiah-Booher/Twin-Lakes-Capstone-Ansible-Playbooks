@@ -69,6 +69,7 @@
 - name: Update Cisco Router Configuration
   hosts: routers
   gather_facts: no
+  become: yes
   tasks:
     - name: Configure VRF for Voice
       ios_command:
