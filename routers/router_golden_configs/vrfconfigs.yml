@@ -8,7 +8,6 @@
     - name: Configure VRF for Voice
       ios_command:
         commands:
-          - conf t
           - vrf definition voice
           - address-family ipv4 unicast
           - import route-target
