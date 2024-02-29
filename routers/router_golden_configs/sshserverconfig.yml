@@ -1,20 +1,39 @@
+# ---
+# - name: Update Cisco Router Configuration
+#   hosts: routers
+#   gather_facts: no
+#   become: no
+#   connection: network_cli
+
+#   tasks:
+#     - name: Configure SSH server for version 2
+#       ios_command:
+#         commands:
+#           - conf t
+#           - ssh server v2
+#           - exit
+
+#     - name: Configure SSH server using VRF netmgt
+#       ios_command:
+#         commands:
+#           - ssh server vrf netmgt
+#           - exit
 ---
 - name: Update Cisco Router Configuration
   hosts: routers
   gather_facts: no
-  become: no
+  become: no  # Enable privilege escalation if necessary
   connection: network_cli
 
   tasks:
     - name: Configure SSH server for version 2
       ios_command:
         commands:
-          - conf t
           - ssh server v2
-          - exit
+        parents: 'conf t'  # Enter global configuration mode
 
     - name: Configure SSH server using VRF netmgt
       ios_command:
-        commands:
+        commandss:
           - ssh server vrf netmgt
-          - exit
+        parents: 'conf t'  # Enter global configuration mode
