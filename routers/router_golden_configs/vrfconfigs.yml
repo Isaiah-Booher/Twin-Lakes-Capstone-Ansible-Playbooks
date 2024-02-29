@@ -1,3 +1,26 @@
+# ---
+# - name: Update Cisco Router Configuration
+#   hosts: routers
+#   gather_facts: no
+#   become: no
+
+#   tasks:
+#     - name: Configure VRF for voice
+#       ios_config:
+#         lines:
+#           - vrf definition voice
+#           - address-family ipv4 unicast
+#           - import route-target
+#           - 65001:1
+#           - exit
+#           - export route-target
+#           - 65001:1
+#           - exit
+#           - exit
+#           - exit
+#           - commit best-effort
+#       become: yes
+
 ---
 - name: Update Cisco Router Configuration
   hosts: routers
@@ -10,16 +33,10 @@
         lines:
           - vrf definition voice
           - address-family ipv4 unicast
-          - import route-target
-          - 65001:1
+          - import route-target 65001:1
           - exit
-          - export route-target
-          - 65001:1
-          - exit
-          - exit
-          - exit
-          - commit best-effort
-      become: yes
+          - export route-target 65001:1
+
 
 #     - name: Configure VRF for netmgt
 #       ios_command:
