@@ -38,3 +38,4 @@
           - conf t
           - ssh server vrf netmgt
           - exit
+          - exit 
