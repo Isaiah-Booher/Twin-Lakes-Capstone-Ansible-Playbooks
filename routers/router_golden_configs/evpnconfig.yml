@@ -1,32 +1,48 @@
----
-- name: Update Cisco Router Configuration
-  hosts: routers
-  become: no
+# ---
+# - name: Update Cisco Router Configuration
+#   hosts: routers
+#   become: no
 
-  tasks:
-    - name: Configure EVPN for EVI 11001
-      ios_command:
-        commands:
-          - conf t
-          - evpn
-          - evi 11001
-          - bgp
-          - route-target import 1111:11001
-          - route-target export 1111:11001
-          - exit
-          - control-word-disable
-          - advertise-mac
-          - exit
-          - unknown-unicast-suppression
-          - exit
+#   tasks:
+#     - name: Configure EVPN for EVI 11001
+#       ios_command:
+#         commands:
+#           - conf t
+#           - evpn
+#           - evi 11001
+#           - bgp
+#           - route-target import 1111:11001
+#           - route-target export 1111:11001
+#           - exit
+#           - control-word-disable
+#           - advertise-mac
+#           - exit
+#           - unknown-unicast-suppression
+#           - exit
 
-    - name: Configure EVPN for Bundle-Ether400 Interface
-      ios_command:
-        commands:
-          - interface Bundle-Ether400
-          - ethernet-segment
-          - identifier type 0 00.01.10.10.10.10.10.10.10
-          - bgp route-target 0001.1010.1010
-          - exit
-          - exit
+#     - name: Configure EVPN for Bundle-Ether400 Interface
+#       ios_command:
+#         commands:
+#           - interface Bundle-Ether400
+#           - ethernet-segment
+#           - identifier type 0 00.01.10.10.10.10.10.10.10
+#           - bgp route-target 0001.1010.1010
+#           - exit
+#           - exit
+evpn:
+  evi_11001:
+    bgp:
+      route-target:
+        import: "1111:11001"
+        export: "1111:11001"
+    control-word-disable: true
+    advertise-mac: true
+    unknown-unicast-suppression: true
+interface:
+  Bundle-Ether400:
+    ethernet-segment:
+      identifier:
+        type: 0
+        value: "00.01.10.10.10.10.10.10.10"
+      bgp_route-target: "0001.1010.1010"
 
