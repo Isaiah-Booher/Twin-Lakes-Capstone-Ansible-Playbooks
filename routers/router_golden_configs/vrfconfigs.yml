@@ -6,8 +6,9 @@
 
   tasks:
     - name: Configure VRF for Voice
-      ios_config:
-        lines:
+      ios_command:
+        commands:
+          - conf t
           - vrf definition voice
           - address-family ipv4 unicast
           - import route-target
@@ -19,7 +20,6 @@
           - exit
           - exit
           - commit best-effort
-      become: yes
 
     - name: Configure VRF for Netmgt
       ios_command:
