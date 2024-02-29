@@ -45,9 +45,9 @@
 - name: Update Cisco Router Configuration
   hosts: routers
   gather_facts: no
-  become: yes
+  become: no
   connection: network_cli
-  
+
   tasks:
     - name: Configure policy map for Access Out
       ios_command:
