@@ -43,7 +43,7 @@
 - name: Update Cisco Router Configuration
   hosts: routers
   gather_facts: no
-  become: yes
+  become: no
   connection: network_cli
 
   tasks:
