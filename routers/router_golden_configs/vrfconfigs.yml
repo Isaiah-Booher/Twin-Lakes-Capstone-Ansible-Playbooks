@@ -70,38 +70,39 @@
 - name: Update Cisco Router Configuration
   hosts: routers
   gather_facts: no
-  become: no
+  become: yes
   tasks:
     - name: Configure VRF for voice
       ios_config:
         lines:
+          - conf t
           - vrf definition voice
           - address-family ipv4 unicast
           - import route-target 65001:1
           - export route-target 65001:1
-        parents: "conf t"
 
     - name: Configure VRF for netmgt
       ios_config:
         lines:
+          - conf t
           - vrf definition netmgt
           - address-family ipv4 unicast
           - import route-target 65001:2
           - export route-target 65001:2
-        parents: "conf t"
 
     - name: Configure VRF for INTERNET
       ios_config:
         lines:
+          - conf t
           - vrf definition INTERNET
           - address-family ipv4 unicast
           - import route-target 65001:3
           - export route-target 65001:3
-        parents: "conf t"
 
     - name: Configure line template login
       ios_config:
         lines:
+          - conf t
           - line template login
           - exec-timeout 15 0
           - length 50
