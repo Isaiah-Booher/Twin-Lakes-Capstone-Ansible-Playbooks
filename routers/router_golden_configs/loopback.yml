@@ -2,6 +2,7 @@
 - name: Update Cisco Router Configuration
   hosts: routers
   gather_facts: no
+  become: no
 
   tasks:
     # - name: Configure Loopback0 Interface
@@ -33,8 +34,8 @@
     #       - ipv4 address 10.0.3.10 255.255.255.255
     #       - exit
     - name: Configure Loopback Interfaces
-      ios_config:
-        lines:
+      ios_command:
+        commands:
           - conf t
           - interface Loopback0
           - description MPLS/HSD/RID
