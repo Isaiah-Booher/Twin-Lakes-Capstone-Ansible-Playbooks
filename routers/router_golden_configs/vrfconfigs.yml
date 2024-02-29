@@ -69,11 +69,11 @@
 - name: Update Cisco Router Configuration
   hosts: routers
   gather_facts: no
-  become_method: enable  # Specify the privilege escalation method
   tasks:
     - name: Configure VRF for Voice
-      ios_config:
-        lines:
+      ios_command:
+        commands:
+          - en
           - ip vrf voice
           - rd 65001:1
           - address-family ipv4
