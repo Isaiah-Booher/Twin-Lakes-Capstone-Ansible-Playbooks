@@ -84,6 +84,7 @@
           - exit
           - class class-default
           - exit
-          - exit
+        wait_for: result.stdout.find("end") != -1
+
 
           
