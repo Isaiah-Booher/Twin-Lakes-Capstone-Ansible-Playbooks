@@ -6,12 +6,14 @@
 
   tasks:
     - name: Configure VRF for voice
-      ios_config:
-        lines:
+      ios_command:
+        commands:
+          - conf t
           - ip vrf voice
           - rd 65001:1
           - route-target export 65001:1
           - route-target import 65001:1
+          - end
 
 # ---
 # - name: Update Cisco Router Configuration
