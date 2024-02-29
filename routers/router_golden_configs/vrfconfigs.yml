@@ -110,10 +110,3 @@
       ios_config:
         lines:
           - vty-pool default 0 20 line-template login
-          - transport input ssh
-          - transport output ssh
-
-    - name: Configure VTY pool
-      ios_command:
-        commands:
-          - vty-pool default 0 20 line-template login
