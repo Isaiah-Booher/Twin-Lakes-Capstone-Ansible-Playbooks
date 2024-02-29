@@ -63,6 +63,7 @@
           - class class-default
           - exit
           - exit
+
     - name: Configure policy map for Core Egress
       ios_commands:
         commands:
@@ -82,6 +83,4 @@
           - exit
           - class class-default
           - exit
-      wait_for: result.stdout.find("end") != -1
-
           
