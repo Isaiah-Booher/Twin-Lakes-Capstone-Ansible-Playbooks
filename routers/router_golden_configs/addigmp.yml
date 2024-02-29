@@ -1,3 +1,81 @@
+# ---
+# - name: Update Cisco Router Configuration
+#   hosts: routers
+#   gather_facts: no
+#   become: no
+
+#   tasks:
+#     - name: Configure IGMP on Bundle-Ether400 sub-interfaces
+#       ios_command:
+#         commands:
+#           - conf t
+#           - router igmp
+#           - interface Bundle-Ether400.400
+#           - exit
+#           - interface Bundle-Ether400.401
+#           - exit
+#           - interface Bundle-Ether400.402
+#           - exit
+#           - interface Bundle-Ether400.403
+#           - exit
+#           - interface Bundle-Ether400.404
+#           - exit
+#           - interface Bundle-Ether400.405
+#           - exit
+#           - interface Bundle-Ether400.406
+#           - exit
+#           - interface Bundle-Ether400.409
+#           - exit
+#           - nsf lifetime 30
+#           - ssm map static 10.3.0.65 SSM_10.3.0.65
+#           - ssm map static 10.3.0.160 SSM_10.3.0.160
+#           - ssm map static 10.3.0.165 SSM_10.3.0.165
+#           - ssm map static 10.20.0.57 SSM_10.20.0.57
+#           - ssm map static 10.28.0.254 SSM_10.28.0.254
+#           - ssm map static 10.76.0.253 SSM_10.76.0.253
+#           - ssm map static 10.76.0.254 SSM_10.76.0.254
+#           - ssm map static 10.76.128.254 SSM_10.76.128.254
+#           - ssm map static 10.92.0.10 SSM_10.92.0.10
+#           - ssm map static 10.255.210.18 SSM_10.255.210.18
+#           - ssm map static 173.17.17.2 SSM_173.17.17.2
+#           - ssm map static 173.19.17.9 SSM_173.19.17.9
+#           - ssm map static 192.168.205.103 SSM_192.168.205.103
+#           - ssm map static 192.168.205.202 SSM_192.168.205.202
+#           - ssm map static 192.168.205.207 SSM_192.168.205.207
+#           - ssm map static 192.168.206.12 SSM_192.168.206.12
+#           - ssm map static 192.168.206.23 SSM_192.168.206.23
+#           - ssm map static 192.168.206.24 SSM_192.168.206.24
+#           - ssm map static 192.168.206.110 SSM_192.168.206.110
+#           - ssm map static 192.168.206.159 SSM_192.168.206.159
+#           - ssm map static 192.168.206.208 SSM_192.168.206.208
+#           - ssm map static 192.168.206.209 SSM_192.168.206.209
+#           - ssm map static 192.168.206.210 SSM_192.168.206.210
+#           - ssm map static 192.168.206.211 SSM_192.168.206.211
+#           - ssm map static 192.168.206.212 SSM_192.168.206.212
+#           - ssm map static 192.168.206.213 SSM_192.168.206.213
+#           - ssm map static 192.168.206.214 SSM_192.168.206.214
+#           - ssm map static 192.168.206.215 SSM_192.168.206.215
+#           - ssm map static 192.168.206.216 SSM_192.168.206.216
+#           - ssm map static 192.168.206.217 SSM_192.168.206.217
+#           - ssm map static 192.168.207.202 SSM_192.168.207.202
+#           - ssm map static 192.168.208.110 SSM_192.168.208.110
+#           - ssm map static 192.168.208.208 SSM_192.168.208.208
+#           - ssm map static 192.168.208.209 SSM_192.168.208.209
+#           - ssm map static 192.168.208.210 SSM_192.168.208.210
+#           - ssm map static 192.168.208.211 SSM_192.168.208.211
+#           - ssm map static 192.168.208.212 SSM_192.168.208.212
+#           - ssm map static 192.168.208.213 SSM_192.168.208.213
+#           - ssm map static 192.168.208.214 SSM_192.168.208.214
+#           - ssm map static 192.168.208.215 SSM_192.168.208.215
+#           - ssm map static 192.168.208.216 SSM_192.168.208.216
+#           - ssm map static 192.168.208.217 SSM_192.168.208.217
+#           - ssm map static 204.29.15.34 SSM_204.29.15.34
+#           - ssm map static 204.29.15.35 SSM_204.29.15.35
+#           - ssm map static 204.29.15.36 SSM_204.29.15.36
+#           - ssm map static 204.29.15.37 SSM_204.29.15.37
+#           - explicit-tracking
+#           - query-interval 30
+#           - exit
 ---
 - name: Update Cisco Router Configuration
   hosts: routers
@@ -76,3 +154,4 @@
           - explicit-tracking
           - query-interval 30
           - exit
+      check_mode: yes

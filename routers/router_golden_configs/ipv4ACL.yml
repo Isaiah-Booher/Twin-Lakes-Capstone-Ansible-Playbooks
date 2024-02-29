@@ -1,84 +1,85 @@
----
-- name: Update Cisco Router Configuration
-  hosts: routers
-  gather_facts: no
-  become: no
+# ORIGINAL FILE CONFIGURATION
+# ---
+# - name: Update Cisco Router Configuration
+#   hosts: routers
+#   gather_facts: no
+#   become: no
 
-  tasks:
-    - name: Configure IPv4 access-list SSM
-      ios_command:
-        commands:
-          - conf t
-          - ipv4 access-list SSM
-          - 10 permit ipv4 224.2.0.0 0.0.255.255 any
-          - 20 permit ipv4 225.50.0.0 0.0.255.255 any
-          - 30 permit ipv4 225.10.0.0 0.0.255.255 any
-          - 40 permit ipv4 226.100.0.0 0.0.255.255 any
-          - 50 permit ipv4 226.101.0.0 0.0.255.255 any
-          - 60 permit ipv4 238.1.0.0 0.0.255.255 any
-          - 70 permit ipv4 239.1.0.0 0.0.255.255 any
-          - 80 permit ipv4 239.2.0.0 0.0.255.255 any
-          - 90 permit ipv4 239.3.0.0 0.0.255.255 any
-          - 100 permit ipv4 239.10.0.0 0.0.255.255 any
-          - 110 permit ipv4 239.11.0.0 0.0.255.255 any
-          - 120 permit ipv4 239.14.0.0 0.0.255.255 any
-          - 130 permit ipv4 239.100.0.0 0.0.255.255 any
-          - 155 permit ipv4 239.80.0.0 0.0.255.255 any
-          - 160 permit ipv4 228.101.0.0 0.0.255.255 any
-          - 170 permit ipv4 239.110.0.0 0.0.255.255 any
-          - 180 permit ipv4 239.112.0.0 0.0.255.255 any
-          - 470 permit ipv4 host 239.10.2.17 any
-          - 480 permit ipv4 host 239.10.1.4 any
-          - exit
+#   tasks:
+#     - name: Configure IPv4 access-list SSM
+#       ios_command:
+#         commands:
+#           - conf t
+#           - ipv4 access-list SSM
+#           - 10 permit ipv4 224.2.0.0 0.0.255.255 any
+#           - 20 permit ipv4 225.50.0.0 0.0.255.255 any
+#           - 30 permit ipv4 225.10.0.0 0.0.255.255 any
+#           - 40 permit ipv4 226.100.0.0 0.0.255.255 any
+#           - 50 permit ipv4 226.101.0.0 0.0.255.255 any
+#           - 60 permit ipv4 238.1.0.0 0.0.255.255 any
+#           - 70 permit ipv4 239.1.0.0 0.0.255.255 any
+#           - 80 permit ipv4 239.2.0.0 0.0.255.255 any
+#           - 90 permit ipv4 239.3.0.0 0.0.255.255 any
+#           - 100 permit ipv4 239.10.0.0 0.0.255.255 any
+#           - 110 permit ipv4 239.11.0.0 0.0.255.255 any
+#           - 120 permit ipv4 239.14.0.0 0.0.255.255 any
+#           - 130 permit ipv4 239.100.0.0 0.0.255.255 any
+#           - 155 permit ipv4 239.80.0.0 0.0.255.255 any
+#           - 160 permit ipv4 228.101.0.0 0.0.255.255 any
+#           - 170 permit ipv4 239.110.0.0 0.0.255.255 any
+#           - 180 permit ipv4 239.112.0.0 0.0.255.255 any
+#           - 470 permit ipv4 host 239.10.2.17 any
+#           - 480 permit ipv4 host 239.10.1.4 any
+#           - exit
 
-    - name: Configure IPv4 access-list ssh
-      ios_command:
-        commands:
-          - ipv4 access-list ssh
-          - 5 permit ipv4 192.168.34.0/24 any
-          - 10 permit ipv4 host 10.2.0.10 any
-          - 11 permit ipv4 host 10.2.0.25 any
-          - 20 permit ipv4 10.1.0.0/22 any
-          - 25 permit ipv4 host 10.2.0.9 any
-          - 30 permit ipv4 192.168.35.0/24 any
-          - 40 permit ipv4 192.168.36.0/24 any
-          - 50 permit ipv4 192.168.37.0/24 any
-          - 60 permit ipv4 192.168.38.0/24 any
-          - 70 permit ipv4 192.168.39.0/24 any
-          - 80 permit ipv4 192.168.40.0/24 any
-          - 90 permit ipv4 192.168.41.0/24 any
-          - 100 permit ipv4 192.168.42.0/24 any
-          - 105 permit ipv4 192.168.24.0/23 any
-          - 110 permit ipv4 192.168.43.0/24 any
-          - 120 permit ipv4 192.168.44.0/24 any
-          - 130 permit ipv4 192.168.45.0/24 any
-          - 140 permit ipv4 192.168.46.0/24 any
-          - 150 permit ipv4 192.168.47.0/24 any
-          - 160 permit ipv4 192.168.48.0/24 any
-          - 170 permit ipv4 192.168.135.0/24 any
-          - 180 permit ipv4 192.168.137.0/24 any
-          - 190 permit ipv4 192.168.138.0/24 any
-          - 200 permit ipv4 192.168.139.0/24 any
-          - 210 permit ipv4 192.168.143.0/24 any
-          - 220 permit ipv4 192.168.144.0/24 any
-          - 230 permit ipv4 192.168.145.0/24 any
-          - 240 permit ipv4 192.168.34.0/24 any
-          - 250 permit ipv4 192.168.25.0/24 any
-          - 260 permit ipv4 192.168.26.0/24 any
-          - 270 permit ipv4 192.168.27.0/24 any
-          - 280 permit ipv4 192.168.28.0/24 any
-          - 290 permit ipv4 192.168.49.0/24 any
-          - 300 permit ipv4 192.168.150.0/24 any
-          - 310 permit ipv4 10.1.254.0/24 any
-          - 320 deny ipv4 any any log
-          - exit
+#     - name: Configure IPv4 access-list ssh
+#       ios_command:
+#         commands:
+#           - ipv4 access-list ssh
+#           - 5 permit ipv4 192.168.34.0/24 any
+#           - 10 permit ipv4 host 10.2.0.10 any
+#           - 11 permit ipv4 host 10.2.0.25 any
+#           - 20 permit ipv4 10.1.0.0/22 any
+#           - 25 permit ipv4 host 10.2.0.9 any
+#           - 30 permit ipv4 192.168.35.0/24 any
+#           - 40 permit ipv4 192.168.36.0/24 any
+#           - 50 permit ipv4 192.168.37.0/24 any
+#           - 60 permit ipv4 192.168.38.0/24 any
+#           - 70 permit ipv4 192.168.39.0/24 any
+#           - 80 permit ipv4 192.168.40.0/24 any
+#           - 90 permit ipv4 192.168.41.0/24 any
+#           - 100 permit ipv4 192.168.42.0/24 any
+#           - 105 permit ipv4 192.168.24.0/23 any
+#           - 110 permit ipv4 192.168.43.0/24 any
+#           - 120 permit ipv4 192.168.44.0/24 any
+#           - 130 permit ipv4 192.168.45.0/24 any
+#           - 140 permit ipv4 192.168.46.0/24 any
+#           - 150 permit ipv4 192.168.47.0/24 any
+#           - 160 permit ipv4 192.168.48.0/24 any
+#           - 170 permit ipv4 192.168.135.0/24 any
+#           - 180 permit ipv4 192.168.137.0/24 any
+#           - 190 permit ipv4 192.168.138.0/24 any
+#           - 200 permit ipv4 192.168.139.0/24 any
+#           - 210 permit ipv4 192.168.143.0/24 any
+#           - 220 permit ipv4 192.168.144.0/24 any
+#           - 230 permit ipv4 192.168.145.0/24 any
+#           - 240 permit ipv4 192.168.34.0/24 any
+#           - 250 permit ipv4 192.168.25.0/24 any
+#           - 260 permit ipv4 192.168.26.0/24 any
+#           - 270 permit ipv4 192.168.27.0/24 any
+#           - 280 permit ipv4 192.168.28.0/24 any
+#           - 290 permit ipv4 192.168.49.0/24 any
+#           - 300 permit ipv4 192.168.150.0/24 any
+#           - 310 permit ipv4 10.1.254.0/24 any
+#           - 320 deny ipv4 any any log
+#           - exit
 
-    - name: Configure IPv4 access-list SSMv2
-      ios_command:
-        commands:
-          - ipv4 access-list SSMv2
-          - 10 permit ipv4 224.0.0.0 15.255.255.255 any
-          - exit
+#     - name: Configure IPv4 access-list SSMv2
+#       ios_command:
+#         commands:
+#           - ipv4 access-list SSMv2
+#           - 10 permit ipv4 224.0.0.0 15.255.255.255 any
+#           - exit
 
     - name: Configure IPv4 access-list snmp-access
       ios_command:
