@@ -5,7 +5,7 @@
   become: no
 
   tasks:
-    - name: Configure Lag-Group if directly connected to a router
+    - name: Configure Lag-Group if Connected to Router
       ios_command:
         commands:
           - conf t

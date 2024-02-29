@@ -5,14 +5,14 @@
   become: yes
 
   tasks:
-    - name: Gather running configuration
+    - name: Gather Running Configuration
       ios_command:
         commands:
           - show running-config
       register: running_config
       become: yes  # Use 'yes' if you need elevated privileges
 
-    - name: Gather hostname
+    - name: Gather Hostname
       ios_command:
         commands:
           - show snmp | include Chassis
@@ -23,17 +23,17 @@
       debug:
         var: hostname.stdout_lines
 
-    - name: Parse hostname
+    - name: Parse Hostname
       set_fact:
         extracted_hostname: "{{ hostname_lines[0].split()[-1] }}"
       vars:
         hostname_lines: "{{ hostname.stdout_lines[0] }}"
 
-    - name: Display extracted hostname
+    - name: Display Extracted Hostname
       debug:
         var: extracted_hostname
 
-    - name: Save running configuration to a file using it's Hostname
+    - name: Save Running Configuration to a file using Hostname
       copy:
         content: "{{ running_config.stdout_lines[0] }}"
         dest: "/etc/ansible/adtran_backup_configurations/{{ extracted_hostname }}_running_config.cfg"

@@ -5,7 +5,7 @@
   become: no
 
   tasks:
-    - name: Configure Regular Connection if connecting upstream to another TA5K
+    - name: Configure Regular Connection to another TA5K
       ios_command:
         commands:
           - conf t
