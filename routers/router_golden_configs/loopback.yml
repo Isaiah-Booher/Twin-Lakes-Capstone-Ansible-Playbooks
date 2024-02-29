@@ -5,7 +5,48 @@
   become: no
 
   tasks:
-    # - name: Configure Loopback0 Interface
+  - name: Configure Loopback0 Interface
+    ios_command:
+      commands:
+        - conf t
+        - interface Loopback0
+        - description MPLS/HSD/RID
+        - ipv4 address 10.0.0.10 255.255.255.255
+        - exit
+    register: loopback0_result
+
+  - name: Configure Loopback1 Interface
+    ios_command:
+      commands:
+        - conf t
+        - interface Loopback1
+        - description Management
+        - vrf netmgt
+        - ipv4 address 10.0.1.10 255.255.255.255
+        - exit
+    register: loopback1_result
+
+  - name: Configure Loopback3 Interface
+    ios_command:
+      commands:
+        - conf t
+        - interface Loopback3
+        - description Voice RID
+        - vrf voice
+        - ipv4 address 10.0.3.10 255.255.255.255
+        - exit
+    register: loopback3_result
+
+  - name: Display Titles for Configured Interfaces
+    debug:
+      msg: |
+        Titles for Configured Interfaces:
+        - Loopback0: {{ loopback0_result.stdout }}
+        - Loopback1: {{ loopback1_result.stdout }}
+        - Loopback3: {{ loopback3_result.stdout }}
+        
+    # WORKS COMPLETELY
+    # - name: Configure Loopback Interfaces
     #   ios_command:
     #     commands:
     #       - conf t
@@ -13,41 +54,13 @@
     #       - description MPLS/HSD/RID
     #       - ipv4 address 10.0.0.10 255.255.255.255
     #       - exit
-
-    # - name: Configure Loopback1 Interface
-    #   ios_command:
-    #     commands:
-    #       - conf t
     #       - interface Loopback1
     #       - description Management
     #       - vrf netmgt
     #       - ipv4 address 10.0.1.10 255.255.255.255
     #       - exit
-
-    # - name: Configure Loopback3 Interface
-    #   ios_command:
-    #     commands:
-    #       - conf t
     #       - interface Loopback3
     #       - description Voice RID
     #       - vrf voice
     #       - ipv4 address 10.0.3.10 255.255.255.255
     #       - exit
-    - name: Configure Loopback Interfaces
-      ios_command:
-        commands:
-          - conf t
-          - interface Loopback0
-          - description MPLS/HSD/RID
-          - ipv4 address 10.0.0.10 255.255.255.255
-          - exit
-          - interface Loopback1
-          - description Management
-          - vrf netmgt
-          - ipv4 address 10.0.1.10 255.255.255.255
-          - exit
-          - interface Loopback3
-          - description Voice RID
-          - vrf voice
-          - ipv4 address 10.0.3.10 255.255.255.255
-          - exit
