@@ -73,36 +73,35 @@
   become: no
   tasks:
     - name: Configure VRF for voice
-      ios_config:
-        lines:
-          - conf t
+      ios_command:
+        commands:
           - vrf definition voice
           - address-family ipv4 unicast
           - import route-target 65001:1
           - export route-target 65001:1
+          - exit
 
     - name: Configure VRF for netmgt
-      ios_config:
-        lines:
-          - conf t
+      ios_command:
+        commands:
           - vrf definition netmgt
           - address-family ipv4 unicast
           - import route-target 65001:2
           - export route-target 65001:2
+          - exit
 
     - name: Configure VRF for INTERNET
-      ios_config:
-        lines:
-          - conf t
+      ios_command:
+        commands:
           - vrf definition INTERNET
           - address-family ipv4 unicast
           - import route-target 65001:3
           - export route-target 65001:3
+          - exit
 
     - name: Configure line template login
-      ios_config:
-        lines:
-          - conf t
+      ios_command:
+        commands:
           - line template login
           - exec-timeout 15 0
           - length 50
@@ -111,6 +110,6 @@
           - transport output ssh
 
     - name: Configure VTY pool
-      ios_config:
-        lines:
+      ios_command:
+        commands:
           - vty-pool default 0 20 line-template login
