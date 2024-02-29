@@ -30,7 +30,7 @@
           lines:
             - interface Loopback0
             - description MPLS/HSD/RID
-            - ip address 10.0.0.10 255.255.255.255
+            - ipv4 address 10.0.0.10 255.255.255.255
 
       - name: Configure Loopback1 Interface
         ios_config:
@@ -38,7 +38,7 @@
             - interface Loopback1
             - description Management
             - vrf forwarding netmgt
-            - ip address 10.0.1.10 255.255.255.255
+            - ipv4 address 10.0.1.10 255.255.255.255
 
       - name: Configure Loopback3 Interface
         ios_config:
@@ -46,6 +46,7 @@
             - interface Loopback3
             - description Voice RID
             - vrf forwarding voice
-            - ip address 10.0.3.10 255.255.255.255
+            - ipv4 address 10.0.3.10 255.255.255.255
+
 
 
