@@ -1,54 +1,34 @@
-# ---
-# - name: Update Cisco Router Configuration
-#   hosts: routers
-#   become: no
-
-#   tasks:
-#     - name: Configure EVPN for EVI 11001
-#       ios_command:
-#         commands:
-#           - conf t
-#           - evpn
-#           - evi 11001
-#           - bgp
-#           - route-target import 1111:11001
-#           - route-target export 1111:11001
-#           - exit
-#           - control-word-disable
-#           - advertise-mac
-#           - exit
-#           - unknown-unicast-suppression
-#           - exit
-
-#     - name: Configure EVPN for Bundle-Ether400 Interface
-#       ios_command:
-#         commands:
-#           - interface Bundle-Ether400
-#           - ethernet-segment
-#           - identifier type 0 00.01.10.10.10.10.10.10.10
-#           - bgp route-target 0001.1010.1010
-#           - exit
-#           - exit
 ---
-- hosts: routers
-  vars:
-    evpn_configs:
-      11001:
-        route_target_import: "1111:11001"
-        route_target_export: "1111:11001"
-        control_word_disable: true
-        advertise_mac: true
-        unknown_unicast_suppression: true
-    interface_configs:
-      Bundle-Ether400:
-        identifier:
-          type: 0
-          value: "00.01.10.10.10.10.10.10.10"
-        bgp_route_target: "0001.1010.1010"
+- name: Update Cisco Router Configuration
+  hosts: routers
+  become: no
+
   tasks:
-    - name: Generate EVPN YAML configuration
-      template:
-        src: evpn_config_template.j2
-        dest: evpnconfig.yml
+    - name: Configure EVPN for EVI 11001
+      ios_command:
+        commands:
+          - conf t
+          - evpn
+          - evi 11001
+          - bgp
+          - route-target import 1111:11001
+          - route-target export 1111:11001
+          - exit
+          - control-word-disable
+          - advertise-mac
+          - exit
+          - unknown-unicast-suppression
+          - exit
+
+    - name: Configure EVPN for Bundle-Ether400 Interface
+      ios_command:
+        commands:
+          - interface Bundle-Ether400
+          - ethernet-segment
+          - identifier type 0 00.01.10.10.10.10.10.10.10
+          - bgp route-target 0001.1010.1010
+          - exit
+          - exit
+
 
 
