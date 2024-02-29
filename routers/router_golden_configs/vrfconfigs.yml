@@ -67,7 +67,6 @@
     - name: Configure VRF for voice
       ios_command:
         commands:
-          - vrf definition voice
           - rd 65001:1
           - address-family ipv4 unicast
           - label mode per-vrf
@@ -80,7 +79,6 @@
     - name: Configure VRF for netmgt
       ios_command:
         commands:
-          - vrf definition netmgt
           - rd 65001:2
           - address-family ipv4 unicast
           - label mode per-vrf
@@ -93,7 +91,6 @@
     - name: Configure VRF for INTERNET
       ios_command:
         commands:
-          - vrf definition INTERNET
           - rd 65001:3
           - address-family ipv4 unicast
           - label mode per-vrf
