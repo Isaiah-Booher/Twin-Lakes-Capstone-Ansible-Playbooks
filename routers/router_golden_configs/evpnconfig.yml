@@ -29,20 +29,26 @@
 #           - bgp route-target 0001.1010.1010
 #           - exit
 #           - exit
-evpn:
-  evi_11001:
-    bgp:
-      route-target:
-        import: "1111:11001"
-        export: "1111:11001"
-    control-word-disable: true
-    advertise-mac: true
-    unknown-unicast-suppression: true
-interface:
-  Bundle-Ether400:
-    ethernet-segment:
-      identifier:
-        type: 0
-        value: "00.01.10.10.10.10.10.10.10"
-      bgp_route-target: "0001.1010.1010"
+---
+- hosts: routers
+  vars:
+    evpn_configs:
+      11001:
+        route_target_import: "1111:11001"
+        route_target_export: "1111:11001"
+        control_word_disable: true
+        advertise_mac: true
+        unknown_unicast_suppression: true
+    interface_configs:
+      Bundle-Ether400:
+        identifier:
+          type: 0
+          value: "00.01.10.10.10.10.10.10.10"
+        bgp_route_target: "0001.1010.1010"
+  tasks:
+    - name: Generate EVPN YAML configuration
+      template:
+        src: evpn_config_template.j2
+        dest: evpnconfig.yml
+
 
