@@ -29,11 +29,11 @@
     - name: Configure SSH server for version 2
       ios_command:
         commands:
+          - conf t
           - ssh server v2
-        parents: 'conf t'  # Enter global configuration mode
-
+          
     - name: Configure SSH server using VRF netmgt
       ios_command:
-        commandss:
+        commands:
+          - conf t
           - ssh server vrf netmgt
-        parents: 'conf t'  # Enter global configuration mode
