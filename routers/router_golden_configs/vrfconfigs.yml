@@ -69,17 +69,17 @@
 - name: Update Cisco Router Configuration
   hosts: routers
   gather_facts: no
-  become: no
+  become: yes
   tasks:
     - name: Configure VRF for Voice
       ios_config:
         lines:
-          - conf t
           - ip vrf voice
           - rd 65001:1
           - address-family ipv4
           - exit-address-family
       register: vrf_voice
+
 
     # - name: Configure VRF for Netmgt
     #   ios_config:
