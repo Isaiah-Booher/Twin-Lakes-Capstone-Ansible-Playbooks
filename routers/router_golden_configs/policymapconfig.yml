@@ -3,9 +3,10 @@
 #   hosts: routers
 #   gather_facts: no
 #   become: no
+#   connection: network_cli
 
 #   tasks:
-#     - name: Configure policy map for Access Out
+#     - name: Configure Policy Map for Access Out
 #       ios_command:
 #         commands:
 #           - conf t
@@ -18,10 +19,9 @@
 #           - exit
 #           - class class-default
 #           - exit
-#           - end-policy-map
 #           - exit
 
-#     - name: Configure policy map for Core Egress
+#     - name: Configure Policy Map for Core Egress
 #       ios_command:
 #         commands:
 #           - policy-map pmap-core-egress
@@ -40,8 +40,6 @@
 #           - exit
 #           - class class-default
 #           - exit
-#           - end-policy-map
----
 - name: Update Cisco Router Configuration
   hosts: routers
   gather_facts: no
@@ -50,9 +48,8 @@
 
   tasks:
     - name: Configure policy map for Access Out
-      ios_command:
-        commands:
-          - conf t
+      cisco.ios.ios_config:
+        lines:
           - policy-map pmap-access-out
           - class cmap-voice-dscp
           - bandwidth percent 10
@@ -62,11 +59,12 @@
           - exit
           - class class-default
           - exit
-          - exit
+        parents: ['']
+      become: yes
 
     - name: Configure policy map for Core Egress
-      ios_command:
-        commands:
+      cisco.ios.ios_config:
+        lines:
           - policy-map pmap-core-egress
           - class cmap-voip-rt-dscp
           - police rate 5 gbps
@@ -83,4 +81,6 @@
           - exit
           - class class-default
           - exit
-          
+        parents: ['']
+      become: yes
+
