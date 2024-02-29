@@ -78,7 +78,6 @@
           - rd 65001:1
           - address-family ipv4
           - exit-address-family
-        parents: global
       register: vrf_voice
 
     - name: Configure VRF for Netmgt
@@ -88,7 +87,6 @@
           - rd 65001:2
           - address-family ipv4
           - exit-address-family
-        parents: global
       register: vrf_netmgt
 
     - name: Configure VRF for INTERNET
@@ -98,7 +96,6 @@
           - rd 65001:3
           - address-family ipv4
           - exit-address-family
-        parents: global
       register: vrf_internet
 
     - name: Configure Line Template Login
@@ -116,6 +113,5 @@
     - name: Configure VTY Pool
       ios_config:
         lines:
-          - vty-pool default 0 20 line-template login
-        parents: global
+          - vty-pool default 0 20 line-template login       
       register: vty_pool_default
