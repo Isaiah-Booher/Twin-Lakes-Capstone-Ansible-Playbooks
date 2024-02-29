@@ -1,118 +1,66 @@
-# ---
-# - name: Update Cisco Router Configuration
-#   hosts: routers
-#   gather_facts: no
-#   become: no
-
-#   tasks:
-#     - name: Configure VRF for Voice
-#       ios_command:
-#         commands:
-#           - vrf definition voice
-#           - address-family ipv4 unicast
-#           - import route-target
-#           - 65001:1
-#           - exit
-#           - export route-target
-#           - 65001:1
-#           - exit
-#           - exit
-#           - exit
-#           - commit best-effort
-
-#     - name: Configure VRF for Netmgt
-#       ios_command:
-#         commands:
-#           - vrf definition netmgt
-#           - address-family ipv4 unicast
-#           - import route-target
-#           - 65001:2
-#           - exit
-#           - export route-target
-#           - 65001:2
-#           - exit
-#           - exit
-#           - exit
-#           - commit best-effort
-
-#     - name: Configure VRF for INTERNET
-#       ios_command:
-#         commands:
-#           - vrf definition INTERNET
-#           - address-family ipv4 unicast
-#           - import route-target
-#           - 65001:3
-#           - end
-#           - export route-target
-#           - 65001:3
-#           - exit
-#           - exit
-#           - exit
-#           - commit best-effort
-
-#     - name: Configure Line Template Login
-#       ios_command:
-#         commands:
-#           - line template login
-#           - exec-timeout 15 0
-#           - length 50
-#           - session-timeout 15
-#           - transport input ssh
-#           - transport output ssh
-
-#     - name: Configure VTY Pool
-#       ios_command:
-#         commands:
-#           - vty-pool default 0 20 line-template login
-#           - commit best-effort
 ---
 - name: Update Cisco Router Configuration
   hosts: routers
   gather_facts: no
+
   tasks:
     - name: Configure VRF for Voice
       ios_command:
         commands:
-          - ip vrf voice
-          - rd 65001:1
-          - address-family ipv4
-          - exit-address-family
-      register: vrf_voice
+          - vrf definition voice
+          - address-family ipv4 unicast
+          - import route-target
+          - 65001:1
+          - exit
+          - export route-target
+          - 65001:1
+          - exit
+          - exit
+          - exit
+          - commit best-effort
 
+    - name: Configure VRF for Netmgt
+      ios_command:
+        commands:
+          - vrf definition netmgt
+          - address-family ipv4 unicast
+          - import route-target
+          - 65001:2
+          - exit
+          - export route-target
+          - 65001:2
+          - exit
+          - exit
+          - exit
+          - commit best-effort
 
+    - name: Configure VRF for INTERNET
+      ios_command:
+        commands:
+          - vrf definition INTERNET
+          - address-family ipv4 unicast
+          - import route-target
+          - 65001:3
+          - end
+          - export route-target
+          - 65001:3
+          - exit
+          - exit
+          - exit
+          - commit best-effort
 
-    # - name: Configure VRF for Netmgt
-    #   ios_config:
-    #     lines:
-    #       - ip vrf netmgt
-    #       - rd 65001:2
-    #       - address-family ipv4
-    #       - exit-address-family
-    #   register: vrf_netmgt
+    - name: Configure Line Template Login
+      ios_command:
+        commands:
+          - line template login
+          - exec-timeout 15 0
+          - length 50
+          - session-timeout 15
+          - transport input ssh
+          - transport output ssh
 
-    # - name: Configure VRF for INTERNET
-    #   ios_config:
-    #     lines:
-    #       - ip vrf INTERNET
-    #       - rd 65001:3
-    #       - address-family ipv4
-    #       - exit-address-family
-    #   register: vrf_internet
-
-    # - name: Configure Line Template Login
-    #   ios_config:
-    #     lines:
-    #       - line template login
-    #       - exec-timeout 15 0
-    #       - length 50
-    #       - session-timeout 15
-    #       - transport input ssh
-    #       - transport output ssh
-    #     parents: default
-    #   register: line_template_login
-
-    # - name: Configure VTY Pool
-    #   ios_config:
-    #     lines:
-    #       - vty-pool default 0 20 line-template login       
-    #   register: vty_pool_default
+    - name: Configure VTY Pool
+      ios_command:
+        commands:
+          - vty-pool default 0 20 line-template login
+          - commit best-effort
