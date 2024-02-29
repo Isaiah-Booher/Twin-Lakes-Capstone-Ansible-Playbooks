@@ -65,7 +65,7 @@
           - exit
 
     - name: Configure policy map for Core Egress
-      cisco.ios.ios_commands:
+      ios_commands:
         commands:
           - policy-map pmap-core-egress
           - class cmap-voip-rt-dscp
@@ -83,7 +83,6 @@
           - exit
           - class class-default
           - exit
-        parents: ['']
       wait_for: result.stdout.find("end") != -1
 
           
