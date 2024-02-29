@@ -10,3 +10,5 @@
         commands:
           - conf t
           - cdp run
+      connection: network_cli
+      transport: cli
