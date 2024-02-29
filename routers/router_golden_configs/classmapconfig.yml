@@ -60,7 +60,7 @@
   become: no
 
   tasks:
-    - name: Configure class map for Network Management Traffic
+    - name: Configure Class Map for Network Management Traffic
       ios_command:
         commands:
           - conf t
@@ -69,23 +69,23 @@
           - match dscp cs7
           - match mpls experimental topmost 7
           - end
-          
-    - name: Configure class map for Video Traffic
+
+    - name: Configure Class Map for Video Traffic
       ios_command:
         commands:
           - class-map match-any cmap-video-dscp
           - description Video Traffic Class
           - match dscp af41 cs4
           - end
-          
-    - name: Configure class map for Voice Traffic
+
+    - name: Configure Class Map for Voice Traffic
       ios_command:
         commands:
           - class-map match-any cmap-voice-dscp
           - match dscp ef cs5
           - end
-          
-    - name: Configure class map for Control Traffic
+
+    - name: Configure Class Map for Control Traffic
       ios_command:
         commands:
           - class-map match-any cmap-control-dscp
@@ -93,8 +93,8 @@
           - match dscp cs6
           - match mpls experimental topmost 6
           - end
-          
-    - name: Configure class map for VoIP Real-Time Traffic
+
+    - name: Configure Class Map for VoIP Real-Time Traffic
       ios_command:
         commands:
           - class-map match-any cmap-voip-rt-dscp
@@ -102,4 +102,5 @@
           - match dscp ef
           - match mpls experimental topmost 5
           - end
+
 

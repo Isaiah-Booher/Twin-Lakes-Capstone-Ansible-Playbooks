@@ -34,12 +34,12 @@
       debug:
         var: result
 
-    - name: Execute show clock command
+    - name: Execute Show Clock command
       ios_command:
         commands: "show clock"
       register: show_clock_output
 
-    - name: Display show clock output
+    - name: Display Show Clock output
       debug:
         var: show_clock_output.stdout_lines
 

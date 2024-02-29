@@ -5,11 +5,11 @@
   become: no
 
   tasks:
-    - name: Execute show run command
+    - name: Execute Show Running-Config
       ios_command:
         commands: "show running-config"
       register: show_running_configuration_output
 
-    - name: Display show run output
+    - name: Display Show Running-Config
       debug:
         var: show_running_configuration_output.stdout_lines

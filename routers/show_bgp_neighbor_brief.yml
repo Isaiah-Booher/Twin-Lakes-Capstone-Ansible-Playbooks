@@ -5,7 +5,7 @@
   become: no
 
   tasks:
-    - name: Execute show bgp neighbor brief
+    - name: Execute Show BGP Neighbor Brief
       ios_command:
         commands: "show bgp neighbor brief"
       register: show_running_configuration_output

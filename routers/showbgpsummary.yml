@@ -5,11 +5,11 @@
   become: no
 
   tasks:
-    - name: Execute show bgp summary
+    - name: Execute Show BGP Summary
       ios_command:
         commands: "show bgp summary"
       register: show_running_configuration_output
 
-    - name: Display show run output
+    - name: Display Show Run
       debug:
         var: show_running_configuration_output.stdout_lines

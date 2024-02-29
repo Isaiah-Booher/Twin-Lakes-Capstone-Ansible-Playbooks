@@ -5,7 +5,7 @@
   become: no
 
   tasks:
-    - name: Execute show mpls ldp neighbor
+    - name: Execute Show MPLS LDP Neighbor
       ios_command:
         commands: "show mpls ldp neighbor"
       register: show_running_configuration_output

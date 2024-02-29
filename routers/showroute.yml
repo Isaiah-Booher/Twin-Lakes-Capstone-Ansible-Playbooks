@@ -5,11 +5,11 @@
   become: no
 
   tasks:
-    - name: Execute show run command
+    - name: Execute Show Route
       ios_command:
         commands: "show route"
       register: show_running_configuration_output
 
-    - name: Display show run output
+    - name: Display Show Route
       debug:
         var: show_running_configuration_output.stdout_lines

@@ -21,7 +21,7 @@
           - unknown-unicast-suppression
           - exit
 
-    - name: Configure EVPN for Bundle-Ether400 interface
+    - name: Configure EVPN for Bundle-Ether400 Interface
       ios_command:
         commands:
           - interface Bundle-Ether400

@@ -5,12 +5,12 @@
   connection: network_cli
 
   tasks:
-    - name: Execute the "show l2vpn bridge-domain" command
+    - name: Execute Show L2VPN Bridge-Domain
       ios_command:
         commands:
           - show l2vpn bridge-domain
       register: l2vpn_bridge_domain_output
 
-    - name: Display the output
+    - name: Display the Output
       debug:
         var: l2vpn_bridge_domain_output.stdout_lines

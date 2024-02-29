@@ -5,7 +5,7 @@
   become: no
 
   tasks:
-    - name: Configure AAA group server radius & Authentication Login
+    - name: Configure AAA Group Server Radius & Authentication Login
       ios_command:
         commands:
           - conf t 

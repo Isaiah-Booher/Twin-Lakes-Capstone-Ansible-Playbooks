@@ -5,7 +5,7 @@
   become: no
 
   tasks:
-    - name: Configure IPv4 access-list SSM
+    - name: Configure IPv4 Access-List SSM
       ios_command:
         commands:
           - conf t
@@ -32,7 +32,7 @@
           - exit
       check_mode: yes
 
-    - name: Configure IPv4 access-list ssh
+    - name: Configure IPv4 Access-List SSH
       ios_command:
         commands:
           - ipv4 access-list ssh
@@ -75,7 +75,7 @@
           - exit
       check_mode: yes
 
-    - name: Configure IPv4 access-list SSMv2
+    - name: Configure IPv4 Access-List SSMv2
       ios_command:
         commands:
           - ipv4 access-list SSMv2

@@ -5,11 +5,11 @@
   become: no
 
   tasks:
-    - name: Execute show ospf neighbor
+    - name: Execute Show OSPF Neighbor
       ios_command:
         commands: "show ospf neighbor"
       register: show_running_configuration_output
 
-    - name: Display show run output
+    - name: Display Show OSPF Neighbor
       debug:
         var: show_running_configuration_output.stdout_lines

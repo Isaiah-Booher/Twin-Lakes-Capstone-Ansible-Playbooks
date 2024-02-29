@@ -5,11 +5,11 @@
   become: no
 
   tasks:
-    - name: Execute show l2vpn xconnect
+    - name: Execute Show L2VPN XConnect
       ios_command:
         commands: "show l2vpn xconnect"
       register: show_running_configuration_output
 
-    - name: Display show run output
+    - name: Display Show L2VPN XConnect
       debug:
         var: show_running_configuration_output.stdout_lines

@@ -5,7 +5,7 @@
   become: no
 
   tasks:
-    - name: Configure interface Bundle-Ether400
+    - name: Configure Interface Bundle-Ether400
       ios_command:
         commands:
           - conf t

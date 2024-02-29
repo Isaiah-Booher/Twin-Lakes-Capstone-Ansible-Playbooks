@@ -5,7 +5,7 @@
   become: no
   
   tasks:
-    - name: Configure L2VPN
+    - name: Configure L2VPN Customer
       ios_config:
         lines:
           - interface Bundle-Ether400.2139 l2transport

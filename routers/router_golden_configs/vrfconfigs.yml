@@ -5,7 +5,7 @@
   become: no
 
   tasks:
-    - name: Configure VRF for voice
+    - name: Configure VRF for Voice
       ios_config:
         lines:
           - vrf definition voice
@@ -21,7 +21,7 @@
           - commit best-effort
       become: yes
 
-    - name: Configure VRF for netmgt
+    - name: Configure VRF for Netmgt
       ios_command:
         commands:
           - vrf definition netmgt
@@ -45,24 +45,24 @@
           - 65001:3
           - end
           - export route-target
-#           - 65001:3
-#           - exit
-#           - exit
-#           - exit
-#           - commit best-effort
+          - 65001:3
+          - exit
+          - exit
+          - exit
+          - commit best-effort
 
-#     - name: Configure line template login
-#       ios_command:
-#         commands:
-#           - line template login
-#           - exec-timeout 15 0
-#           - length 50
-#           - session-timeout 15
-#           - transport input ssh
-#           - transport output ssh
+    - name: Configure Line Template Login
+      ios_command:
+        commands:
+          - line template login
+          - exec-timeout 15 0
+          - length 50
+          - session-timeout 15
+          - transport input ssh
+          - transport output ssh
 
-#     - name: Configure VTY pool
-#       ios_command:
-#         commands:
-#           - vty-pool default 0 20 line-template login
-#           - commit best-effort
+    - name: Configure VTY Pool
+      ios_command:
+        commands:
+          - vty-pool default 0 20 line-template login
+          - commit best-effort

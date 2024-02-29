@@ -5,7 +5,7 @@
   become: no
 
   tasks:
-    - name: Configure multicast-routing
+    - name: Configure Multicast-Routing
       ios_command:
         commands:
           - configure terminal

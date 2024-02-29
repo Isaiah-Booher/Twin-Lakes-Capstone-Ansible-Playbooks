@@ -25,7 +25,7 @@
   connection: network_cli
 
   tasks:
-    - name: Configure SSH servers
+    - name: Configure SSH Servers
       ios_command:
         commands:
           - conf t

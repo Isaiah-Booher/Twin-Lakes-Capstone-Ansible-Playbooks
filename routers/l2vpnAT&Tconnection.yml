@@ -5,7 +5,7 @@
   become: no
   
   tasks:
-    - name: Configure L2VPN
+    - name: Configure L2VPN AT&T
       ios_config:
         lines:
           - interface GigabitEthernet0/2/0/1.2139 l2transport
