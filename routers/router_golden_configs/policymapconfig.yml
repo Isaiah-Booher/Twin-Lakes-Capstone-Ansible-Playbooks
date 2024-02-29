@@ -65,7 +65,7 @@
           - exit
 
     - name: Configure policy map for Core Egress
-      ios_commands:
+      ios_command:
         commands:
           - policy-map pmap-core-egress
           - class cmap-voip-rt-dscp
