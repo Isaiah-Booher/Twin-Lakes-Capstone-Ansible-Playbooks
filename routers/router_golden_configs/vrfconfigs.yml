@@ -12,10 +12,10 @@
           - vrf voice
           - address-family ipv4 unicast
           - import route-target
-          - 65001:1
+          - "65001:1"
           - exit
           - export route-target
-          - 65001:1
+          - "65001:1"
           - exit
           - exit
           - exit
