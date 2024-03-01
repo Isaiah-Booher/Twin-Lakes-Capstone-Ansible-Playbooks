@@ -27,7 +27,8 @@
           - exit
           - exit
           - exit
-          - commit
+          - commit best-effort
+
 
 
 
