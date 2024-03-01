@@ -102,7 +102,7 @@
     - name: Configure Class Maps
       ios_config:
         lines:
-          - conf t
+          # - conf t
           - class-map match-any cmap-mgmt-dscp
           - description "Network Management Traffic Class"
           - match dscp cs7
