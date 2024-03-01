@@ -8,5 +8,7 @@
     - name: Configure FPD
       ios_command:
         commands:
+          - conf t
           - fpd auto-reload enable
           - fpd auto-upgrade enable
+          - commit best-effort
