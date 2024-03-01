@@ -1,51 +1,3 @@
-# ---
-# - name: Update Cisco Router Configuration
-#   hosts: routers
-#   gather_facts: no
-#   become: no
-
-#   tasks:
-#     - name: Configure Hostname
-#       ios_command:
-#         commands:
-#           - conf t
-#           - hostname ASR-BYTW-10
-
-#     - name: Configure AAA
-#       ios_command:
-#         commands:
-#           - aaa default-taskgroup root-lr
-
-#     - name: Configure Clock Timezone
-#       ios_command:
-#         commands:
-#           - clock timezone CST America/Chicago
-
-#     - name: Configure Logging
-#       ios_command:
-#         commands:
-#           - logging trap informational
-#           - logging console disable
-#           - logging monitor disable
-#           - logging buffered debugging
-#           - logging 10.2.0.10 vrf netmgt severity info port default
-#           - logging 10.2.0.12 vrf netmgt severity info port default
-#           - logging 10.2.0.13 vrf netmgt severity info port default
-#           - logging source-interface Loopback1 vrf netmgt
-
-#     - name: Configure Service Timestamps
-#       ios_command:
-#         commands:
-#           - service timestamps log datetime localtime msec show-timezone
-#           - service timestamps debug datetime localtime msec show-timezone
-
-#     - name: Configure Domain and Name Servers
-#       ios_command:
-#         commands:
-#           - domain vrf netmgt name-server 192.168.150.2
-#           - domain vrf netmgt name-server 192.168.150.3
-#           - domain name TWLAKES.LOCAL
-
 ---
 - name: Update Cisco Router Configuration
   hosts: routers
@@ -59,27 +11,15 @@
           - conf t
           - hostname ASR-BYTW-10
 
-    - name: Pause for 5 seconds
-      pause:
-        seconds: 5
-
     - name: Configure AAA
       ios_command:
         commands:
           - aaa default-taskgroup root-lr
 
-    - name: Pause for 5 seconds
-      pause:
-        seconds: 5
-
     - name: Configure Clock Timezone
       ios_command:
         commands:
           - clock timezone CST America/Chicago
-
-    - name: Pause for 5 seconds
-      pause:
-        seconds: 5
 
     - name: Configure Logging
       ios_command:
@@ -93,19 +33,11 @@
           - logging 10.2.0.13 vrf netmgt severity info port default
           - logging source-interface Loopback1 vrf netmgt
 
-    - name: Pause for 5 seconds
-      pause:
-        seconds: 5
-
     - name: Configure Service Timestamps
       ios_command:
         commands:
           - service timestamps log datetime localtime msec show-timezone
           - service timestamps debug datetime localtime msec show-timezone
-
-    - name: Pause for 5 seconds
-      pause:
-        seconds: 5
 
     - name: Configure Domain and Name Servers
       ios_command:
@@ -113,5 +45,3 @@
           - domain vrf netmgt name-server 192.168.150.2
           - domain vrf netmgt name-server 192.168.150.3
           - domain name TWLAKES.LOCAL
-
-
