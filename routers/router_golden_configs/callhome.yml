@@ -1,0 +1,20 @@
+---
+- name: Update Cisco Router Configuration
+  hosts: routers
+  gather_facts: no
+  become: no
+
+  tasks:
+    - name: Configure Call Home
+      ios_command:
+        commands:
+          - call-home
+          - vrf netmgt
+          - service active
+          - contact smart-licensing
+          - source-interface Loopback1
+          - profile CiscoTAC-1
+          - active
+          - destination transport-method http
+          - exit
+          - exit

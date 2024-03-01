@@ -1,0 +1,12 @@
+---
+- name: Update Cisco Router Configuration
+  hosts: routers
+  gather_facts: no
+  become: no
+
+  tasks:
+    - name: Configure FPD
+      ios_command:
+        commands:
+          - fpd auto-reload enable
+          - fpd auto-upgrade enable

@@ -1,0 +1,27 @@
+---
+- name: Update Cisco Router Configuration
+  hosts: routers
+  gather_facts: no
+  become: no
+
+  tasks:
+    - name: Configure DHCP
+      ios_command:
+        commands:
+          - dhcp ipv4
+          - vrf INTERNET relay
+          - profile IPTV-STB relay
+          - helper-address vrf default 10.1.17.31
+          - helper-address vrf default 10.1.17.32
+          - relay information option allow-untrusted
+          - exit
+          - profile FTTX_MGMT relay
+          - helper-address vrf netmgt 10.1.18.11
+          - helper-address vrf netmgt 10.1.18.12
+          - relay information option allow-untrusted
+          - exit
+          - profile FTTX_VOICE relay
+          - helper-address vrf voice 10.1.19.11
+          - helper-address vrf voice 10.1.19.12
+          - relay information option allow-untrusted
+          - exit

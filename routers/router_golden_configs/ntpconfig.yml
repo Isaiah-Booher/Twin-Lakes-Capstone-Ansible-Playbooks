@@ -1,0 +1,15 @@
+---
+- name: Update Cisco Router Configuration
+  hosts: routers
+  gather_facts: no
+  become: no
+
+  tasks:
+  - name: Configure NTP
+    ios_command:
+      commands:
+        - ntp
+        - server vrf netmgt 10.1.10.254 version 4
+        - server vrf netmgt 10.1.13.254 version 4
+        - server vrf netmgt 10.1.14.254 version 4
+        - exit

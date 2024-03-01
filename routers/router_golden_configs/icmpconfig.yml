@@ -1,0 +1,12 @@
+---
+- name: Update Cisco Router Configuration
+  hosts: routers
+  gather_facts: no
+  become: no
+
+  tasks:
+    - name: Configure ICMP
+      ios_command:
+        commands:
+          - icmp ipv4 source vrf
+          - icmp ipv4 rate-limit unreachable DF 200
