@@ -3,10 +3,10 @@
   hosts: routers
   gather_facts: no
   become: no
-  connection: network_cli
   
   tasks:
     - name: Enable CDP
-      ios_config:
-        lines:
+      ios_command:
+        commands:
+          - conf t
           - cdp run
