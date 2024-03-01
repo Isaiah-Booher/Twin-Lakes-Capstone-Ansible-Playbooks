@@ -20,20 +20,20 @@
           - exit
           - exit
 
-    # - name: Configure VRF for Netmgt
-    #   ios_command:
-    #     commands:
-    #       - vrf netmgt
-    #       - address-family ipv4 unicast
-    #       - import route-target
-    #       - 65001:2
-    #       - exit
-    #       - export route-target
-    #       - 65001:2
-    #       - exit
-    #       - exit
-    #       - exit
-    #       - commit best-effort
+    - name: Configure VRF for Netmgt
+      ios_command:
+        commands:
+          - vrf netmgt
+          - address-family ipv4 unicast
+          - import route-target
+          - "65001:2"
+          - exit
+          - export route-target
+          - "65001:2"
+          - exit
+          - exit
+          - exit
+          - commit best-effort
 
     # - name: Configure VRF for INTERNET
     #   ios_command:
