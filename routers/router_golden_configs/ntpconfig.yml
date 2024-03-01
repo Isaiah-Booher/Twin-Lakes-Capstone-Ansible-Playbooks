@@ -8,8 +8,10 @@
   - name: Configure NTP
     ios_command:
       commands:
+        - conf t
         - ntp
         - server vrf netmgt 10.1.10.254 version 4
         - server vrf netmgt 10.1.13.254 version 4
         - server vrf netmgt 10.1.14.254 version 4
         - exit
+        - commit best-effort

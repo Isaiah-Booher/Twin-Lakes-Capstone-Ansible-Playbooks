@@ -8,5 +8,7 @@
     - name: Configure ICMP
       ios_command:
         commands:
+          - conf t
           - icmp ipv4 source vrf
           - icmp ipv4 rate-limit unreachable DF 200
+          - commit best-effort

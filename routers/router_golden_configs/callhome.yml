@@ -8,6 +8,7 @@
     - name: Configure Call Home
       ios_command:
         commands:
+          - conf t
           - call-home
           - vrf netmgt
           - service active
@@ -18,3 +19,4 @@
           - destination transport-method http
           - exit
           - exit
+          - commit best-effort

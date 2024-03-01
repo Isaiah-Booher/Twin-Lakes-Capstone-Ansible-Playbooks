@@ -8,6 +8,7 @@
     - name: Configure DHCP
       ios_command:
         commands:
+          - conf t
           - dhcp ipv4
           - vrf INTERNET relay
           - profile IPTV-STB relay
@@ -25,3 +26,4 @@
           - helper-address vrf voice 10.1.19.12
           - relay information option allow-untrusted
           - exit
+          - commit best-effort
