@@ -5,21 +5,29 @@
   become: no
 
   tasks:
-    - name: Configure Hostname
+      - name: Configure Hostname/Taskgroup/Timezone
       ios_command:
         commands:
           - conf t
           - hostname ASR-BYTW-10
-
-    - name: Configure AAA
-      ios_command:
-        commands:
           - aaa default-taskgroup root-lr
-
-    - name: Configure Clock Timezone
-      ios_command:
-        commands:
           - clock timezone CST America/Chicago
+          
+    # - name: Configure Hostname/Taskgroup/Timezone
+    #   ios_command:
+    #     commands:
+    #       - conf t
+    #       - hostname ASR-BYTW-10
+
+    # - name: Configure AAA
+    #   ios_command:
+    #     commands:
+    #       - aaa default-taskgroup root-lr
+
+    # - name: Configure Clock Timezone
+    #   ios_command:
+    #     commands:
+    #       - clock timezone CST America/Chicago
 
     - name: Configure Logging
       ios_command:
