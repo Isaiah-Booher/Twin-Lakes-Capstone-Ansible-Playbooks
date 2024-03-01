@@ -17,4 +17,5 @@
           - exit
           - snmp-server group snmp_admin v3 priv
           - snmp-server contact networking@twinlakes.net
-          - snmp-server location [36.570583,-85.135065] 401 W Main St, Byrdstown, TN 38549
+          - snmp-server location [36.570583,-85.135065] 401 W Main St, Byrdstown, TN 38549 v3
+          - commit best-effort
