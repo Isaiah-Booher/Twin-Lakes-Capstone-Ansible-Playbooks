@@ -109,40 +109,40 @@
           - match mpls experimental topmost 7
           - end-class-map
 
-    - name: Configure Class Maps Video
-      ios_command:
-        commands:
-          - conf t
+    # - name: Configure Class Maps Video
+    #   ios_command:
+    #     commands:
+    #       - conf t
           - class-map match-any cmap-video-dscp
           - description Video Traffic Class
           - match dscp af41 cs4
           - end-class-map
 
-    - name: Configure Class Maps Voice
-      ios_command:
-        commands:          
-          - conf t
-          - class-map match-any cmap-voice-dscp
-          - match dscp ef cs5
-          - end-class-map
+    # - name: Configure Class Maps Voice
+    #   ios_command:
+    #     commands:          
+    #       - conf t
+    #       - class-map match-any cmap-voice-dscp
+    #       - match dscp ef cs5
+    #       - end-class-map
 
-    - name: Configure Class Maps Control Traffic Class
-      ios_command:
-        commands:
-          - conf t
-          - class-map match-any cmap-control-dscp
-          - description Control Traffic Class
-          - match dscp cs6
-          - match mpls experimental topmost 6
-          - end-class-map
+    # - name: Configure Class Maps Control Traffic Class
+    #   ios_command:
+    #     commands:
+    #       - conf t
+    #       - class-map match-any cmap-control-dscp
+    #       - description Control Traffic Class
+    #       - match dscp cs6
+    #       - match mpls experimental topmost 6
+    #       - end-class-map
 
-    - name: Configure Class Maps VoIP
-      ios_command:
-        commands:
-          - conf t
-          - class-map match-any cmap-voip-rt-dscp
-          - description VoIP Traffic Class
-          - match dscp ef
-          - match mpls experimental topmost 5
-          - end-class-map
+    # - name: Configure Class Maps VoIP
+    #   ios_command:
+    #     commands:
+    #       - conf t
+    #       - class-map match-any cmap-voip-rt-dscp
+    #       - description VoIP Traffic Class
+    #       - match dscp ef
+    #       - match mpls experimental topmost 5
+    #       - end-class-map
 
