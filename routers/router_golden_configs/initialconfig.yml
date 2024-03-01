@@ -12,6 +12,7 @@
             - hostname ASR-BYTW-10
             - aaa default-taskgroup root-lr
             - clock timezone CST America/Chicago
+            - commit best-effort
 
     # - name: Configure Hostname/Taskgroup/Timezone
     #   ios_command:
