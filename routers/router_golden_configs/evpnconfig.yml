@@ -4,7 +4,7 @@
   become: no
 
   tasks:
-    - name: Configure EVPN for EVI 11001
+    - name: Configure EVPN for EVI 11001/Bundle-Ether 400 Interface
       ios_command:
         commands:
           - conf t
@@ -19,10 +19,7 @@
           - exit
           - unknown-unicast-suppression
           - exit
-
-    - name: Configure EVPN for Bundle-Ether400 Interface
-      ios_command:
-        commands:
+          # Configure EVPN for Bundle-Ether400 Interface
           - interface Bundle-Ether400
           - ethernet-segment
           - identifier type 0 00.01.10.10.10.10.10.10.10

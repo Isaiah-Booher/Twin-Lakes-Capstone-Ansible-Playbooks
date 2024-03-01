@@ -3,7 +3,7 @@
   hosts: routers
 
   tasks:
-    - name: Configure Policy Map for Access Out
+    - name: Configure Policy Map for Access Out/ Core Egress
       ios_command:
         commands:
           - conf t
@@ -18,10 +18,7 @@
           - exit
           - end-policy-map
           - exit
-
-    - name: Configure Policy Map for Core Egress
-      ios_command:
-        commands:
+          # Configure Policy Map for Core Egress
           - policy-map pmap-core-egress
           - class cmap-voip-rt-dscp
           - police rate 5 gbps
@@ -41,3 +38,42 @@
           - exit
           - end-policy-map
           - exit
+
+    # - name: Configure Policy Map for Access Out
+    #   ios_command:
+    #     commands:
+    #       - conf t
+    #       - policy-map pmap-access-out
+    #       - class cmap-voice-dscp
+    #       - bandwidth percent 10
+    #       - exit
+    #       - class cmap-video-dscp
+    #       - bandwidth 300 mbps
+    #       - exit
+    #       - class class-default
+    #       - exit
+    #       - end-policy-map
+    #       - exit
+
+    # - name: Configure Policy Map for Core Egress
+    #   ios_command:
+    #     commands:
+    #       - policy-map pmap-core-egress
+    #       - class cmap-voip-rt-dscp
+    #       - police rate 5 gbps
+    #       - exit
+    #       - priority level 1
+    #       - exit
+    #       - class cmap-video-dscp
+    #       - bandwidth percent 30
+    #       - exit
+    #       - class cmap-mgmt-dscp
+    #       - bandwidth percent 5
+    #       - exit
+    #       - class cmap-control-dscp
+    #       - bandwidth percent 5
+    #       - exit
+    #       - class class-default
+    #       - exit
+    #       - end-policy-map
+    #       - exit
