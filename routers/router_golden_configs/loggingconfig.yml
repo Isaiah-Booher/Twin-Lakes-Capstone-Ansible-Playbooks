@@ -5,7 +5,7 @@
   become: no
 
   tasks:
-    - name: Configure Logging
+    - name: Configure Logging/SRVC Timestamps/DMN & Name Servers
       ios_command:
         commands:
           - conf t
@@ -17,16 +17,8 @@
           - logging 10.2.0.12 vrf netmgt severity info port default
           - logging 10.2.0.13 vrf netmgt severity info port default
           - logging source-interface Loopback1 vrf netmgt
-
-    - name: Configure Service Timestamps
-      ios_command:
-        commands:
           - service timestamps log datetime localtime msec show-timezone
           - service timestamps debug datetime localtime msec show-timezone
-
-    - name: Configure Domain and Name Servers
-      ios_command:
-        commands:
           - domain vrf netmgt name-server 192.168.150.2
           - domain vrf netmgt name-server 192.168.150.3
           - domain name TWLAKES.LOCAL
