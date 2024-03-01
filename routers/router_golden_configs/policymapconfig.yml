@@ -38,6 +38,7 @@
           - class class-default
           - exit
           - end-policy-map
+          - exit
           - commit best-effort
 
     # - name: Configure Policy Map for Access Out
