@@ -8,6 +8,7 @@
     - name: Configure Logging
       ios_command:
         commands:
+          - conf t
           - logging trap informational
           - logging console disable
           - logging monitor disable
