@@ -1,6 +1,7 @@
 ---
 - name: Update Cisco Router Configuration
   hosts: routers
+  become: no
 
   tasks:
     - name: Configure Policy Map for Access Out/ Core Egress
@@ -17,8 +18,7 @@
           - class class-default
           - exit
           - end-policy-map
-          - exit
-          - commit best-effort
+  
           # Configure Policy Map for Core Egress
           - policy-map pmap-core-egress
           - class cmap-voip-rt-dscp
@@ -38,7 +38,6 @@
           - class class-default
           - exit
           - end-policy-map
-          - exit
           - commit best-effort
 
     # - name: Configure Policy Map for Access Out
