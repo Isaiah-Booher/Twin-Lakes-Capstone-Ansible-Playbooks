@@ -50,19 +50,16 @@
         commands:
           - conf t
           - hostname ASR-BYTW-10
-      check_mode: yes
 
     - name: Configure AAA
       ios_command:
         commands:
           - aaa default-taskgroup root-lr
-      check_mode: yes
 
     - name: Configure Clock Timezone
       ios_command:
         commands:
           - clock timezone CST America/Chicago
-      check_mode: yes
 
     - name: Configure Logging
       ios_command:
@@ -75,14 +72,12 @@
           - logging 10.2.0.12 vrf netmgt severity info port default
           - logging 10.2.0.13 vrf netmgt severity info port default
           - logging source-interface Loopback1 vrf netmgt
-      check_mode: yes
 
     - name: Configure Service Timestamps
       ios_command:
         commands:
           - service timestamps log datetime localtime msec show-timezone
           - service timestamps debug datetime localtime msec show-timezone
-      check_mode: yes
 
     - name: Configure Domain and Name Servers
       ios_command:
@@ -90,4 +85,3 @@
           - domain vrf netmgt name-server 192.168.150.2
           - domain vrf netmgt name-server 192.168.150.3
           - domain name TWLAKES.LOCAL
-      check_mode: yes
