@@ -23,10 +23,13 @@
     - name: Configure EVPN for Bundle-Ether400 Interface
       ios_command:
         commands:
+          - conf t
           - interface Bundle-Ether400
           - ethernet-segment
           - identifier type 0 00.01.10.10.10.10.10.10.10
           - bgp route-target 0001.1010.1010
+          - exit
+          - exit
           - exit
           - exit
 

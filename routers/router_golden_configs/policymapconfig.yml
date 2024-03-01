@@ -19,14 +19,17 @@
           - exit
           - class class-default
           - exit
+          - end-policy-map
           - exit
 
     - name: Configure Policy Map for Core Egress
       ios_command:
         commands:
+          - conf t
           - policy-map pmap-core-egress
           - class cmap-voip-rt-dscp
           - police rate 5 gbps
+          - exit
           - priority level 1
           - exit
           - class cmap-video-dscp
@@ -39,4 +42,6 @@
           - bandwidth percent 5
           - exit
           - class class-default
+          - exit
+          - end-policy-map
           - exit
