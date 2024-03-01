@@ -5,7 +5,7 @@
   become: no
 
   tasks:
-    - name: Configure VRF for Voice
+    - name: Configure VRF for Voice, Net MGMT, Internet
       ios_command:
         commands:
           - conf t
