@@ -2,7 +2,7 @@
 - name: Update Cisco Router Configuration
   hosts: routers
   gather_facts: no
-  become: no
+  become: yes
 
   tasks:
     - name: Configure PIM for IPv4
