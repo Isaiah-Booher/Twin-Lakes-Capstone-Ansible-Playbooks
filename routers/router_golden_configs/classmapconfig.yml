@@ -125,5 +125,5 @@
           - match dscp ef
           - match mpls experimental topmost 5
           - end-class-map
-          - commit best effort
-          
+          - exit
+
