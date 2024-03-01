@@ -18,7 +18,7 @@
           - exit
           - end-policy-map
           - exit
-          - "yes"
+          - commit best-effort
           # Configure Policy Map for Core Egress
           - policy-map pmap-core-egress
           - class cmap-voip-rt-dscp
@@ -39,7 +39,7 @@
           - exit
           - end-policy-map
           - exit
-          - "yes"
+          - commit best-effort
 
     # - name: Configure Policy Map for Access Out
     #   ios_command:
