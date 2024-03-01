@@ -111,6 +111,7 @@
 
     - name: Configure Class Maps Video
       ios_command:
+        commands:
           - conf t
           - class-map match-any cmap-video-dscp
           - description Video Traffic Class
