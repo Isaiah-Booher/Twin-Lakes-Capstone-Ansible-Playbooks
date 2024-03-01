@@ -1,9 +1,6 @@
 ---
 - name: Update Cisco Router Configuration
   hosts: routers
-  gather_facts: no
-  become: no
-  connection: network_cli
 
   tasks:
     - name: Configure Policy Map for Access Out
@@ -25,7 +22,6 @@
     - name: Configure Policy Map for Core Egress
       ios_command:
         commands:
-          - conf t
           - policy-map pmap-core-egress
           - class cmap-voip-rt-dscp
           - police rate 5 gbps
