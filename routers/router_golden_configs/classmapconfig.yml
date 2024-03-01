@@ -96,12 +96,12 @@
 - name: Update Cisco Router Configuration
   hosts: routers
   gather_facts: no
-  become: no
+  become: yes
 
   tasks:
     - name: Configure Class Maps
-      ios_command:
-        commands:
+      ios_config:
+        lines:
           - conf t
           - class-map match-any cmap-mgmt-dscp
           - description "Network Management Traffic Class"
@@ -125,5 +125,4 @@
           - match dscp ef
           - match mpls experimental topmost 5
           - end-class-map
-          - exit
 
