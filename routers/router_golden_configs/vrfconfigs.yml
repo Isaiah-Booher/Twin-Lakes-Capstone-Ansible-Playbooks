@@ -2,12 +2,14 @@
 - name: Update Cisco Router Configuration
   hosts: routers
   gather_facts: no
+  become: no
 
   tasks:
     - name: Configure VRF for Voice
       ios_command:
         commands:
-          - vrf definition voice
+          - conf t
+          - vrf voice
           - address-family ipv4 unicast
           - import route-target
           - 65001:1
@@ -17,50 +19,49 @@
           - exit
           - exit
           - exit
-          - commit best-effort
 
-    - name: Configure VRF for Netmgt
-      ios_command:
-        commands:
-          - vrf definition netmgt
-          - address-family ipv4 unicast
-          - import route-target
-          - 65001:2
-          - exit
-          - export route-target
-          - 65001:2
-          - exit
-          - exit
-          - exit
-          - commit best-effort
+    # - name: Configure VRF for Netmgt
+    #   ios_command:
+    #     commands:
+    #       - vrf netmgt
+    #       - address-family ipv4 unicast
+    #       - import route-target
+    #       - 65001:2
+    #       - exit
+    #       - export route-target
+    #       - 65001:2
+    #       - exit
+    #       - exit
+    #       - exit
+    #       - commit best-effort
 
-    - name: Configure VRF for INTERNET
-      ios_command:
-        commands:
-          - vrf definition INTERNET
-          - address-family ipv4 unicast
-          - import route-target
-          - 65001:3
-          - end
-          - export route-target
-          - 65001:3
-          - exit
-          - exit
-          - exit
-          - commit best-effort
+    # - name: Configure VRF for INTERNET
+    #   ios_command:
+    #     commands:
+    #       - vrf INTERNET
+    #       - address-family ipv4 unicast
+    #       - import route-target
+    #       - 65001:3
+    #       - end
+    #       - export route-target
+    #       - 65001:3
+    #       - exit
+    #       - exit
+    #       - exit
 
-    - name: Configure Line Template Login
-      ios_command:
-        commands:
-          - line template login
-          - exec-timeout 15 0
-          - length 50
-          - session-timeout 15
-          - transport input ssh
-          - transport output ssh
+    # - name: Configure Line Template Login
+    #   ios_command:
+    #     commands:
+    #       - line template login
+    #       - exec-timeout 15 0
+    #       - length 50
+    #       - session-timeout 15
+    #       - transport input ssh
+    #       - transport output ssh
+    #       - exit
 
-    - name: Configure VTY Pool
-      ios_command:
-        commands:
-          - vty-pool default 0 20 line-template login
-          - commit best-effort
+    # - name: Configure VTY Pool
+    #   ios_command:
+    #     commands:
+    #       - vty-pool default 0 20 line-template login
+    #       - exit
