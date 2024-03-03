@@ -32,9 +32,13 @@
       debug:
         var: extracted_hostname
 
+    - name: Process Running Configuration
+      set_fact:
+        processed_config: "{{ running_config.stdout[0] | replace(',', '\n') | replace('\"', '') }}"
+
     - name: Save Running Configuration to a file
       copy:
-        content: "{{ running_config.stdout_lines }}"
+        content: "{{ processed_config }}"
         dest: "/etc/ansible/router_backup_configurations/{{ extracted_hostname }}_running_config.cfg"
       when: running_config is defined
       become: no
