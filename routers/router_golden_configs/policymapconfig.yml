@@ -19,7 +19,7 @@
           - exit
           - end-policy-map
           - exit
-          - commit best-effort
+          # - commit best-effort
   
           # Configure Policy Map for Core Egress
           # - policy-map pmap-core-egress
