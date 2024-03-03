@@ -9,4 +9,4 @@
       ios_command:
         commands:
           - conf t
-          - ip igmp evc "VIDEO" 1/1 proxy host ip address 10.96.99.11
+          - ip igmp evc "VIDEO" 1/A proxy host ip address 10.96.99.11
