@@ -25,7 +25,3 @@
           -----------------------------------------------------------
         state: present
       register: banner_result
-
-    - name: Display Configuration
-      debug:
-        var: show_result.stdout_lines
