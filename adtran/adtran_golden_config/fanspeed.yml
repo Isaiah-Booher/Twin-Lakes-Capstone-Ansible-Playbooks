@@ -1,0 +1,14 @@
+---
+- name: Configure ADTRAN Device
+  hosts: ta5k  # Replace with the target device hostname or IP address
+  gather_facts: no
+  connection: network_cli
+  become: yes
+
+  tasks:
+    - name: Configure Fan Speed
+      ios_command:
+        commands:
+          - conf t
+          - fan 1/f
+          - speed auto

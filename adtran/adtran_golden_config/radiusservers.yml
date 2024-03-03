@@ -1,0 +1,22 @@
+---
+- name: Configure ADTRAN Device
+  hosts: ta5k  # Replace with the target device hostname or IP address
+  gather_facts: no
+  connection: network_cli
+  become: yes
+
+  tasks:
+    - name: Configure Radius Servers
+      ios_command:
+        commands:
+          - conf t
+          - radius-server host 192.168.150.4 auth-port 1645
+          - radius-server host 192.168.150.4 name "RADIUS1"
+          - radius-server host 192.168.150.4 retransmit 3
+          - radius-server host 192.168.150.4 sequence-number 1
+          - radius-server host 192.168.150.4 timeout 1
+          - radius-server host 192.168.150.5 auth-port 1645
+          - radius-server host 192.168.150.5 name "RADIUS2"
+          - radius-server host 192.168.150.5 retransmit 3
+          - radius-server host 192.168.150.5 sequence-number 2
+          - radius-server host 192.168.150.5 timeout 1

@@ -1,0 +1,15 @@
+---
+- name: Configure ADTRAN Device
+  hosts: ta5k  # Replace with the target device hostname or IP address
+  gather_facts: no
+  connection: network_cli
+  become: yes
+
+  tasks:
+    - name: Configure Auto-Upgrade
+      ios_command:
+        commands:
+          - conf t
+          - auto-upgrade
+          - mode auto
+          - scr

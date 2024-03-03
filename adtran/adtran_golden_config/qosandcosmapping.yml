@@ -1,0 +1,22 @@
+---
+- name: Configure ADTRAN Device
+  hosts: ta5k  # Replace with the target device hostname or IP address
+  gather_facts: no
+  connection: network_cli
+  become: yes
+
+  tasks:
+    - name: Configure QoS and Cos Mapping
+      ios_command:
+        commands:
+          - conf t
+          - qos cos-queues 8
+          - qos mode system-cos-map
+          - qos cos-map 0 0
+          - qos cos-map 1 1
+          - qos cos-map 2 2
+          - qos cos-map 3 3
+          - qos cos-map 4 4
+          - qos cos-map 5 5
+          - qos cos-map 6 6
+          - qos cos-map 7 7

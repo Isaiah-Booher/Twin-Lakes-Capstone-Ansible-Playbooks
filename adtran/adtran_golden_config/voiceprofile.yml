@@ -1,0 +1,20 @@
+---
+- name: Configure ADTRAN Device
+  hosts: ta5k  # Replace with the target device hostname or IP address
+  gather_facts: no
+  connection: network_cli
+  become: yes
+
+  tasks:
+    - name: Configure Voice Profile
+      ios_command:
+        commands:
+          - conf t
+          - voice profile call-feature "CALL_FEAT"
+          - feature-mode local
+          - conference local originator flashhook split
+          - conference enable
+          - voice profile codec-list "CODEC"
+          - preference 1 codec g711ulaw
+          - voice profile media "MEDIA_PROFILE"
+          - voice-activity-detection enable

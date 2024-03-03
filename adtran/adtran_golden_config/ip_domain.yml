@@ -1,0 +1,16 @@
+---
+- name: Configure ADTRAN Device
+  hosts: ta5k  # Replace with the target device hostname or IP address
+  gather_facts: no
+  connection: network_cli
+  become: yes
+
+  tasks:
+    - name: Configure IP Domain Name and Name Servers
+      ios_command:
+        commands:
+          - conf t
+          - ip domain-name-list "twlakes.local"
+          - ip name-server primary 192.168.150.2
+          - ip name-server secondary 192.168.150.3
+          - ip domain-lookup
