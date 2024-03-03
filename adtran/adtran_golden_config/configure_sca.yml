@@ -1,0 +1,14 @@
+---
+- name: Configure ADTRAN Device
+  hosts: ta5k
+  gather_facts: no
+  become: yes
+
+  tasks:
+    - name: Configure SCA
+      ios_command:
+        commands:
+          - conf t
+          - sca autosave
+          - sca max-instances 5
+          - sca prefix "/SCA/A5K-JCCO-01"

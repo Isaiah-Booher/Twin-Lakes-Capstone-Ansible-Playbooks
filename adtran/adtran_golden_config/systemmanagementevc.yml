@@ -1,0 +1,19 @@
+---
+- name: Configure ADTRAN Device
+  hosts: ta5k
+  gather_facts: no
+  become: yes
+
+  tasks:
+    - name: Configure System Management EVC 
+      ios_command:
+        commands:
+          - conf t
+          - system-management-evc
+          - s-tag 99
+          - no ip address dhcp
+          - ip address 10.96.99.11 255.255.255.0
+          - ip dhcp option 60 enable
+          - ip dhcp option 60 vendor-class-identifier "ADTRAN."
+          - ip dhcp option 61 enable
+          - ip dhcp option 61 client-identifier ""

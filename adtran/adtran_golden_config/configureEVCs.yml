@@ -1,0 +1,30 @@
+---
+- name: Configure ADTRAN Device
+  hosts: ta5k
+  gather_facts: no
+  become: yes
+
+  tasks:
+    - name: Configure EVCs
+      ios_command:
+        commands:
+          - conf t
+          - evc "DATA"
+          - s-tag 1101
+          - connect men-port default-ethernet
+          - mac-switched
+          - no preserve-ce-vlan
+          - no shutdown
+          - evc "FTTH_VOICE"
+          - s-tag 211
+          - connect men-port default-ethernet
+          - mac-switched
+          - no preserve-ce-vlan
+          - no shutdown
+          - evc "VIDEO"
+          - s-tag 401
+          - connect men-port default-ethernet
+          - mac-switched
+          - ip igmp version v3 lite
+          - no preserve-ce-vlan
+          - no shutdown

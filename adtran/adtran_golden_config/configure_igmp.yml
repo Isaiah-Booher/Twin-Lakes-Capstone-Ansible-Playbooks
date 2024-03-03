@@ -1,0 +1,12 @@
+---
+- name: Configure ADTRAN Device
+  hosts: ta5k
+  gather_facts: no
+  become: yes
+
+  tasks:
+    - name: Configure IGMP
+      ios_command:
+        commands:
+          - conf t
+          - ip igmp evc "VIDEO" 1/1 proxy host ip address 10.96.99.11

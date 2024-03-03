@@ -1,0 +1,14 @@
+---
+- name: Configure ADTRAN Device
+  hosts: ta5k
+  gather_facts: no
+  become: yes
+
+  tasks:
+    - name: Configure SNMP
+      ios_command:
+        commands:
+          - conf t
+          - snmp-server chassis-id "A5K-JCCO-01"
+          - snmp-server location "36.12987,-83.49032 1908 Black Oak St 37760"
+

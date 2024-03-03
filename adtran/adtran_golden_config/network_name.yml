@@ -1,0 +1,12 @@
+---
+- name: Configure ADTRAN Device
+  hosts: ta5k
+  gather_facts: no
+  become: yes
+
+  tasks:
+    - name: Configure Network Name
+      ios_command:
+        commands:
+          - conf t
+          - network-name "T5K-JEFC-01 Network"

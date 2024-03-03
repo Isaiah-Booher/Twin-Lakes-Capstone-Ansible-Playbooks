@@ -13,13 +13,13 @@
           - auto-upgrade
           - mode auto
           - scr
-        parents: 'configure terminal'
+
 
     - name: Configure AAA Authentication
       ios_command:
         commands:
           - aaa authentication login default group radius local
-        parents: 'configure terminal'
+
 
     - name: Configure IP Domain Name and Name Servers
       ios_command:
@@ -95,10 +95,4 @@
         commands:
           - fan 1/f
           - speed auto
-        parents: 'configure terminal'
-
-    - name: Configure Banner
-      ios_command:
-        commands:
-          - banner login $
         parents: 'configure terminal'
