@@ -11,5 +11,3 @@
     - name: Display Show Table Remote Devices
       debug:
         var: show_table_remote_devices_output.stdout_lines
-
-# Add additional tasks or handlers as needed

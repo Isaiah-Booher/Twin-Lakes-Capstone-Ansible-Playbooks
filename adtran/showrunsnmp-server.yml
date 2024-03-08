@@ -1,17 +1,4 @@
 ---
-# - name: Show Running Configuration of SNMP Server
-#   hosts: ta5k
-#   gather_facts: no
-#   tasks:
-#     - name: Execute Show Running-Config SNMP Server Command
-#       ios_command:   # Replace with the appropriate module for your network device
-#         commands: "show running-config | include snmp-server"
-#       register: snmp_server_running_config
-
-#     - name: Display Running Configuration of SNMP Server
-#       debug:
-#         var: snmp_server_running_config.stdout_lines
-
 - name: Execute "show run snmp-server" Command
   hosts: ta5k
   gather_facts: no

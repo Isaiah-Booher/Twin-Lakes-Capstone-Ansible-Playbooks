@@ -42,19 +42,19 @@
           - exit
           - exit
 
-    # - name: Configure Line Template Login
-    #   ios_command:
-    #     commands:
-    #       - line template login
-    #       - exec-timeout 15 0
-    #       - length 50
-    #       - session-timeout 15
-    #       - transport input ssh
-    #       - transport output ssh
-    #       - exit
+    - name: Configure Line Template Login
+      ios_command:
+        commands:
+          - line template login
+          - exec-timeout 15 0
+          - length 50
+          - session-timeout 15
+          - transport input ssh
+          - transport output ssh
+          - exit
 
-    # - name: Configure VTY Pool
-    #   ios_command:
-    #     commands:
-    #       - vty-pool default 0 20 line-template login
-    #       - exit
+    - name: Configure VTY Pool
+      ios_command:
+        commands:
+          - vty-pool default 0 20 line-template login
+          - exit

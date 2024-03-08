@@ -11,5 +11,3 @@
     - name: Display Command Output
       debug:
         var: show_table_evc_output.stdout_lines
-
-# Add additional tasks or handlers as needed
